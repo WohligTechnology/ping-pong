@@ -5,33 +5,22 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
-  <!-- Dashboard Tab -->
-<!--  <ion-tab title="Status" icon-off="ion-ios-pulse-outline" icon-on="ion-ios-pulse-strong" href="#/tab/dash">-->
-  <ion-tab title="Timelines" icon="ion-ios-home" href="#/tab/dash">
-    <ion-nav-view name="tab-dash"></ion-nav-view>
-  </ion-tab>
+    <!-- Dashboard Tab -->
+    <ion-tab title="Timelines" icon-off="ion-ios-home" icon-on="ion-ios-home" href="#/tab/dash">
+        <ion-nav-view name="tab-dash"></ion-nav-view>
+    </ion-tab>
 
-  <!-- Chats Tab -->
-  <ion-tab title="Notifications" icon="ion-ios-bell" href="#/tab/pooja">
-    <ion-nav-view name="tab-sohan"></ion-nav-view>
-  </ion-tab>
+    <!-- Chats Tab -->
+    <ion-tab title="Notificatons" icon-off="ion-ios-bell" icon-on="ion-ios-bell" href="#/tab/chats">
+        <ion-nav-view name="tab-chats"></ion-nav-view>
+    </ion-tab>
 
-  <!-- Account Tab -->
-  <ion-tab title="Messages" icon="ion-chatbox-working" href="#/tab/chats">
-    <ion-nav-view name="tab-chats"></ion-nav-view>
-  </ion-tab>
+    <!-- Account Tab -->
+    <ion-tab title="Messages" icon-off="ion-ios-email" icon-on="ion-ios-email" href="#/tab/account">
+        <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
 
-  <!-- Account Tab -->
-  <ion-tab title="Me" icon="ion-person" href="#/tab/account">
-    <ion-nav-view name="tab-account"></ion-nav-view>
-  </ion-tab>
-
-<!--
-   Account Tab 
-  <ion-tab title="New" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/new">
-    <ion-nav-view name="tab-new"></ion-nav-view>
-  </ion-tab>
--->
-
-
+    <ion-tab title="Me" icon-off="ion-person" icon-on="ion-person" href="#/tab/account">
+        <ion-nav-view name="tab-account"></ion-nav-view>
+    </ion-tab>
 </ion-tabs>
