@@ -1,0 +1,237 @@
+/* Empty. Add your own CSS if you like */
+
+.ionic .bar.bar-positive .title {
+	color: #fff;
+}
+
+ion-header-bar.bar-stable.bar.bar-header.disable-user-behavior {
+	background-color: blue;
+	color: #fff;
+}
+
+.bar.bar-stable .title {
+	color: #FFFDFD;
+}
+
+.givespace {
+	padding-right: 25px;
+}
+
+.textgrey {
+	color: grey;
+}
+
+.imageclass {
+	background: url('../img/images.jpg')no-repeat;
+	background-size: cover;
+	min-height: 203px;
+	position: relative;
+	background-position: center;
+	width: 100%;
+}
+
+.button-bar {
+	border-right-width: 1px;
+	border-radius: 0px 2px 2px 0px;
+	background-color: #fff;
+}
+
+.withborders {
+	border-bottom-style: ridge;
+	border-bottom-width: 1px;
+}
+
+.colwidth {
+	border-right: ridge;
+	border-width: 1px;
+}
+
+.colleft {
+	border-left: ridge;
+	border-width: 1px;
+}
+
+.button.button-calm {
+	padding-top: 10px;
+	margin-top: 20px;
+	border-color: #D8D0D0;
+	background-color: #FEFFFF;
+	width: 65px;
+	height: 0px;
+}
+
+.button {
+	border-color: #E1DADA;
+	background-color: #FFFEFE;
+	color: #8A8484;
+	position: relative;
+	display: inline-block;
+	margin: 18px;
+	padding: 0 12px;
+	min-width: 67px;
+	min-height: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 8px;
+	vertical-align: top;
+	text-align: center;
+	text-overflow: ellipsis;
+	font-size: 16px;
+	line-height: 0px;
+	cursor: pointer;
+}
+
+.button.button-positive {
+	border-color: #8FABFF;
+	background-color: #FCFCFD;
+	color: rgb(131, 187, 243);
+}
+
+.button.button-positive:hover {
+	color: #6BA5F5;
+	text-decoration: none;
+}
+
+.spacebet {
+	margin-right: 50px;
+	margin-left: 150px;
+}
+
+.iconsize {
+	padding-left: 69px;
+	padding-right: 18px;
+	font-size: larger;
+	color: grey;
+}
+
+.textcolor {
+	color: grey;
+	font-family: inherit;
+}
+
+.givepadding {
+	padding-right: 90px;
+}
+
+.pullright {
+	color: grey;
+	float: right;
+}
+
+hr {
+	border-style: solid;
+	-moz-box-sizing: content-box;
+	height: 0;
+	width: 100%;
+	color: rgb(220, 216, 216);
+	bold: 10px;
+	border-width: thick;
+}
+
+.usericon {
+	float: right;
+}
+
+.iconfontsize {
+	font-size: 20px;
+	color: grey;
+}
+
+.largeicon {
+	font-size: 24px;
+	position: relative;
+	margin: 7px 13px 0px 9px;
+}
+
+.pooja-img img {
+	position: absolute;
+	height: 80px;
+	left: 50%;
+	transform: translatex(-50%);
+	border: 5px solid #fff;
+	border-radius: 4px;
+	top: 24px;
+}
+
+.whitetext {
+	position: absolute;
+	height: 80px;
+	left: 50%;
+	transform: translatex(-50%);
+	top: 110px;
+	color: #fff;
+	font-size: 20px;
+}
+
+.whitetextdown {
+  position: absolute;
+  height: 80px;
+  left: 50%;
+  transform: translatex(-50%);
+  top: 132px;
+  color: #fff;
+  font-size: 15px;
+}
+.cancleclass{
+  margin-top: 0px;
+}
+.pooja-search label.item-input-wrapper {
+  background: #3e89c2 !important;
+}
+.outsearch
+{
+  background-color: #5db1f1;
+}
+.searchfont{
+  font-size: larger;
+  color: #5db1f1;
+}
+.crossclass{
+  padding-right: -17px;
+  float: right;
+  font-size: x-large;
+  color: rgb(197, 194, 194);
+}
+.hrline {
+  border-style: ridge;
+  -moz-box-sizing: content-box;
+  height: 0;
+  width: 100%;
+  color: rgb(220, 216, 216);
+  bold: 10px;
+  border-width: 1px;
+}
+.searchicon {
+  padding-right: 3px;
+  color: rgb(192, 188, 188);
+}
+.searchpad{
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+.recsearch {
+  background-color: rgb(234, 239, 239);
+  color: grey;
+  font-family: initial;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.iconsearch{
+  padding-top: 0px;
+  margin-top: 2px;
+}
+.rel{
+	height: 600px;
+ 	width: 100%;
+	background-color: rgb(234, 239, 239);
+	position: relative;
+}
+.abs {
+  top: 208px;
+  height: 200px;
+  width: 200px;
+  left: 50%;
+  background-color: red;
+  position: absolute;
+  transform: translateX(-50%);
+}
