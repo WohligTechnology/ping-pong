@@ -109,7 +109,41 @@
 .removeline {
     text-decoration: none;
 }
-.imageauto{
+
+.imageauto {
     width: 100%;
     height: auto;
 }
+/*vignesh*/
+
+.login-div {
+    background-image: url('../img/blurred.jpg');
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.twicolor {
+    background-color: #55acee;
+    color: white;
+    border:none;
+}
+
+.googcolor {
+    background-color: #d73d32;
+    color: white;
+    border:none;
+}
+
+.fbcolor {
+    background-color: #3a5795;
+    color: white;
+    border:none;
+}
+
+.instaclor {
+    background-color: #517fa4;
+    color: white;
+    border:none;
+}
+/*vignesh*/
