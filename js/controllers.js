@@ -1,6 +1,77 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function ($scope) {})
+.controller('DashCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location) {
+
+    $ionicPopover.fromTemplateUrl('templates/popover.html', {
+        scope: $scope
+    }).then(function (popover) {
+        $scope.popover = popover;
+    });
+
+    $scope.openPopover = function ($event) {
+        $scope.popover.show($event);
+    };
+    $scope.closePopover = function () {
+        $scope.popover.hide();
+    };
+
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function () {
+        $scope.popover.remove();
+    });
+
+    $scope.feeds = [
+        {
+            name: "Justin Taylor",
+            nameat: "@JustinGraphitas",
+            image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
+            more: false,
+            height: 0,
+            series: [{
+                name: 'Jane',
+                data: [1, 0, 4]
+            }, {
+                name: 'John',
+                data: [5, 7, 3]
+            }]
+        },
+        {
+            name: "Other",
+            nameat: "@JustinGraphitas",
+            image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
+            more: false,
+            height: 0,
+            series: [{
+                name: 'Jane',
+                data: [1, 0, 4]
+            }, {
+                name: 'John',
+                data: [5, 7, 3]
+            }]
+        }
+    ];
+    $scope.changemore = function (feed, index) {
+        var indexno = index;
+        var idtomove = "more";
+        feed.more = !feed.more;
+        if (feed.more) {
+            var height = $("ion-item").eq(indexno).children(".contentright").children(".more").children(".more-content").height();
+            feed.height = height;
+            console.log(height);
+        } else {
+            idtomove = "item"
+            feed.height = 0;
+        }
+
+        $timeout(function () {
+            $ionicScrollDelegate.resize();
+            $location.hash(idtomove + index);
+            console.log($location.hash());
+            $ionicScrollDelegate.anchorScroll(true, 4000);
+        }, 1000)
+
+    };
+})
 
 .controller('LoginCtrl', function ($scope) {})
 

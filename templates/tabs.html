@@ -7,14 +7,16 @@ navigation history that also transitions its views in and out.
     <ion-nav-back-button>
     </ion-nav-back-button>
     <ion-nav-buttons side="left">
-        <i class="ion-android-person-add largeicon">
-            </i>
+        <button class="button icon ion-android-person-add">
+            </button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-        <i class="ion-ios-search-strong largeicon">
-            </i>
-        <i class="ion-android-open largeicon">
-            </i>
+        <button class="button icon ion-search">
+            </button>
+<!--
+        <button class="button icon ion-android-open">
+            </button>
+-->
     </ion-nav-buttons>
 </ion-nav-bar>
 <!--
@@ -26,12 +28,12 @@ navigation history that also transitions its views in and out.
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
     <!-- Dashboard Tab -->
-    <ion-tab title="Timelines" icon-off="ion-ios-home" icon-on="ion-ios-home" href="#/tab/dash">
+    <ion-tab title="Timelines" icon-off="ion-android-home" icon-on="ion-android-home" href="#/tab/dash">
         <ion-nav-view name="tab-dash"></ion-nav-view>
     </ion-tab>
 
     <!-- Chats Tab -->
-    <ion-tab title="Notificatons" icon-off="ion-ios-bell" icon-on="ion-ios-bell" href="#/tab/chats">
+    <ion-tab title="Notificatons" icon-off="ion-ios-bell rotatebell" icon-on="ion-ios-bell rotatebell" href="#/tab/chats">
         <ion-nav-view name="tab-chats"></ion-nav-view>
     </ion-tab>
 

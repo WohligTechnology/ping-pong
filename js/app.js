@@ -24,62 +24,97 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 .config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider
+        $stateProvider
 
-    // setup an abstract state for the tabs directive
-        .state('tab', {
-            url: '/tab',
-            abstract: true,
-            templateUrl: 'templates/tabs.html'
-        })
-        .state('login', {
-            url: '/login',
-            templateUrl: 'templates/login.html',
-            controller:'LoginCtrl'
-        })
+        // setup an abstract state for the tabs directive
+            .state('tab', {
+                url: '/tab',
+                abstract: true,
+                templateUrl: 'templates/tabs.html'
+            })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'templates/login.html',
+                controller: 'LoginCtrl'
+            })
 
-    // Each tab has its own nav history stack:
+        // Each tab has its own nav history stack:
 
-    .state('tab.dash', {
-        url: '/dash',
-        views: {
-            'tab-dash': {
-                templateUrl: 'templates/tab-dash.html',
-                controller: 'DashCtrl'
+        .state('tab.dash', {
+            url: '/dash',
+            views: {
+                'tab-dash': {
+                    templateUrl: 'templates/tab-dash.html',
+                    controller: 'DashCtrl'
+                }
             }
-        }
+        })
+
+        .state('tab.chats', {
+                url: '/chats',
+                views: {
+                    'tab-chats': {
+                        templateUrl: 'templates/tab-chats.html',
+                        controller: 'ChatsCtrl'
+                    }
+                }
+            })
+            .state('tab.chat-detail', {
+                url: '/chats/:chatId',
+                views: {
+                    'tab-chats': {
+                        templateUrl: 'templates/chat-detail.html',
+                        controller: 'ChatDetailCtrl'
+                    }
+                }
+            })
+
+        .state('tab.account', {
+            url: '/account',
+            views: {
+                'tab-account': {
+                    templateUrl: 'templates/tab-account.html',
+                    controller: 'AccountCtrl'
+                }
+            }
+        });
+
+        // if none of the above states are matched, use this as the fallback
+        $urlRouterProvider.otherwise('/login');
+
     })
+    .directive('barhighchart', function () {
+        return {
+            restrict: 'EA',
+            transclude: true,
+            scope: {
+                obj: "="
+            },
+            templateUrl: 'templates/directive/barhighchart.html',
+            link: function ($scope, element, attr) {
+                $element = $(element);
 
-    .state('tab.chats', {
-            url: '/chats',
-            views: {
-                'tab-chats': {
-                    templateUrl: 'templates/tab-chats.html',
-                    controller: 'ChatsCtrl'
-                }
-            }
-        })
-        .state('tab.chat-detail', {
-            url: '/chats/:chatId',
-            views: {
-                'tab-chats': {
-                    templateUrl: 'templates/chat-detail.html',
-                    controller: 'ChatDetailCtrl'
-                }
-            }
-        })
+                $element.children('#container').highcharts({
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Fruit Consumption'
+                    },
+                    xAxis: {
+                        categories: ['Apples', 'Bananas', 'Oranges']
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Fruit eaten'
+                        }
+                    },
+                    series: $scope.obj.series,
+                    credits: {
+                        enabled: false
+                    }
+                });
 
-    .state('tab.account', {
-        url: '/account',
-        views: {
-            'tab-account': {
-                templateUrl: 'templates/tab-account.html',
-                controller: 'AccountCtrl'
             }
-        }
+        };
     });
-
-    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
-
-});
