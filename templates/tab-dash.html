@@ -1,74 +1,30 @@
-<ion-view class="titlesize" view-title="Home">
-    <ion-content class="nopadding">
-        <div class="list">
-            <div class="row">
-                <i class="ion-android-sync retweeticon"></i>
-                <span class="retweet">Ross Hammond retweeted</span>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <img class="onleft" src="img/Personn.jpg">
-                </div>
-                <div class="col col-75 contentleft">
-                    <span class="item-note">
-                    <i class="ion-ios-paper-outline"> 3m</i>
-                    </span>
+<ion-view view-title="Home">
+    <ion-content>
+        <ion-list class="avtar">
+            <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+                <img class="littlebig" ng-src="img/Personn.jpg">
+                <div class="contentright">
                     <span class="namebold">Justin Taylor</span>
                     <span class="namegrey">@JustinGraphitas</span>
+                    <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
                     <p class="tweetcontent">My blog post on "Designing for SEO" has just gone live @moz <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                     </p>
+                    <img class="max80" src="img/Spring-Lamb.-Image-shot-2-011.jpg">
                     <div class="row">
-                        <div class="col"><i class="ion-reply bottomicons"></i></div>
-                        <div class="col"><i class="ion-android-sync bottomicons"> 1</i></div>
-                        <div class="col"><i class="ion-android-star bottomicons"> 4</i></div>
-                        <div class="col"><i class="ion-android-person-add bottomiconsright"></i></div>
+                        <div class="col"><i class="ion-reply bottomicons"></i>
+                        </div>
+                        <div class="col"><i class="ion-android-sync bottomicons"> 1</i>
+                        </div>
+                        <div class="col"><i class="ion-android-star bottomicons"> 4</i>
+                        </div>
+                        <div class="col"><i class="ion-android-person-add bottomiconsright"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-        </div>
-        <div class="list">
-            <div class="row">
-                <div class="col">
-                    <img class="onleft" src="img/Personn.jpg">
-                </div>
-                <div class="col col-75 contentleft">
-                    <span class="item-note">
-                    <i class="ion-ios-browsers"> 4m</i>
-                    </span>
-                    <span class="namebold">Lacy Alexander</span>
-                    <span class="namegrey">@LacyGraphitas</span>
-                    <p class="tweetcontent">Design with Impact - A guide to Webpage Anatomy Infographic
-                    <a class="removeline" href="graphit.as/fullimpact">graphit.as/fullimpact</a>
-                    </p>
-                    <img class="imageauto" src="img/Spring-Lamb.-Image-shot-2-011.jpg">
-                    <div class="row">
-                        <div class="col"><i class="ion-reply bottomicons"></i></div>
-                        <div class="col"><i class="ion-android-sync bottomicons"> 1</i></div>
-                        <div class="col"><i class="ion-android-star bottomicons"> 4</i></div>
-                        <div class="col"><i class="ion-android-person-add bottomiconsright"></i></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!--
-        <div class="list card">
-            <div class="item item-divider">Health</div>
-            <div class="item item-body">
-                <div>
-                    You ate an apple today!
-                </div>
-            </div>
-        </div>
-        <div class="list card">
-            <div class="item item-divider">Upcoming</div>
-            <div class="item item-body">
-                <div>
-                    You have <b>29</b> meetings on your calendar tomorrow.
-                </div>
-            </div>
-        </div>
--->
+                <ion-option-button class="button-assertive" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>
