@@ -119,7 +119,6 @@
 .login-div {
     background-image: url('../img/blurred.jpg');
     background-repeat: no-repeat;
-    -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 }
 
@@ -147,3 +146,70 @@
     border:none;
 }
 /*vignesh*/
+
+
+
+
+/*jagruti css*/
+.imageclass {
+    background: url('../img/images.jpg')no-repeat;
+    background-size: cover;
+    min-height: 203px;
+    position: relative;
+    background-position: center;
+    width: 100%;
+}
+.headimg img {
+    position: absolute;
+    height: 50%;
+    left: 17%;
+    -webkit-transform: translatex(-50%);
+    -ms-transform: translatex(-50%);
+    transform: translatex(-50%);
+    border: 5px solid #fff;
+    border-radius: 4px;
+    top: 76%;
+}
+
+.whitetext {
+	position: absolute;
+	height: 80%;
+	left: 19%;
+	-webkit-transform: translatex(-50%);
+	-ms-transform: translatex(-50%);
+	transform: translatex(-50%);
+	top: 126%;
+	color: #584F4F;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.whitetextdown {
+  position: absolute;
+  height: 80px;
+  left: 19%;
+  -webkit-transform: translatex(-50%);
+  -ms-transform: translatex(-50%);
+  transform: translatex(-50%);
+  top: 139%;
+  color: #584F4F;
+  font-size: 15px;
+}
+
+
+.pullleft {
+	float: right;
+}
+.relative{
+	position: relative;
+
+}
+
+.relative > span {
+	position: absolute;
+	right: 0;
+	padding: 2% 2%;
+}
+.border-radius{
+	border-radius: 11px;
+}
