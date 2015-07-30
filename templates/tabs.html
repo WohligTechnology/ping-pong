@@ -3,7 +3,7 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-nav-bar class="bar-dark barheight">
+<ion-nav-bar class="bar-dark barheight" ng-controller="AppCtrl">
     <ion-nav-back-button>
     </ion-nav-back-button>
 <!--
@@ -15,7 +15,7 @@ navigation history that also transitions its views in and out.
     <ion-nav-buttons side="right">
         <button class="button icon ion-android-search">
         </button>
-        <button class="button icon ion-plus">
+        <button class="button icon ion-plus" ng-click="openCreate()">
         </button>
         <!--
         <button class="button icon ion-android-open">

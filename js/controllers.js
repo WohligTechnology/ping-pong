@@ -1,7 +1,60 @@
-angular.module('starter.controllers', [])
+var optid = 2;
+angular.module('starter.controllers', ['ngAnimate'])
 
-.controller('DashCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location) {
-
+.controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal ) {
+	$scope.changestatus = 0;
+	$scope.demo = "";
+	 $ionicModal.fromTemplateUrl('templates/post.html', {
+        id: '3',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal3 = modal;
+    });
+	
+	$scope.openCreate = function(){
+		$scope.oModal3.show();
+	}
+	
+	$scope.closeModal = function(){
+		$scope.oModal3.hide();
+	}
+	
+	
+	$scope.options = [
+		{
+			id: 1,
+			text: "",
+			status: false
+		},{
+			id: 2,
+			text: "",
+			status: false
+		}
+	];
+	
+	$scope.opt = {
+			text: "",
+			status: false
+		};
+	$scope.onChangeAdd = function(index){
+		console.log("index is");
+		console.log(index);
+		if($scope.options.length - 1 == index){
+			console.log("id is");
+			console.log($scope.options.length + 1);
+			$scope.options.push({
+				id:$scope.options.length + 1,
+			text: "",
+			status: false
+		});
+		}
+		console.log($scope.options);
+	}
+	
+})
+.controller('DashCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal) {
+	
     $ionicPopover.fromTemplateUrl('templates/popover.html', {
         scope: $scope
     }).then(function (popover) {
@@ -19,6 +72,7 @@ angular.module('starter.controllers', [])
     $scope.$on('$destroy', function () {
         $scope.popover.remove();
     });
+	
 
     $scope.feeds = [
         {

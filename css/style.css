@@ -274,7 +274,9 @@ p.prf-name {
 .no-errors {
   border-bottom: 3px solid green;
 }	
-
+.upload {
+    font-size: 35px;
+}
 /*jagruti css*/
 /*dhaval start*/
 
