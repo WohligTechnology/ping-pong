@@ -1,0 +1,67 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced bar-header" align-title="center">
+        <h1 class="title">Add Additional Warranty / AMC</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeModal()">Skip</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <label class="item item-input item-select"  ng-class="allvalidation5[4].validation">
+                <div class="input-label">
+                    Cover Type *
+                </div>
+                <select ng-model="additionalwarrantyadd.covertype">
+                    <option value="">Please Select</option>
+                    <option value="AMC">AMC</option>
+                    <option value="Extended Warranty">Extended Warranty</option>
+                </select>
+            </label>
+            <label class="item item-input" ng-class="allvalidation5[0].validation">
+                <span class="input-label">Start Date *</span>
+                <input type="date" ng-model="additionalwarrantyadd.purchasedate">
+            </label>
+            <label class="item item-input" ng-class="allvalidation5[1].validation">
+                <span class="input-label">Cover Period * (months)</span>
+                <input type="text" ng-model="additionalwarrantyadd.period" ng-pattern="/^[0-9]+$/">
+            </label>
+            <label class="item item-divider">
+                Cover Includes
+            </label>
+            <ion-item class="item">
+                <label class="checkboxs pad-btm">
+                    <input type="checkbox" value="visit free" ng-model="cover.free" ng-change="pushorpopadd(cover.free,'visit free');"> Visit Free
+                </label>
+                <label class="checkboxs pad-btm">
+                    <input type="checkbox" value="services" ng-model="cover.service" ng-change="pushorpopadd(cover.service,'services');"> Services
+                </label>
+
+                <label class="checkboxs">
+                    <input type="checkbox" value="parts" ng-model="cover.parts" ng-change="pushorpopadd(cover.parts,'parts');"> Parts
+                </label>
+                <label class="checkboxs">
+                    <input type="checkbox" value="others" ng-model="cover.others" ng-change="pushorpopadd(cover.others,'others');"> Others
+                </label>
+            </ion-item>
+            <label class="item item-input" ng-class="allvalidation5[2].validation">
+                <span class="input-label">Bill No From *</span>
+                <input type="text" ng-model="additionalwarrantyadd.billno" placeholder="Bill No">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Purchased From</span>
+                <input type="text" ng-model="additionalwarrantyadd.purchasedfrom" placeholder="Cover Purchased From">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Contact No.</span>
+                <input type="text" ng-model="additionalwarrantyadd.contact" placeholder="Contact No. of Seller">
+            </label>
+            <label class="item item-input" ng-class="allvalidation5[3].validation">
+                <span class="input-label">Purchase Price *</span>
+                <input type="text" ng-model="additionalwarrantyadd.purchaseprice" ng-pattern="/^[0-9]+$/" placeholder="Purchase Price">
+            </label>
+        </div>
+        <div class="padding-horizontal" ng-click="saveAdditionalWarranty()">
+            <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
+            <button class="button button-balanced button-block button-outline">Save &#38; Exit</button>
+        </div>
+    </ion-content>
