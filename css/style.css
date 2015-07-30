@@ -116,12 +116,6 @@
 }
 /*vignesh*/
 
-.login-div {
-    background-image: url('../img/blurred.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
 .twicolor {
     background-color: #55acee;
     color: white !important;
@@ -150,6 +144,10 @@
     background-color: #60b82d;
     color: white;
     border: none;
+}
+
+.logfont {
+    font-size: 26px;
 }
 /*vignesh*/
 /*jagruti css*/
@@ -343,5 +341,50 @@ ion-list .more {
 
 .ion-android-search:before {
     font-weight: bold;
+}
+
+.maximg {
+    width: 100%;
+    height: auto;
+}
+
+.button.button.button-icon.ion-social-googleplus.button-block.googcolor.logfont:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.button.button.button-icon.ion-social-instagram-outline.button-block.instaclor.logfont {
+    color: #fff;
+    text-decoration: none;
+}
+
+.removeborder {
+    padding-right: 10px;
+    padding-bottom: 0;
+    border-style: none;
+}
+
+.levelgraph {
+    margin-top: 50px;
+}
+
+.spaceout {
+    margin-top: 10px !important;
+}
+
+.fullbutton {
+    background-color: #9b59b6 !important;
+    border-color: #fff !important;
+    width: 100%;
+}
+
+.bottomiconsnofloat {
+    float: none;
+    font-size: 17px;
+    color: #9aa9b3;
+}
+
+.incenter {
+    text-align: center;
 }
 /*dhaval end*/

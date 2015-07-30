@@ -22,6 +22,7 @@ angular.module('starter.controllers', [])
 
     $scope.feeds = [
         {
+            id: 1,
             name: "Justin Taylor",
             nameat: "@JustinGraphitas",
             image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
@@ -36,6 +37,7 @@ angular.module('starter.controllers', [])
             }]
         },
         {
+            id: 2,
             name: "Other",
             nameat: "@JustinGraphitas",
             image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
@@ -69,8 +71,10 @@ angular.module('starter.controllers', [])
             console.log($location.hash());
             $ionicScrollDelegate.anchorScroll(true, 4000);
         }, 1000)
-
     };
+    $scope.opendetail = function (id) {
+        $location.url("/tab/dash/" + id);
+    }
 })
 
 .controller('LoginCtrl', function ($scope) {})
@@ -92,6 +96,38 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
     $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('DashDetailCtrl', function ($scope, $stateParams, Chats, $ionicPopover) {
+    $scope.chat = Chats.get($stateParams.chatId);
+    $scope.feed = {
+        id: 1,
+        name: "Justin Taylor",
+        nameat: "@JustinGraphitas",
+        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
+        more: false,
+        height: 0,
+        series: [{
+            name: 'Jane',
+            data: [1, 0, 4]
+            }, {
+            name: 'John',
+            data: [5, 7, 3]
+            }]
+    };
+
+    $ionicPopover.fromTemplateUrl('templates/popover.html', {
+        scope: $scope
+    }).then(function (popover) {
+        $scope.popover = popover;
+    });
+
+    $scope.openPopover = function ($event) {
+        $scope.popover.show($event);
+    };
+    $scope.closePopover = function () {
+        $scope.popover.hide();
+    };
 })
 
 .controller('AccountCtrl', function ($scope) {

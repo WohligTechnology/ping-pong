@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ng-mfb'])
 
 .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -50,24 +50,35 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             }
         })
 
+        .state('tab.dash-detail', {
+            url: '/dash/:chatId',
+            views: {
+                'tab-dash': {
+                    templateUrl: 'templates/feeds-detail.html',
+                    controller: 'DashDetailCtrl'
+                }
+            }
+        })
+
         .state('tab.chats', {
-                url: '/chats',
-                views: {
-                    'tab-chats': {
-                        templateUrl: 'templates/tab-chats.html',
-                        controller: 'ChatsCtrl'
-                    }
+            url: '/chats',
+            views: {
+                'tab-chats': {
+                    templateUrl: 'templates/tab-chats.html',
+                    controller: 'ChatsCtrl'
                 }
-            })
-            .state('tab.chat-detail', {
-                url: '/chats/:chatId',
-                views: {
-                    'tab-chats': {
-                        templateUrl: 'templates/chat-detail.html',
-                        controller: 'ChatDetailCtrl'
-                    }
+            }
+        })
+
+        .state('tab.chat-detail', {
+            url: '/chats/:chatId',
+            views: {
+                'tab-chats': {
+                    templateUrl: 'templates/chat-detail.html',
+                    controller: 'ChatDetailCtrl'
                 }
-            })
+            }
+        })
 
         .state('tab.account', {
             url: '/account',
@@ -94,19 +105,49 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             link: function ($scope, element, attr) {
                 $element = $(element);
 
+//                $element.children('#container').highcharts({
+//                    chart: {
+//                        type: 'bar'
+//                    },
+//                    title: {
+//                        text: 'Fruit Consumption'
+//                    },
+//                    xAxis: {
+//                        categories: ['Apples', 'Bananas', 'Oranges']
+//                    },
+//                    yAxis: {
+//                        title: {
+//                            text: 'Fruit eaten'
+//                        }
+//                    },
+//                    series: $scope.obj.series,
+//                    credits: {
+//                        enabled: false
+//                    }
+//                });
+
                 $element.children('#container').highcharts({
                     chart: {
                         type: 'bar'
                     },
                     title: {
-                        text: 'Fruit Consumption'
+                        text: 'Stacked bar chart'
                     },
                     xAxis: {
-                        categories: ['Apples', 'Bananas', 'Oranges']
+                        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
                     },
                     yAxis: {
+                        min: 0,
                         title: {
-                            text: 'Fruit eaten'
+                            text: 'Total fruit consumption'
+                        }
+                    },
+                    legend: {
+                        reversed: true
+                    },
+                    plotOptions: {
+                        series: {
+                            stacking: 'normal'
                         }
                     },
                     series: $scope.obj.series,
@@ -114,7 +155,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                         enabled: false
                     }
                 });
-
             }
         };
     });

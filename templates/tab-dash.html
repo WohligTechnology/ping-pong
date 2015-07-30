@@ -4,13 +4,14 @@
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
                 <img class="littlebig" ng-src="img/Personn.jpg">
                 <div class="contentright">
-                    <span class="namebold" ng-bind="feed.name"></span>
-                    <span class="namegrey" ng-bind="feed.nameat"></span>
-                    <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
-                    <p class="tweetcontent">My blog post on "Designing for SEO" has just gone live @moz <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
-                    </p>
-                    <img class="max80" ng-src="{{feed.image}}">
-
+                    <div ng-click="opendetail(feed.id);">
+                        <span class="namebold" ng-bind="feed.name"></span>
+                        <span class="namegrey" ng-bind="feed.nameat"></span>
+                        <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
+                        <p class="tweetcontent">My blog post on "Designing for SEO" has just gone live @moz <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
+                        </p>
+                        <img class="max80" ng-src="{{feed.image}}">
+                    </div>
                     <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
                         <div class="more-content">
                             <barhighchart obj='feed'></barhighchart>
