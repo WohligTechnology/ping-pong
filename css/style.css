@@ -160,25 +160,31 @@
     min-height: 125px;
     width: 100%;
 }
+
 .proimage {
     width: 80px;
     margin: -33px 0 0 0;
     border: 5px solid white;
 }
+
 .prf-img h4 {
     margin: 0px;
 }
+
 .prf-func {
     margin: 10px 0px;
     float: right;
 }
+
 .geardown i {
     color: #A7A3A3;
 }
+
 .geardown span {
     margin-right: 5px;
     font-weight: 400;
 }
+
 .gearup .button.people.icon:before,
 .gearup .button.people.icon-left:before,
 .gearup .button.people.icon-right:before {
@@ -186,6 +192,7 @@
     font-size: 20px;
     color: #707570;
 }
+
 .gearup button.button.people {
     line-height: 28px;
     min-height: 30px;
@@ -193,6 +200,7 @@
     color: #707570;
     font-size: 12px;
 }
+
 .gearup .button-icon.icon:before {
     font-size: 26px;
     margin-top: -8px;
@@ -203,23 +211,29 @@
 .btn-left {
     margin-left: 11px;
 }
+
 .btn-right {
     margin-right: 11px;
 }
+
 .pullright {
     float: right;
 }
+
 .prf-list > div a {
     color: #9b59b6;
     text-decoration: none;
 }
+
 .prf-list > div i {
     color: #A7A3A3;
 }
+
 p.prf-name {
     font-weight: 900;
     margin: 0;
 }
+
 .prf-username {
     color: #A7A3A3;
     font-size: 12px;
@@ -280,11 +294,10 @@ p.tweetcontent {
 }
 
 .mypopover {
-    left: 45%;
+    left: 50%;
+    top: 25%;
     height: 233px;
-    width: 250px;
-    right: 50%;
-    top: 33%;
+    width: 230px;
 }
 
 .poppadding {
@@ -305,6 +318,7 @@ ion-list .more {
     -ms-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+    color: #9b59b6 !important;
 }
 
 .bar.bar-dark {
@@ -325,5 +339,9 @@ ion-list .more {
     -ms-transform: rotate(-20deg);
     -webkit-transform: rotate(-20deg);
     transform: rotate(-20deg);
+}
+
+.ion-android-search:before {
+    font-weight: bold;
 }
 /*dhaval end*/
