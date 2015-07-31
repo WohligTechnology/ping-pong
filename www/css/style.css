@@ -116,28 +116,50 @@
 }
 /*vignesh*/
 
-.twicolor {
-    background-color: #55acee;
-    color: white !important;
+.button.button-block.twicolor {
+    background-color: #55acee ;
+    color: white ;
     border: none;
 }
 
-.googcolor {
-    background-color: #d73d32;
+.button-icon.button.activated.twicolor {
+    color: #55acee;
+    border: 1px solid #55acee;
+    background: transparent;
+}
+
+.button.button-block.googcolor {
+    background-color: #d73d32 ;
     color: white;
     border: none;
 }
 
-.fbcolor {
-    background-color: #3a5795;
-    color: white !important;
-    border: none;
+.button-icon.button.activated.googcolor {
+    color: #d73d32;
+    border: 1px solid #d73d32;
+    background: transparent;
 }
 
-.instaclor {
+.button.button-block.fbcolor {
+    background-color: #3a5795;
+    color: white;
+    border: none;
+}
+.button-icon.button.activated.fbcolor {
+    color: #3a5795;
+    border: 1px solid #3a5795;
+    background: transparent;
+}
+
+.button.button-block.instaclor {
     background-color: #517fa4;
     color: white;
     border: none;
+}
+.button-icon.button.activated.instaclor {
+    color: #517fa4;
+    border: 1px solid #517fa4;
+    background: transparent;
 }
 
 .whatsclor {
@@ -393,11 +415,13 @@ ion-list .more {
     color: #fff;
     text-decoration: none;
 }
+/*
 
 .button.button.button-icon.ion-social-instagram-outline.button-block.instaclor.logfont {
     color: #fff;
     text-decoration: none;
 }
+*/
 
 .removeborder {
     padding-right: 10px;
@@ -429,3 +453,10 @@ ion-list .more {
     text-align: center;
 }
 /*dhaval end*/
+/*Chintan Start*/
+
+.button-icon.button.active,
+.button-icon.button.activated {
+    opacity: 1;
+}
+/*Chintan End*/
