@@ -1,0 +1,61 @@
+<ion-view view-title="Detail">
+    <ion-content>
+        <ion-list class="avtar">
+            <ion-item class="item-remove-animate item-avatar item-icon-right removeborder" type="item-text-wrap">
+                <img class="littlebig" ng-src="img/Personn.jpg">
+                <div class="contentright">
+
+                    <span class="namebold" ng-bind="feed.name"></span>
+                    <span class="namegrey" ng-bind="feed.nameat"></span>
+                    <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
+                    <p class="tweetcontent">My blog post on "Designing for SEO" has just gone live @moz <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
+                    </p>
+                    <img class="max80" ng-src="{{feed.image}}">
+                    <div class="row nopadding">
+                        <div class="col">
+                            <button class="button button-icon ion-android-star bottomicons"></button>
+                        </div>
+                        <div class="col">
+                            <button class="button button-icon ion-android-share-alt bottomicons"></button>
+                        </div>
+                        <div class="col" ng-click="openPopover();">
+                            <button class="button button-icon ion-android-more-vertical moredot"></button>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+            <div class="row">
+                <div class="col col-75">
+                    <barhighchart obj='feed'></barhighchart>
+                </div>
+                <div class="col levelgraph">
+                    <div class="row spaceout">
+                        <button class="button button-small button-assertive fullbutton">
+                            Vote
+                        </button>
+                    </div>
+                    <div class="row spaceout">
+                        <button class="button button-small button-assertive fullbutton">
+                            Vote
+                        </button>
+                    </div>
+                    <div class="row spaceout">
+                        <button class="button button-small button-assertive fullbutton">
+                            Vote
+                        </button>
+                    </div>
+                    <div class="row spaceout">
+                        <button class="button button-small button-assertive fullbutton">
+                            Vote
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ion-list>
+        <!--
+        <nav mfb-menu position="br" effect="zoomin" label="hover here" active-icon="ion-edit" resting-icon="ion-plus-round" toggling-method="hover">
+            <button mfb-button icon="paper-airplane" label="menu item"></button>
+        </nav>
+-->
+    </ion-content>
+</ion-view>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.wohlig.attach" version="1.0.0" versionCode="1">
+    <name>Attach</name>
+    <description>Socail Networking App</description>
+    <author href="http://www.wohlig.com" email="info@wohlig.com">Wohlig</author>
+
+    <content src="index.html" />
+
+    <access origin="*" />
+    <access origin="*.pushwoosh.com" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="false" />
+    <preference name="target-device" value="universal" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="android-targetSdkVersion" value="14" />
+    <preference name="ErrorUrl" value="" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="LoadUrlTimeoutValue" value="20000" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#ffffff" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+
+<!--
+    <icon src="www/img/icon.png" />
+    <splash src="www/img/splash.png" />
+-->
+
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="SplashScreenBackgroundColor" value="#ffffff" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+
+    <!--cordova plugins add com.ionic.keyboard cordova-plugin-device cordova-plugin-statusbar nl.x-services.plugins.socialsharing cordova-plugin-network-information cordova-plugin-camera cordova-plugin-inappbrowser cordova-plugin-file cordova-plugin-file-transfer cordova-plugin-whitelist cordova-plugin-splashscreen pushwoosh-cordova-plugin-->
+
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="ios-package" value="IonicKeyboard" onload="true" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="ios-package" value="CDVSplashScreen" />
+        <param name="android-package" value="cordova-plugin-splashscreen" />
+    </feature>
+    <!-- for iOS -->
+    <feature name="SocialSharing">
+        <param name="ios-package" value="SocialSharing" />
+    </feature>
+    <!-- for Android (you will find one in res/xml) -->
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+</widget>
