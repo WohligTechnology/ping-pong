@@ -219,6 +219,7 @@
     padding: 0px 10px;
     color: #707570;
     font-size: 12px;
+    border-color: #B3A5A5;
 }
 
 .gearup .button-icon.icon:before {
@@ -259,6 +260,38 @@ p.prf-name {
     font-size: 12px;
 }
 
+.btn-soc > .button {
+    border-color: #B3A5A5;
+    color: black;
+}
+
+div.btn-soc a:first-child {
+    margin-left: 2%;
+}
+
+div.btn-soc a:last-child {
+    margin-right: 2%;
+}
+
+
+
+.about {
+    padding-left: 2%;
+}
+
+.about i {
+    padding: 0 10px;
+    font-size: large;
+    color: #B3A5A5;
+}
+
+.about p:first-child {
+    font-weight: 500;
+}
+a{
+	color: #9b59b6;
+    text-decoration: none;
+}
 /*form validation*/
 .error-container {
     margin: 5px 0;

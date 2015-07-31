@@ -1,7 +1,7 @@
 var optid = 2;
-angular.module('starter.controllers', ['ngAnimate'])
+angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
-.controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal ) {
+.controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer) {
 	$scope.changestatus = 0;
 	$scope.demo = "";
 	
@@ -66,6 +66,12 @@ angular.module('starter.controllers', ['ngAnimate'])
 	$scope.openUploadElements = function(){
 		$scope.popover.show();
 	}
+	
+	
+//	pick image from gallery
+	$scope.picFromGallery = function(){
+		
+	};
 	
 })
 .controller('DashCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal) {
