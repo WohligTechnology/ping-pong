@@ -4,6 +4,8 @@ angular.module('starter.controllers', ['ngAnimate'])
 .controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal ) {
 	$scope.changestatus = 0;
 	$scope.demo = "";
+	
+//	open create attach modal
 	 $ionicModal.fromTemplateUrl('templates/post.html', {
         id: '3',
         scope: $scope,
@@ -19,6 +21,15 @@ angular.module('starter.controllers', ['ngAnimate'])
 	$scope.closeModal = function(){
 		$scope.oModal3.hide();
 	}
+	
+	
+//	open upload $ionicPopover element
+	
+    $ionicPopover.fromTemplateUrl('templates/upload.html', {
+        scope: $scope
+    }).then(function (popover) {
+        $scope.popover = popover;
+    });
 	
 	
 	$scope.options = [
@@ -50,6 +61,10 @@ angular.module('starter.controllers', ['ngAnimate'])
 		});
 		}
 		console.log($scope.options);
+	}
+	
+	$scope.openUploadElements = function(){
+		$scope.popover.show();
 	}
 	
 })

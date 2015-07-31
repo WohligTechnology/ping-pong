@@ -6,12 +6,14 @@
         </div>
     </ion-header-bar>
     <ion-content>
-        <label class="item item-input item-stacked-label" ng-class="allvalidation5[0].validation">
+<!--       Description html-->
+        <label class="item item-input item-floating-label" ng-class="allvalidation5[0].validation">
             <span class="input-label">Description</span>
-            <textarea rows="4"></textarea>
+            <textarea rows="4" placeholder="Description"></textarea>
         </label>
 
-
+<!-- 	 uploadedimages html-->
+       
         <div class="productset">
             <div class="imageset">
                 <ion-scroll direction="x">
@@ -21,7 +23,7 @@
                             <a href="#/tab/home/categoriess/{{slider.link}}">
                                 <i class="icon hrt ion-heart"></i>
                                 <img src="img/blue-album.jpg" class="full-image full-img">
-<!--                                <p class="royal productprice">{{op.text}}</p>-->
+                                <!--                                <p class="royal productprice">{{op.text}}</p>-->
                             </a>
                         </div>
                     </div>
@@ -30,27 +32,25 @@
         </div>
 
 
+<!-- 	button and options html-->
         <div class="item-stacked-label">
-            <button class="button button-royal button-small button-full"><i class="ion-android-upload upload"></i>
+            <button class="button button-royal button-small button-full" ng-click="openUploadElements()"><i class="ion-android-upload upload"></i>
             </button>
         </div>
 
-        <label class="item item-input" ng-class="allvalidation5[0].validation">
-            <span class="input-label">Options</span>
-        </label>
-
-
         <div class="list">
-            <div class="item" ng-repeat="option in options">
-                <label class="item-input text-wrap">
-                    <input type="text" placeholder="Last Name" ng-model="option.text" ng-change="onChangeAdd($index)">
-                </label>
-            </div>
+            <div class="item item-divider">Options</div>
+
+            <label class="item item-input item-floating-label" ng-repeat="option in options">
+                <span class="input-label">Text</span>
+                <input type="text" placeholder="Text Here.." ng-model="option.text" ng-change="onChangeAdd($index)">
+            </label>
+
         </div>
 
 
 
-        
+
         <div class="padding-horizontal" ng-click="saveAdditionalWarranty()">
             <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
             <button class="button button-royal button-block button-outline">Create &#38; Attach</button>
