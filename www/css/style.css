@@ -332,6 +332,38 @@ a{
 .upload {
     font-size: 35px;
 }
+
+.social-font {
+    font-size: xx-large;
+    font-color: gery;
+}
+
+
+.social-font .col {
+    text-align: center;
+}
+
+.image-close {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.72);
+    font-size: large;
+    margin-left: 24%;
+}
+.footerbar {
+	    background-color: rgba(0, 0, 0, 0.36);
+    height: 30px !important;
+}
+
+.footerbar .title
+{
+	font-size: 12px;
+    
+	line-height: 32px;
+	color: #5C5C5C;
+}
+.social-font div > a {
+    color: #9D9D9D;
+}
 /*jagruti css*/
 /*dhaval start*/
 
@@ -493,3 +525,14 @@ ion-list .more {
     opacity: 1;
 }
 /*Chintan End*/
+
+
+ion-modal-view.animate-if.social-modal {
+    width: 90%;
+    min-height: 140px;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}

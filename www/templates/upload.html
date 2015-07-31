@@ -1,14 +1,27 @@
-<ion-popover-view class="animate-if mypopover">
-    <div class="bar bar-header bar-dark">
+<ion-modal-view class="animate-if social-modal">
+    <ion-header-bar class="bar-dark bar-header" align-title="center">
         <h1 class="title">Pick Images</h1>
-    </div>
-    <ion-content class="content has-header">
-        
-        <div class="poppadding">
-            <button class="button button-block icon-left ion-social-facebook fbcolor">Camera</button>
-            <button class="button button-block icon-left ion-camera fbcolor" ng-click="picFromGallery()">Gallery</button>
-            <button class="button button-block icon-left ion-social-instagram-outline twicolor">Instagram</button>
-            <button class="button button-block icon-left ion-social-whatsapp-outline whatsclor">Facebook</button>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeModal()">Skip</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="content">
+        <div class="row social-font">
+           <div class="col">
+           	<a class="ion-social-facebook"></a>
+           </div>
+           <div class="col">
+           	<a class="ion-camera" ng-click="clickPhoto()"></a>
+           </div>
+           <div class="col">
+           	<a class="ion-social-instagram-outline"></a>
+           </div>
+           <div class="col">
+           	<a class="ion-images" ng-click="picFromGallery()"></a>
+           </div>
         </div>
     </ion-content>
-</ion-popover-view>
+    <ion-footer-bar class=" bar-footer footerbar" align-title="center">
+        <p class="title">Pick Images From Social Meadia</p>
+    </ion-footer-bar>
+</ion-modal-view>
