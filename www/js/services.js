@@ -1,6 +1,12 @@
+
+var adminbase = "http://wohlig.co.in/attachbackend/";
+var adminurl = adminbase + "index.php/json/";
+var adminhauth = adminbase + "index.php/hauth/";
+
+
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('MyServices', function($http) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -45,6 +51,24 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+	  checkLogin: function (type) {
+        return $http.get(adminhauth + "checkLogin", {
+            params: {
+                type: type
+            }
+        });
+    },
+    getFacebookImages: function () {
+        return $http.get(adminhauth + "getFacebookImages");
+    },
+    getInstagramImages: function () {
+        return $http.get(adminhauth + "getInstagramImages");
+    },
+	  checkLogid: function(logid) {
+        return $http.get(adminhauth + "checkLogid",{params:{logid:logid}});
     }
+	  
   };
 });
+

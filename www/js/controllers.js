@@ -1,7 +1,7 @@
 var optid = 2;
-angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
+angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.services'])
 
-.controller('AppCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera) {
+.controller('AppCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera, MyServices, $ionicLoading, $interval) {
     $scope.changestatus = 0;
     $scope.demo = "testing";
     var options = {
@@ -14,15 +14,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
     };
 	
-	$scope.$on('$viewContentLoaded', function(){
-    //Here your view content is fully loaded !!
-		console.log("on load");
-		var options1 = {
-            quality: 80,
-            sourceType: Camera.PictureSourceType.CAMERA,
-            allowEdit: true
-        };
-  });
 	
     $scope.cameraimage = [];
 
@@ -137,13 +128,15 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
     $scope.clickPhoto = function() {
 
-        $cordovaCamera.getPicture(options1).then(function(imageData) {
-		    _.forEach(imageData, function(n, key) {
+        $cordovaCamera.getPicture({
+            quality: 80,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true
+        }).then(function(imageData) {
                 $scope.cameraimage.push({
                     status: false,
-                    image: n
+                    image: imageData
                 });
-            });
             console.log($scope.cameraimage);
             $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                 .then(function(result) {
@@ -162,6 +155,79 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
         });
 
     }
+    
+    
+    
+    
+    var stopinterval = 0;
+
+    var checkfb = function(data, status) {
+        console.log(data);
+        if (data.value == null) {
+            console.log("Do nothing");
+        } else {
+            ref.close();
+            if (data.value == "SUCCESS" && !$scope.showimages) {
+                if (data.type == "Facebook") {
+                    $scope.facebookPhoto();
+                }
+                if (data.type == "Instagram") {
+                    $scope.instagramPhoto();
+                }
+            }
+            $interval.cancel(stopinterval);
+        }
+    }
+
+    var callAtIntervalfb = function() {
+        MyServices.checkLogid($scope.facebooklogid).success(checkfb);
+    };
+
+    
+    
+    $scope.facebookPhoto = function() {
+        console.log("Data");
+        $scope.toPushSocial = [];
+        $ionicLoading.show({
+            template: 'Loading...'
+        });
+
+        MyServices.checkLogin("Facebook").success(
+            function(data, status) {
+			  console.log(data);
+                if (data.value) {
+                    MyServices.getFacebookImages().success(function(data) {
+                        $ionicLoading.hide();
+                        $scope.socialimages = [];
+                        _.each(data, function(n) {
+                            $scope.socialimages.push({
+                                url: n,
+                                status: false
+                            });
+                        });
+
+                        $scope.showimages = true;
+                        $scope.socialimagesrow = partitionarray($scope.socialimages, 3);
+                    });
+                } else {
+                    $ionicLoading.hide();
+                    $scope.socialimages = [];
+                    $scope.facebooklogid = data.id;
+                    $scope.facebookLogin("Facebook");
+                }
+            }
+        );
+    };
+	
+	
+    $scope.facebookLogin = function(provider) {
+        ref = window.open(adminhauth + 'login/' + provider + '?logid=' + $scope.facebooklogid, '_blank', 'location=no');
+        stopinterval = $interval(callAtIntervalfb, 1000);
+        ref.addEventListener('exit', function(event) {
+            $interval.cancel(stopinterval);
+        });
+    };
+
 
 
 })
@@ -245,7 +311,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
     }
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('ChatsCtrl', function($scope) {
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
     // To listen for when this page is active (for example, to refresh data),
@@ -254,18 +320,18 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
-    $scope.chats = Chats.all();
+//    $scope.chats = Chats.all();
     $scope.remove = function(chat) {
         Chats.remove(chat);
     };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-    $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $stateParams, MyServices) {
+    $scope.chat = MyServices.get($stateParams.chatId);
 })
 
-.controller('DashDetailCtrl', function($scope, $stateParams, Chats, $ionicPopover) {
-    $scope.chat = Chats.get($stateParams.chatId);
+.controller('DashDetailCtrl', function($scope, $stateParams, MyServices, $ionicPopover) {
+    $scope.chat = MyServices.get($stateParams.chatId);
     $scope.feed = {
         id: 1,
         name: "Justin Taylor",
