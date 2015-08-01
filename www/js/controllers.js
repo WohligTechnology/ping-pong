@@ -1,43 +1,49 @@
 var optid = 2;
 angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
-.controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera) {
-        $scope.changestatus = 0;
-        $scope.demo = "testing";
-        var options = {
-            maximumImagesCount: 9,
-            width: 800,
-            height: 800,
+.controller('AppCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera) {
+    $scope.changestatus = 0;
+    $scope.demo = "testing";
+    var options = {
+        maximumImagesCount: 9,
+        width: 800,
+        height: 800,
+        quality: 80,
+        //        sourceType: Camera.PictureSourceType.CAMERA,
+        allowEdit: true
+
+    };
+	
+	var options1 = {
             quality: 80,
-            //        sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
-
         };
-        $scope.cameraimage = [];
+    $scope.cameraimage = [];
 
-        //	open create attach modal
-        $ionicModal.fromTemplateUrl('templates/post.html', {
-            id: '3',
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function (modal) {
-            $scope.oModal3 = modal;
-        });
+    //	open create attach modal
+    $ionicModal.fromTemplateUrl('templates/post.html', {
+        id: '3',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal3 = modal;
+    });
 
-        $scope.openCreate = function () {
-            $scope.oModal3.show();
-        }
+    $scope.openCreate = function() {
+        $scope.oModal3.show();
+    }
 
-        $scope.closeModal = function () {
-            $scope.oModal3.hide();
-        }
-        $ionicModal.fromTemplateUrl('templates/upload.html', {
-            id: '2',
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function (modal) {
-            $scope.oModal2 = modal;
-        });
+    $scope.closeModal = function() {
+        $scope.oModal3.hide();
+    }
+    $ionicModal.fromTemplateUrl('templates/upload.html', {
+        id: '2',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.oModal2 = modal;
+    });
 
         $ionicModal.fromTemplateUrl('templates/search.html', {
             id: '4',
@@ -55,117 +61,121 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
             $scope.oModal4.hide();
         }
 
-        $scope.closeModal = function () {
-            $scope.oModal2.hide();
-        }
+    $scope.closeModal = function() {
+        $scope.oModal2.hide();
+    }
 
 
-        //	open upload $ionicPopover element
+    //	open upload $ionicPopover element
 
-        $ionicPopover.fromTemplateUrl('templates/upload.html', {
-            scope: $scope,
-        }).then(function (popover1) {
-            $scope.popover1 = popover1;
-        });
+    $ionicPopover.fromTemplateUrl('templates/upload.html', {
+        scope: $scope,
+    }).then(function(popover1) {
+        $scope.popover1 = popover1;
+    });
 
 
-        $scope.options = [{
-            id: 1,
-            text: "",
-            status: false
+    $scope.options = [{
+        id: 1,
+        text: "",
+        status: false
     }, {
-            id: 2,
-            text: "",
-            status: false
+        id: 2,
+        text: "",
+        status: false
     }];
 
-        $scope.opt = {
-            text: "",
-            status: false
-        };
-        $scope.onChangeAdd = function (index) {
-            console.log("index is");
-            console.log(index);
-            if ($scope.options.length - 1 == index) {
-                console.log("id is");
-                console.log($scope.options.length + 1);
-                $scope.options.push({
-                    id: $scope.options.length + 1,
-                    text: "",
-                    status: false
-                });
-            }
-            console.log($scope.options);
+    $scope.opt = {
+        text: "",
+        status: false
+    };
+    $scope.onChangeAdd = function(index) {
+        console.log("index is");
+        console.log(index);
+        if ($scope.options.length - 1 == index) {
+            console.log("id is");
+            console.log($scope.options.length + 1);
+            $scope.options.push({
+                id: $scope.options.length + 1,
+                text: "",
+                status: false
+            });
         }
+        console.log($scope.options);
+    }
 
-        $scope.openUploadElements = function () {
-            $scope.oModal2.show();
-        }
+    $scope.openUploadElements = function() {
+        $scope.oModal2.show();
+    }
 
 
-        //	pick image from gallery
-        $scope.picFromGallery = function () {
-            console.log("picture");
-            $cordovaImagePicker.getPictures(options).then(function (resultImage) {
-                // Success! Image data is here
+    //	pick image from gallery
+    $scope.picFromGallery = function() {
+        console.log("picture");
+        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            // Success! Image data is here
+            _.forEach(resultImage, function(n, key) {
                 $scope.cameraimage.push({
-				 status:false,
-				 image:resultImage[0]
-			 });
-                console.log($scope.cameraimage);
-            }, function (err) {
-                // An error occured. Show a message to the user
+                    status: false,
+                    image: n
+                });
             });
 
-        };
+            console.log($scope.cameraimage);
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
 
-        //	camera image
+    };
 
-        $scope.clickPhoto = function () {
+    //	camera image
 
-            $cordovaCamera.getPicture(options1).then(function (imageData) {
-                console.log(imageData);
-			  $scope.cameraimage.push({
-				 status:false,
-				 image:resultImage[0]
-			 });
-                console.log($scope.cameraimage);
-                $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
-                    .then(function (result) {
-                        console.log(result);
-                        var data = JSON.parse(result.response);
-                        callback(data);
-                    }, function (err) {
-                        console.log(err);
-                    }, function (progress) {
-                        console.log("progress");
-                    });
+    $scope.clickPhoto = function() {
 
-                console.log(imageData);
-            }, function (err) {
-                // error
+        $cordovaCamera.getPicture(options1).then(function(imageData) {
+		    _.forEach(imageData, function(n, key) {
+                $scope.cameraimage.push({
+                    status: false,
+                    image: n
+                });
             });
+            console.log($scope.cameraimage);
+            $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
+                .then(function(result) {
+                    console.log(result);
+                    var data = JSON.parse(result.response);
+                    callback(data);
+                }, function(err) {
+                    console.log(err);
+                }, function(progress) {
+                    console.log("progress");
+                });
 
-        }
+            console.log(imageData);
+        }, function(err) {
+            // error
+        });
+
+    }
 
 
-    })
-    .controller('DashCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal) {
+})
+    .controller('DashCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal) {
         $ionicPopover.fromTemplateUrl('templates/popover.html', {
             scope: $scope
-        }).then(function (popover) {
+        }).then(function(popover) {
             $scope.popover = popover;
         });
 
-        $scope.openPopover = function ($event) {
+        $scope.openPopover = function($event) {
             $scope.popover.show($event);
         };
-        $scope.closePopover = function () {
+        $scope.closePopover = function() {
             $scope.popover.hide();
         };
 
         //Cleanup the popover when we're done with it!
-        $scope.$on('$destroy', function () {
+        $scope.$on('$destroy', function() {
             $scope.popover.remove();
         });
 
@@ -199,7 +209,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
                 data: [5, 7, 3]
             }]
         }];
-        $scope.changemore = function (feed, index) {
+        $scope.changemore = function(feed, index) {
             var indexno = index;
             var idtomove = "more";
             feed.more = !feed.more;
@@ -212,25 +222,25 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
                 feed.height = 0;
             }
 
-            $timeout(function () {
+            $timeout(function() {
                 $ionicScrollDelegate.resize();
                 $location.hash(idtomove + index);
                 console.log($location.hash());
                 $ionicScrollDelegate.anchorScroll(true, 4000);
             }, 1000)
         };
-        $scope.opendetail = function (id) {
+        $scope.opendetail = function(id) {
             $location.url("/tab/dash/" + id);
         }
     })
 
-.controller('LoginCtrl', function ($scope, $location) {
-    $scope.movetohome = function () {
+.controller('LoginCtrl', function($scope, $location) {
+    $scope.movetohome = function() {
         $location.url("/tab/dash");
     }
 })
 
-.controller('ChatsCtrl', function ($scope, Chats) {
+.controller('ChatsCtrl', function($scope, Chats) {
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
     // To listen for when this page is active (for example, to refresh data),
@@ -240,16 +250,16 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
     //});
 
     $scope.chats = Chats.all();
-    $scope.remove = function (chat) {
+    $scope.remove = function(chat) {
         Chats.remove(chat);
     };
 })
 
-.controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
     $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('DashDetailCtrl', function ($scope, $stateParams, Chats, $ionicPopover) {
+.controller('DashDetailCtrl', function($scope, $stateParams, Chats, $ionicPopover) {
     $scope.chat = Chats.get($stateParams.chatId);
     $scope.feed = {
         id: 1,
@@ -269,19 +279,19 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
     $ionicPopover.fromTemplateUrl('templates/popover.html', {
         scope: $scope
-    }).then(function (popover) {
+    }).then(function(popover) {
         $scope.popover = popover;
     });
 
-    $scope.openPopover = function ($event) {
+    $scope.openPopover = function($event) {
         $scope.popover.show($event);
     };
-    $scope.closePopover = function () {
+    $scope.closePopover = function() {
         $scope.popover.hide();
     };
 })
 
-.controller('AccountCtrl', function ($scope) {
+.controller('AccountCtrl', function($scope) {
     $scope.settings = {
         enableFriends: true
     };
