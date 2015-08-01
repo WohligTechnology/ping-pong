@@ -17,15 +17,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
         }
         if (window.StatusBar) {
-            // org.apache.cordova.statusbar required
             StatusBar.styleLightContent();
+            StatusBar.overlaysWebView(true);
+            //            $cordovaStatusbar.styleHex('#9036B5') //red
+            $cordovaStatusbar.styleHex('#804896') //dark violet
         }
     });
 })
 
 .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-	
-$ionicConfigProvider.tabs.position('bottom');
+
+        $ionicConfigProvider.tabs.position('bottom');
         $stateProvider
 
         // setup an abstract state for the tabs directive
@@ -107,26 +109,26 @@ $ionicConfigProvider.tabs.position('bottom');
             link: function ($scope, element, attr) {
                 $element = $(element);
 
-//                $element.children('#container').highcharts({
-//                    chart: {
-//                        type: 'bar'
-//                    },
-//                    title: {
-//                        text: 'Fruit Consumption'
-//                    },
-//                    xAxis: {
-//                        categories: ['Apples', 'Bananas', 'Oranges']
-//                    },
-//                    yAxis: {
-//                        title: {
-//                            text: 'Fruit eaten'
-//                        }
-//                    },
-//                    series: $scope.obj.series,
-//                    credits: {
-//                        enabled: false
-//                    }
-//                });
+                //                $element.children('#container').highcharts({
+                //                    chart: {
+                //                        type: 'bar'
+                //                    },
+                //                    title: {
+                //                        text: 'Fruit Consumption'
+                //                    },
+                //                    xAxis: {
+                //                        categories: ['Apples', 'Bananas', 'Oranges']
+                //                    },
+                //                    yAxis: {
+                //                        title: {
+                //                            text: 'Fruit eaten'
+                //                        }
+                //                    },
+                //                    series: $scope.obj.series,
+                //                    credits: {
+                //                        enabled: false
+                //                    }
+                //                });
 
                 $element.children('#container').highcharts({
                     chart: {
