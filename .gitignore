@@ -45,4 +45,4 @@ Temporary Items
 platforms/
 plugins/
 resources/
-plugins\
+plugins/cordova-plugin-camera/
