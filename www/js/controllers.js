@@ -95,7 +95,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
                 // Success! Image data is here
                 $scope.cameraimage.push({
 				 status:false,
-				 image:resultImage
+				 image:resultImage[0]
 			 });
                 console.log($scope.cameraimage);
             }, function (err) {
@@ -110,6 +110,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
             $cordovaCamera.getPicture(options1).then(function (imageData) {
                 console.log(imageData);
+			  $scope.cameraimage.push({
+				 status:false,
+				 image:resultImage[0]
+			 });
+                console.log($scope.cameraimage);
                 $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                     .then(function (result) {
                         console.log(result);
