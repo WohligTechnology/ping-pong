@@ -1,7 +1,7 @@
 var optid = 2;
 angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
-.controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer) {
+.controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera) {
         $scope.changestatus = 0;
         $scope.demo = "testing";
         var options = {
@@ -13,7 +13,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
             allowEdit: true
 
         };
-        $scope.cameraimage = '';
+        $scope.cameraimage = [];
 
         //	open create attach modal
         $ionicModal.fromTemplateUrl('templates/post.html', {
@@ -93,7 +93,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
             console.log("picture");
             $cordovaImagePicker.getPictures(options).then(function (resultImage) {
                 // Success! Image data is here
-                $scope.cameraimage = resultImage[0];
+                $scope.cameraimage.push({
+				 status:false,
+				 image:resultImage
+			 });
                 console.log($scope.cameraimage);
             }, function (err) {
                 // An error occured. Show a message to the user

@@ -19,10 +19,10 @@
                 <ion-scroll direction="x">
                     <div class="row">
 
-                        <div class="col col-33" ng-repeat="op in options">
+                        <div class="col col-33" ng-repeat="op in cameraimage">
                             <a href="#/tab/home/categoriess/{{slider.link}}">
                                 <i class="ion-close-circled image-close"></i>
-                                <img src="img/blue-album.jpg" class="full-image full-img">
+                                <img src="{{op.image}}" class="full-image full-img">
                                 <!--                                <p class="royal productprice">{{op.text}}</p>-->
                             </a>
                         </div>
@@ -53,6 +53,6 @@
 
         <div class="padding-horizontal" ng-click="saveAdditionalWarranty()">
             <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
-            <button class="button button-assertive button-block button-outline button-attach">Create &#38; Attach</button>
+            <button class="button button-block button-outline button-attach">Create &#38; Attach</button>
         </div>
     </ion-content>

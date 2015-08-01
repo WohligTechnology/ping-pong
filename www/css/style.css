@@ -3,34 +3,40 @@
 .bar.bar-stable .title {
     color: #fff;
 }
-
 .tab-item {
     color: #889aa6 !important;
 }
-
 .tab-item-active {
     color: #9b59b6 !important
 }
-
 .largeicon {
     font-size: 24px;
     position: relative;
     margin: 7px 13px 0px 9px;
 }
-
 .barheight {
     height: 50px;
 }
-
 .bar.bar-dark .title {
     color: #fff;
     font-size: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    margin: 0 10px;
+    min-width: 30px;
+    height: 43px;
+    text-align: center !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 900;
 }
-
 .nopadding {
     padding: 0px 0px 0px 0px
 }
-
 .list {
     position: relative;
     margin-top: 8px;
@@ -42,19 +48,16 @@
     border-bottom-style: solid;
     border-bottom-color: #ccd6dd;
 }
-
 .retweeticon {
     font-size: 15px;
     color: #9aa9b3;
     margin-left: 60px;
 }
-
 .retweet {
     font-size: 14.4px;
     color: #9aa9b3;
     margin-left: 10px;
 }
-
 .onleft {
     float: left;
     max-width: 65px !important;
@@ -62,54 +65,44 @@
     height: 65px;
     border-radius: 5px;
 }
-
 .contentleft {
     float: left;
 }
-
 .item-note {
     float: right;
     color: #8f9fab;
     font-size: 14px;
     margin-right: 10px;
 }
-
 .namebold {
     font-size: 14.4px;
     font-weight: bold;
 }
-
 .namegrey {
     font-size: 14.4px;
     color: #8f9fab;
     font-weight: 300;
 }
-
 .tweetcontent {
     font-size: 14.4px;
 }
-
 .noborder {
     border-style: none;
     padding-left: 90px;
 }
-
 .bottomicons {
     float: left;
     font-size: 17px;
     color: #9aa9b3;
 }
-
 .bottomiconsright {
     float: right;
     font-size: 25px;
     color: #9aa9b3;
 }
-
 .removeline {
     text-decoration: none;
 }
-
 .imageauto {
     width: 100%;
     height: auto;
@@ -117,29 +110,25 @@
 /*vignesh*/
 
 .button.button-block.twicolor {
-    background-color: #55acee ;
-    color: white ;
+    background-color: #55acee;
+    color: white;
     border: none;
 }
-
 .button-icon.button.activated.twicolor {
     color: #55acee;
     border: 1px solid #55acee;
     background: transparent;
 }
-
 .button.button-block.googcolor {
-    background-color: #d73d32 ;
+    background-color: #d73d32;
     color: white;
     border: none;
 }
-
 .button-icon.button.activated.googcolor {
     color: #d73d32;
     border: 1px solid #d73d32;
     background: transparent;
 }
-
 .button.button-block.fbcolor {
     background-color: #3a5795;
     color: white;
@@ -150,7 +139,6 @@
     border: 1px solid #3a5795;
     background: transparent;
 }
-
 .button.button-block.instaclor {
     background-color: #517fa4;
     color: white;
@@ -161,17 +149,16 @@
     border: 1px solid #517fa4;
     background: transparent;
 }
-
 .whatsclor {
     background-color: #60b82d;
     color: white;
     border: none;
 }
-
 .logfont {
     font-size: 26px;
 }
 /*vignesh*/
+
 /*jagruti css*/
 
 .imageclass {
@@ -180,31 +167,25 @@
     min-height: 125px;
     width: 100%;
 }
-
 .proimage {
     width: 80px;
     margin: -33px 0 0 0;
     border: 5px solid white;
 }
-
 .prf-img h4 {
     margin: 0px;
 }
-
 .prf-func {
     margin: 10px 0px;
     float: right;
 }
-
 .geardown i {
     color: #A7A3A3;
 }
-
 .geardown span {
     margin-right: 5px;
     font-weight: 400;
 }
-
 .gearup .button.people.icon:before,
 .gearup .button.people.icon-left:before,
 .gearup .button.people.icon-right:before {
@@ -212,7 +193,6 @@
     font-size: 20px;
     color: #707570;
 }
-
 .gearup button.button.people {
     line-height: 28px;
     min-height: 30px;
@@ -221,7 +201,6 @@
     font-size: 12px;
     border-color: #B3A5A5;
 }
-
 .gearup .button-icon.icon:before {
     font-size: 26px;
     margin-top: -8px;
@@ -232,117 +211,94 @@
 .btn-left {
     margin-left: 11px;
 }
-
 .btn-right {
     margin-right: 11px;
 }
-
 .pullright {
     float: right;
 }
-
 .prf-list > div a {
     color: #9b59b6;
     text-decoration: none;
 }
-
 .prf-list > div i {
     color: #A7A3A3;
 }
-
 p.prf-name {
     font-weight: 900;
     margin: 0;
 }
-
 .prf-username {
     color: #A7A3A3;
     font-size: 12px;
 }
-
 .btn-soc > .button {
     border-color: #B3A5A5;
     color: black;
 }
-
 div.btn-soc a:first-child {
     margin-left: 2%;
 }
-
 div.btn-soc a:last-child {
     margin-right: 2%;
 }
-
-
-
 .about {
     padding-left: 2%;
 }
-
 .about i {
     padding: 0 10px;
     font-size: large;
     color: #B3A5A5;
 }
-
 .about p:first-child {
     font-weight: 500;
 }
-a{
-	color: #9b59b6;
+a {
+    color: #9b59b6;
     text-decoration: none;
 }
 /*form validation*/
+
 .error-container {
     margin: 5px 0;
     -webkit-transition: 1s ease all;
     transition: 1s ease all;
 }
- 
 .error-container:last-child {
     margin: 5px 0 0;
 }
- 
 .error {
-  padding: 10px 16px;
-  font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  color: #555;
-  vertical-align: middle;
+    padding: 10px 16px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #555;
+    vertical-align: middle;
 }
- 
 .error i {
-  font-size: 24px;
-  color: #B83E2C;  
-  vertical-align: middle;
+    font-size: 24px;
+    color: #B83E2C;
+    vertical-align: middle;
 }
- 
 .last-error-container > .error {
-  padding: 10px 16px 0;
+    padding: 10px 16px 0;
 }
- 
 .has-errors {
-  border-bottom: 3px solid #B83E2C;
+    border-bottom: 3px solid #B83E2C;
 }
- 
 .no-errors {
-  border-bottom: 3px solid green;
-}	
+    border-bottom: 3px solid green;
+}
 .upload {
     font-size: 35px;
 }
-
 .social-font {
     font-size: xx-large;
     font-color: gery;
 }
-
-
 .social-font .col {
     text-align: center;
 }
-
 .image-close {
     position: absolute;
     color: rgba(0, 0, 0, 0.72);
@@ -350,21 +306,24 @@ a{
     margin-left: 24%;
 }
 .footerbar {
-	    background-color: rgba(0, 0, 0, 0.36);
+    background-color: rgba(0, 0, 0, 0.36);
     height: 30px !important;
 }
-
-.footerbar .title
-{
-	font-size: 12px;
-    
-	line-height: 32px;
-	color: #5C5C5C;
+.footerbar .title {
+    font-size: 12px;
+    line-height: 32px;
+    color: #5C5C5C;
 }
 .social-font div > a {
     color: #9D9D9D;
 }
+.button-attach {
+    border-color: #9B59B6 !important;
+    background: transparent;
+    color: #9B59B6 !important;
+}
 /*jagruti css*/
+
 /*dhaval start*/
 
 .littlebig {
@@ -372,81 +331,66 @@ a{
     max-width: 60px !important;
     max-height: 60px !important;
 }
-
 .contentright {
     padding-left: 8px;
 }
-
 p.tweetcontent {
     word-spacing: initial;
     white-space: initial;
     width: 95%;
 }
-
 .item-complex.item-icon-right .item-content {
     padding-right: 10px;
 }
-
 .max80 {
     width: 100%;
     margin-top: 10px;
 }
-
 .moredot {
     font-size: 22px;
     float: right;
     color: #9aa9b3;
 }
-
 .removepadding {
     padding-right: 10px;
     padding-bottom: 0;
 }
-
 .animate-if.ng-enter,
 .animate-if.ng-leave {
     -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
     transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
 }
-
 .animate-if.ng-enter,
 .animate-if.ng-leave.ng-leave-active {
     opacity: 0;
 }
-
 .animate-if.ng-leave,
 .animate-if.ng-enter.ng-enter-active {
     opacity: 1;
 }
-
 .mypopover {
     left: 50%;
     top: 25%;
     height: 233px;
     width: 230px;
 }
-
 .poppadding {
     padding: 0px 5px 0px 5px;
 }
-
 ion-list .more {
     -webkit-transition: all 1s;
     height: 0px;
     overflow: hidden;
 }
-
 .bottomicons {
     -webkit-transition: all 1s;
 }
-
 .rotate {
     -ms-transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
     color: #9b59b6 !important;
 }
-
 .bar.bar-dark {
     border-color: #9b59b6;
     background-color: #9b59b6;
@@ -454,28 +398,23 @@ ion-list .more {
     background-image: linear-gradient(0deg, #9b59b6, #9b59b6 50%, transparent 50%);
     color: #fff;
 }
-
 .bar-dark .button {
     border-color: #9b59b6;
     background-color: #9b59b6;
     color: #fff;
 }
-
 .rotatebell {
     -ms-transform: rotate(-20deg);
     -webkit-transform: rotate(-20deg);
     transform: rotate(-20deg);
 }
-
 .ion-android-search:before {
     font-weight: bold;
 }
-
 .maximg {
     width: 100%;
     height: auto;
 }
-
 .button.button.button-icon.ion-social-googleplus.button-block.googcolor.logfont:hover {
     color: #fff;
     text-decoration: none;
@@ -493,31 +432,27 @@ ion-list .more {
     padding-bottom: 0;
     border-style: none;
 }
-
 .levelgraph {
     margin-top: 50px;
 }
-
 .spaceout {
     margin-top: 10px !important;
 }
-
 .fullbutton {
     background-color: #9b59b6 !important;
     border-color: #fff !important;
     width: 100%;
 }
-
 .bottomiconsnofloat {
     float: none;
     font-size: 17px;
     color: #9aa9b3;
 }
-
 .incenter {
     text-align: center;
 }
 /*dhaval end*/
+
 /*Chintan Start*/
 
 .button-icon.button.active,
@@ -526,13 +461,12 @@ ion-list .more {
 }
 /*Chintan End*/
 
-
 ion-modal-view.animate-if.social-modal {
     width: 90%;
     min-height: 140px;
-    -webkit-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
 }
