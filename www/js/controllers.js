@@ -14,11 +14,16 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
     };
 	
-	var options1 = {
+	$scope.$on('$viewContentLoaded', function(){
+    //Here your view content is fully loaded !!
+		console.log("on load");
+		var options1 = {
             quality: 80,
             sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
         };
+  });
+	
     $scope.cameraimage = [];
 
     //	open create attach modal
