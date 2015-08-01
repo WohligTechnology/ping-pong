@@ -109,9 +109,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
             $cordovaImagePicker.getPictures(options).then(function (resultImage) {
                 // Success! Image data is here
                 $scope.cameraimage.push({
-                    status: false,
-                    image: resultImage
-                });
+				 status:false,
+				 image:resultImage[0]
+			 });
                 console.log($scope.cameraimage);
             }, function (err) {
                 // An error occured. Show a message to the user
@@ -125,6 +125,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
 
             $cordovaCamera.getPicture(options1).then(function (imageData) {
                 console.log(imageData);
+			  $scope.cameraimage.push({
+				 status:false,
+				 image:resultImage[0]
+			 });
+                console.log($scope.cameraimage);
                 $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                     .then(function (result) {
                         console.log(result);
