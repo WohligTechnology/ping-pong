@@ -39,6 +39,21 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
             $scope.oModal2 = modal;
         });
 
+        $ionicModal.fromTemplateUrl('templates/search.html', {
+            id: '4',
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.oModal4 = modal;
+        });
+
+        $scope.openSearch = function () {
+            $scope.oModal4.show();
+        }
+
+        $scope.closeSearch = function () {
+            $scope.oModal4.hide();
+        }
 
         $scope.closeModal = function () {
             $scope.oModal2.hide();
@@ -94,9 +109,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova'])
             $cordovaImagePicker.getPictures(options).then(function (resultImage) {
                 // Success! Image data is here
                 $scope.cameraimage.push({
-				 status:false,
-				 image:resultImage
-			 });
+                    status: false,
+                    image: resultImage
+                });
                 console.log($scope.cameraimage);
             }, function (err) {
                 // An error occured. Show a message to the user
