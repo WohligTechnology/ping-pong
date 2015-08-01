@@ -37,7 +37,6 @@
     text-align: center !important;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-weight: 900;
 }
 
 .nopadding {
@@ -540,12 +539,32 @@ ion-list .more {
 }
 
 .nobordersearch {
-    border-bottom: none;
+    border: none;
     background-color: #9b59b6;
 }
-.item-input-wrapper{
+
+.item-input-wrapper {
     background-color: transparent;
     border: none;
+}
+
+.makeittransparent {
+    background-color: transparent;
+    padding-top: 0;
+    border-bottom: none;
+}
+
+.searchwhite::-webkit-input-placeholder {
+    color: #fff;
+}
+
+.searchwhite {
+    color: #fff !important;
+}
+
+.searchwhitebig {
+    color: #fff !important;
+    font-size: larger;
 }
 /*dhaval end*/
 /*Chintan Start*/

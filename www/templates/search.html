@@ -1,62 +1,36 @@
 <ion-modal-view>
     <ion-header-bar class="nobordersearch">
+
         <!--
         <h1 class="title">Create Attach</h1>
         <div class="buttons">
             <button class="button button-clear" ng-click="closeSearch()">Skip</button>
         </div>
 -->
-        <div class="bar bar-header item-input-inset">
+
+        <div class="bar bar-header item-input-inset makeittransparent">
             <label class="item-input-wrapper">
-                <i class="icon ion-ios-search placeholder-icon"></i>
-                <input type="search" placeholder="Search">
+
+                <i class="icon ion-ios-search-strong placeholder-icon searchwhitebig"></i>
+                <input class="searchwhite" type="search" placeholder="Search">
+
+
             </label>
+            <button class="button button-icon ion-ios-close-empty" ng-click="closeSearch();">
+
+            </button>
         </div>
     </ion-header-bar>
     <ion-content>
-        <!--       Description html-->
-        <label class="item item-input item-floating-label" ng-class="allvalidation5[0].validation">
-            <span class="input-label">Description</span>
-            <textarea rows="4" placeholder="Description"></textarea>
-        </label>
-
-        <!-- 	 uploadedimages html-->
-
-        <div class="productset">
-            <div class="imageset">
-                <ion-scroll direction="x">
-                    <div class="row">
-
-                        <div class="col col-33" ng-repeat="op in cameraimage">
-                            <a href="#/tab/home/categoriess/{{slider.link}}">
-                                <i class="ion-close-circled image-close"></i>
-                                <img src="{{op.image}}" class="full-image full-img">
-                                <!--                                <p class="royal productprice">{{op.text}}</p>-->
-                            </a>
-                        </div>
-                    </div>
-                </ion-scroll>
-            </div>
-        </div>
-
-
-        <!-- 	button and options html-->
-        <div class="item-stacked-label">
-            <button class="button button-assertive button-small fullbutton button-full" ng-click="openUploadElements()"><i class="ion-android-upload upload"></i>
-            </button>
-        </div>
-
-        <div class="list">
-            <div class="item item-divider">Options</div>
-
-            <label class="item item-input item-floating-label" ng-repeat="option in options">
-                <span class="input-label">Text</span>
-                <input type="text" placeholder="Text Here.." ng-model="option.text" ng-change="onChangeAdd($index)">
-            </label>
-
-        </div>
-        <div class="padding-horizontal" ng-click="saveAdditionalWarranty()">
-            <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
-            <button class="button button-block button-outline button-attach">Create &#38; Attach</button>
-        </div>
+        <ul class="list">
+            <li class="item">
+                Jagruti
+            </li>
+            <li class="item">
+                Dhaval
+            </li>
+            <li class="item">
+                Vignesh
+            </li>
+        </ul>
     </ion-content>
