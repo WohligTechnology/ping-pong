@@ -324,6 +324,14 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.remove = function (chat) {
         Chats.remove(chat);
     };
+    
+    $scope.followers=[{
+        name:"Sohan"
+    },{
+        name:"Mahesh"
+    },{
+        name:"Vignesh"
+    }];
 })
 
 .controller('ChatDetailCtrl', function ($scope, $stateParams, MyServices) {

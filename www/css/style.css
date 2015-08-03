@@ -614,10 +614,15 @@ ion-list .more {
 }
 
 .ontop {
-    vertical-align: 11px;
+    vertical-align: 20px;
     font-size: 14px !important;
     font-weight: 500 !important;
     padding-left: 10px;
+}
+
+.ontoplight {
+    vertical-align: 20px;
+    font-size: 14px !important;
 }
 /*dhaval end*/
 /*Chintan Start*/

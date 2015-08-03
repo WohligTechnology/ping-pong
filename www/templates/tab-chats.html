@@ -2,11 +2,12 @@
     <ion-content>
         <ion-list>
             <div class="list" ng-click="openUploadElements();">
-            <a class="item item-icon-left lesspadleft">
-                <img class="editprofimg" src="img/images.jpg"> 
-                <span class="ontop">Header</span>
-            </a>
-        </div>
+                <a class="item item-icon-left lesspadleft" ng-repeat="follow in followers">
+                    <img class="editprofimg" src="img/images.jpg">
+                    <span class="ontop">{{follow.name}}</span>
+                    <span class="ontoplight">followed you</span>
+                </a>
+            </div>
         </ion-list>
     </ion-content>
 </ion-view>
