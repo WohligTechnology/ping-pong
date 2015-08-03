@@ -1,0 +1,41 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark bar-header" align-title="center">
+        <button class="button button-clear editbtns" ng-click="closeEditProfile();">Cancel</button>
+        <h1 class="title">Edit Profile</h1>
+        <button class="button button-clear editbtns" ng-click="closeEditProfile();">Save</button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list topone" ng-click="openUploadElements();">
+            <a class="item item-icon-left lesspadleft">
+                <img class="editprofimg" src="img/ab93bee6f189864ca19c21020b4b64cc.jpg"> 
+                <span class="inmiddle">Photo</span>
+            </a>
+        </div>
+        <div class="list" ng-click="openUploadElements();">
+            <a class="item item-icon-left lesspadleft">
+                <img class="editprofimg" src="img/images.jpg"> 
+                <span class="inmiddle">Header</span>
+            </a>
+        </div>
+
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label editform">Name</span>
+                <input class="editformviolet" type="text">
+            </label>
+            <label class="item item-input">
+                <span class="input-label editform">Location</span>
+                <input class="editformviolet" type="text">
+            </label>
+            <label class="item item-input">
+                <span class="input-label editform">Website</span>
+                <input class="editformviolet" type="text">
+            </label>
+        </div>
+        <div class="list">
+            <label class="item item-input">
+                <textarea class="editformviolet" rows="4">Web Developer</textarea>
+            </label>
+        </div>
+    </ion-content>
+</ion-modal-view>

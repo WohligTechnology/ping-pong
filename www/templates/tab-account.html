@@ -1,5 +1,3 @@
-
-
 <ion-view hide-nav-bar="true">
     <ion-content>
 
@@ -18,17 +16,17 @@
                     <div class="gearup">
                         <button class="button button-icon icon ion-gear-a gear"></button>
                         <button class="button icon ion-person-stalker border-radius people"></button>
-                        <button class="button border border-radius people">Edit Profile</button>
+                        <button class="button border border-radius people" ng-click="openEditProfile();">Edit Profile</button>
                     </div>
                 </div>
             </div>
         </div>
 
-       <div class="about">
-       	<p>Web Developer</p>
-		  <p><i class="ion-location"></i>Kalyan Dombivili, Maharshtra</p>
-       	<a><i class="ion-link"></i>wohlig.com</a>
-       </div>
+        <div class="about">
+            <p>Web Developer</p>
+            <p><i class="ion-location"></i>Kalyan Dombivli, Maharshtra</p>
+            <a><i class="ion-link"></i>wohlig.com</a>
+        </div>
         <div class="row">
             <div class="col geardown pullright">
                 <span>8</span><i>Following</i>
@@ -47,93 +45,42 @@
             <a class="button button-small">Favorites</a>
         </div>
 
-
-
-
-        <div class="list prf-list">
-            <div class="item item-thumbnail-left">
-                <img src='img/blue-album.jpg' />
-
-                <b>graphitas</b>
-                </h2>&nbsp;<span class="textgrey">@graphitas</span>
-                <i class="ion-chatbubble pullright">3h</i>
-
-                <p style="color:black">RT "@BuzzFeedNews: Reports Of Injuries
-                    <br>Following Explosion And Building
-                    <br>Collapse In New York</p>
-                <a href="www.google.com">buzzfeed.com/lisatozzi/repo...</a>
-                <div class="row textgrey">
-                    <div class="col iconfontsize"><i class="ion-ios-undo"></i>
+        <ion-list class="avtar">
+            <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
+                <img class="littlebig" ng-src="img/Personn.jpg">
+                <div class="contentright">
+                    <div ng-click="opendetail(feed.id);">
+                        <span class="namebold" ng-bind="feed.name"></span>
+                        <span class="namegrey" ng-bind="feed.nameat"></span>
+                        <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
+                        <p class="tweetcontent">My blog post on "Designing for SEO" has just gone live @moz <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
+                        </p>
+                        <img class="max80" ng-src="{{feed.image}}">
                     </div>
-                    <div class="col iconfontsize"><i class="ion-loop">1</i>
+                    <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
+                        <div class="more-content">
+                            <barhighchart obj='feed'></barhighchart>
+                        </div>
                     </div>
-                    <div class="col iconfontsize"><i class="ion-ios-star">4</i>
-                    </div>
-                </div>
-
-            </div>
-            <div class="item item-thumbnail-left" href="">
-                <img src='img/images (1).jpg' />
-
-                <b>Ross Hammond</b>
-                </h2>&nbsp;<span class="textgrey">@Rossgraphitas</span>
-                <i class="ion-chatbubble pullright"> 6d</i>
-
-                <p style="color:black">RT "@BuzzFeedNews: Reports Of Injuries
-                    <br>Following Explosion And Building
-                    <br>Collapse In New York</p>
-                <a href="www.google.com">buzzfeed.com/lisatozzi/repo...</a>
-                <div class="row textgrey">
-                    <div class="col iconfontsize"><i class="ion-ios-undo"></i>
-                    </div>
-                    <div class="col iconfontsize"><i class="ion-loop">1</i>
-                    </div>
-                    <div class="col iconfontsize"><i class="ion-ios-star">4</i>
+                    <div class="row nopadding">
+                        <div class="col">
+                            <button class="button button-icon ion-chevron-down bottomicons" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
+                        </div>
+                        <div class="col">
+                            <button class="button button-icon ion-android-star bottomicons"></button>
+                        </div>
+                        <div class="col">
+                            <button class="button button-icon ion-android-share-alt bottomicons"></button>
+                        </div>
+                        <div class="col" ng-click="openPopover();">
+                            <button class="button button-icon ion-android-more-vertical moredot"></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item item-thumbnail-left">
-                <img src='img/blue-album.jpg' />
+            </ion-item>
+        </ion-list>
 
-                <b>graphitas</b>
-                </h2>&nbsp;<span class="textgrey">@graphitas</span>
-                <i class="ion-chatbubble pullright">3h</i>
 
-                <p style="color:black">RT "@BuzzFeedNews: Reports Of Injuries
-                    <br>Following Explosion And Building
-                    <br>Collapse In New York</p>
-                <a href="www.google.com">buzzfeed.com/lisatozzi/repo...</a>
-                <div class="row textgrey">
-                    <div class="col iconfontsize"><i class="ion-ios-undo"></i>
-                    </div>
-                    <div class="col iconfontsize"><i class="ion-loop">1</i>
-                    </div>
-                    <div class="col iconfontsize"><i class="ion-ios-star">4</i>
-                    </div>
-                </div>
-
-            </div>
-            <div class="item item-thumbnail-left" href="">
-                <img src='img/images (1).jpg' />
-
-                <b>Ross Hammond</b>
-                </h2>&nbsp;<span class="textgrey">@Rossgraphitas</span>
-                <i class="ion-chatbubble pullright"> 6d</i>
-
-                <p style="color:black">RT "@BuzzFeedNews: Reports Of Injuries
-                    <br>Following Explosion And Building
-                    <br>Collapse In New York</p>
-                <a href="www.google.com">buzzfeed.com/lisatozzi/repo...</a>
-                <div class="row textgrey">
-                    <div class="col iconfontsize"><i class="ion-ios-undo"></i>
-                    </div>
-                    <div class="col iconfontsize"><i class="ion-loop">1</i>
-                    </div>
-                    <div class="col iconfontsize"><i class="ion-ios-star">4</i>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
     </ion-content>
