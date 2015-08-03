@@ -221,7 +221,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 
         $scope.facebookLogin = function (provider) {
-//            ref = window.open(adminhauth + 'login/' + provider + '?logid=' + $scope.facebooklogid, '_blank', 'location=no');
+            ref = window.open(adminhauth + 'login/' + provider + '?logid=' + $scope.facebooklogid, '_blank', 'location=no');
             stopinterval = $interval(callAtIntervalfb, 1000);
             ref.addEventListener('exit', function (event) {
                 $interval.cancel(stopinterval);

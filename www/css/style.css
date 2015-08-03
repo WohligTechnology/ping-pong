@@ -612,6 +612,13 @@ ion-list .more {
     font-size: 14px !important;
     color: #9b59b6 !important;
 }
+
+.ontop {
+    vertical-align: 11px;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    padding-left: 10px;
+}
 /*dhaval end*/
 /*Chintan Start*/
 
