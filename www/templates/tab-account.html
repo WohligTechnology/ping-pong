@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col col-33">
                 <div class="prf-img">
-                    <img class="proimage" src="img/ab93bee6f189864ca19c21020b4b64cc.jpg">
+                    <img class="proimage" src="{{user.image}}">
                     <p class="prf-name">jagruti patil</p>
-                    <p class="prf-username">@sony181</p>
+                    <p class="prf-username">@{{user.name}}</p>
                 </div>
             </div>
             <div class="col">
@@ -24,7 +24,7 @@
 
         <div class="about">
             <p>Web Developer</p>
-            <p><i class="ion-location"></i>Kalyan Dombivli, Maharshtra</p>
+            <p ng-if="user.address"><i class="ion-location"></i>{{user.address}}</p>
             <a><i class="ion-link"></i>wohlig.com</a>
         </div>
         <div class="row">

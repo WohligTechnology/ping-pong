@@ -1,0 +1,5 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Applications/XAMPP/xamppfiles/htdocs/ping-pong/plugins/cordova-plugin-file/src/windows/FileProxy.js"
+    ]
+}

@@ -9,7 +9,7 @@
         <!--       Description html-->
         <label class="item item-input item-floating-label" ng-class="allvalidation5[0].validation">
             <span class="input-label">Description</span>
-            <textarea rows="4" placeholder="Description"></textarea>
+            <textarea rows="4" placeholder="Description" ng-model="poll.content"></textarea>
         </label>
 
         <!-- 	 uploadedimages html-->
@@ -51,7 +51,7 @@
 
 
 
-        <div class="padding-horizontal" ng-click="saveAdditionalWarranty()">
+        <div class="padding-horizontal" ng-click="createAttach()">
             <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
             <button class="button button-block button-outline button-attach">Create &#38; Attach</button>
         </div>

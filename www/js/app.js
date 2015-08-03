@@ -7,8 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function ($ionicPlatform, $cordovaStatusbar) {
-    $ionicPlatform.ready(function () {
+.run(function($ionicPlatform, $cordovaStatusbar) {
+    $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -25,140 +25,162 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-        $ionicConfigProvider.tabs.position('bottom');
-        $stateProvider
+    $ionicConfigProvider.tabs.position('bottom');
+    $stateProvider
 
-        // setup an abstract state for the tabs directive
-            .state('tab', {
-                url: '/tab',
-                abstract: true,
-                templateUrl: 'templates/tabs.html'
-            })
-            .state('login', {
-                url: '/login',
-                templateUrl: 'templates/login.html',
-                controller: 'LoginCtrl'
-            })
-
-        // Each tab has its own nav history stack:
-
-        .state('tab.dash', {
-            url: '/dash',
-            views: {
-                'tab-dash': {
-                    templateUrl: 'templates/tab-dash.html',
-                    controller: 'DashCtrl'
-                }
-            }
-        })
-
-        .state('tab.dash-detail', {
-            url: '/dash/:chatId',
-            views: {
-                'tab-dash': {
-                    templateUrl: 'templates/feeds-detail.html',
-                    controller: 'DashDetailCtrl'
-                }
-            }
-        })
-
-        .state('tab.chats', {
-            url: '/chats',
-            views: {
-                'tab-chats': {
-                    templateUrl: 'templates/tab-chats.html',
-                    controller: 'ChatsCtrl'
-                }
-            }
-        })
-
-        .state('tab.chat-detail', {
-            url: '/chats/:chatId',
-            views: {
-                'tab-chats': {
-                    templateUrl: 'templates/chat-detail.html',
-                    controller: 'ChatDetailCtrl'
-                }
-            }
-        })
-
-        .state('tab.account', {
-            url: '/account',
-            views: {
-                'tab-account': {
-                    templateUrl: 'templates/tab-account.html',
-                    controller: 'AccountCtrl'
-                }
-            }
-        });
-
-        // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/tab/dash');
-
+    // setup an abstract state for the tabs directive
+    .state('tab', {
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
     })
-    .directive('barhighchart', function () {
-        return {
-            restrict: 'EA',
-            transclude: true,
-            scope: {
-                obj: "="
-            },
-            templateUrl: 'templates/directive/barhighchart.html',
-            link: function ($scope, element, attr) {
-                $element = $(element);
+        .state('login', {
+            url: '/login',
+            templateUrl: 'templates/login.html',
+            controller: 'LoginCtrl'
+        })
 
-                //                $element.children('#container').highcharts({
-                //                    chart: {
-                //                        type: 'bar'
-                //                    },
-                //                    title: {
-                //                        text: 'Fruit Consumption'
-                //                    },
-                //                    xAxis: {
-                //                        categories: ['Apples', 'Bananas', 'Oranges']
-                //                    },
-                //                    yAxis: {
-                //                        title: {
-                //                            text: 'Fruit eaten'
-                //                        }
-                //                    },
-                //                    series: $scope.obj.series,
-                //                    credits: {
-                //                        enabled: false
-                //                    }
-                //                });
+    // Each tab has its own nav history stack:
 
-                $element.children('#container').highcharts({
-                    chart: {
-                        type: 'bar'
-                    },
-                    title: {
-                        text: 'Stacked bar chart'
-                    },
-                    xAxis: {
-                        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Total fruit consumption'
-                        }
-                    },
-                    legend: {
-                        reversed: true
-                    },
-                    plotOptions: {
-                        series: {
-                            stacking: 'normal'
-                        }
-                    },
-                    series: $scope.obj.series,
-                    credits: {
-                        enabled: false
-                    }
-                });
+    .state('tab.dash', {
+        url: '/dash',
+        views: {
+            'tab-dash': {
+                templateUrl: 'templates/tab-dash.html',
+                controller: 'DashCtrl'
             }
-        };
+        }
+    })
+
+    .state('tab.dash-detail', {
+        url: '/dash/:chatId',
+        views: {
+            'tab-dash': {
+                templateUrl: 'templates/feeds-detail.html',
+                controller: 'DashDetailCtrl'
+            }
+        }
+    })
+
+    .state('tab.chats', {
+        url: '/chats',
+        views: {
+            'tab-chats': {
+                templateUrl: 'templates/tab-chats.html',
+                controller: 'ChatsCtrl'
+            }
+        }
+    })
+
+    .state('tab.chat-detail', {
+        url: '/chats/:chatId',
+        views: {
+            'tab-chats': {
+                templateUrl: 'templates/chat-detail.html',
+                controller: 'ChatDetailCtrl'
+            }
+        }
+    })
+
+    .state('tab.account', {
+        url: '/account',
+        views: {
+            'tab-account': {
+                templateUrl: 'templates/tab-account.html',
+                controller: 'AccountCtrl'
+            }
+        }
     });
+
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/tab/dash');
+
+})
+
+.filter('time', function() {
+    return function(input) {
+	    var a = moment(input);
+	    var b = moment(new Date());
+//        return dif = b.diff(a, 'Months') + "s";
+        var dif = b.diff(a, 'months');
+	    if(dif > 0){
+		    return dif + "M";
+	    }else if(b.diff(a, 'days') > 0){
+		    return b.diff(a, 'days') + "d";
+	    }else if(b.diff(a, 'hours') > 0){
+		    return b.diff(a, 'hours') + "h";
+	    }else if(b.diff(a, 'minutes') > 0){
+		    return b.diff(a, 'minutes') + "min";
+	    }else{
+		    return b.diff(a, 'seconds') + "s";
+	    }
+    };
+})
+
+
+.directive('barhighchart', function() {
+    return {
+        restrict: 'EA',
+        transclude: true,
+        scope: {
+            obj: "="
+        },
+        templateUrl: 'templates/directive/barhighchart.html',
+        link: function($scope, element, attr) {
+            $element = $(element);
+
+            //                $element.children('#container').highcharts({
+            //                    chart: {
+            //                        type: 'bar'
+            //                    },
+            //                    title: {
+            //                        text: 'Fruit Consumption'
+            //                    },
+            //                    xAxis: {
+            //                        categories: ['Apples', 'Bananas', 'Oranges']
+            //                    },
+            //                    yAxis: {
+            //                        title: {
+            //                            text: 'Fruit eaten'
+            //                        }
+            //                    },
+            //                    series: $scope.obj.series,
+            //                    credits: {
+            //                        enabled: false
+            //                    }
+            //                });
+
+            $element.children('#container').highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Stacked bar chart'
+                },
+                xAxis: {
+                    categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Total fruit consumption'
+                    }
+                },
+                legend: {
+                    reversed: true
+                },
+                plotOptions: {
+                    series: {
+                        stacking: 'normal'
+                    }
+                },
+                series: $scope.obj.series,
+                credits: {
+                    enabled: false
+                }
+            });
+        }
+    };
+});

@@ -1,4 +1,5 @@
 var adminbase = "http://www.wohlig.co.in/attachbackend/";
+var adminbase = "http://localhost/attachbackend/";
 var adminurl = adminbase + "index.php/json/";
 var adminhauth = adminbase + "index.php/hauth/";
 
@@ -66,6 +67,25 @@ angular.module('starter.services', [])
         },
         getInstagramImages: function() {
             return $http.get(adminhauth + "getInstagramImages");
+        },
+        getalluserpoll: function() {
+		   return $http({
+                url: adminurl + 'getalluserpoll',
+                method: "POST",
+                data: {
+                    'id': $.jStorage.get("user").id
+                }
+            });
+        },
+        createAttach: function(poll) {
+		   return $http({
+                url: adminurl + 'createuserpoll',
+                method: "POST",
+                data: poll
+            });
+        },
+        authenticate: function() {
+            return $http.get(adminurl + "authenticate");
         },
         checkLogid: function(logid) {
             return $http.get(adminhauth + "checkLogid", {
