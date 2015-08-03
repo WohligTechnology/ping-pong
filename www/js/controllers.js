@@ -167,7 +167,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                 console.log("Do nothing");
             } else {
                 ref.close();
-                if (data.value == "SUCCESS" && !$scope.showimages) {
+                if (data.value == "SUCCESS") {
                     if (data.type == "Facebook") {
                         $scope.facebookPhoto();
                     }
@@ -221,7 +221,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 
         $scope.facebookLogin = function (provider) {
-            ref = window.open(adminhauth + 'login/' + provider + '?logid=' + $scope.facebooklogid, '_blank', 'location=no');
+//            ref = window.open(adminhauth + 'login/' + provider + '?logid=' + $scope.facebooklogid, '_blank', 'location=no');
             stopinterval = $interval(callAtIntervalfb, 1000);
             ref.addEventListener('exit', function (event) {
                 $interval.cancel(stopinterval);
