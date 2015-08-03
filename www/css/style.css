@@ -552,6 +552,7 @@ ion-list .more {
     background-color: transparent;
     padding-top: 0;
     border-bottom: none;
+    padding-right: 0;
 }
 
 .searchwhite::-webkit-input-placeholder {
@@ -565,6 +566,16 @@ ion-list .more {
 .searchwhitebig {
     color: #fff !important;
     font-size: larger;
+}
+
+.searchitem {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.topone {
+    margin-top: 1px;
 }
 /*dhaval end*/
 /*Chintan Start*/

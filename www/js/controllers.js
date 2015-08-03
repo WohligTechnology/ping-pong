@@ -30,7 +30,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.oModal3.show();
     }
 
-    $scope.closeModal = function() {
+    $scope.closeCreate = function() {
         $scope.oModal3.hide();
     }
     $ionicModal.fromTemplateUrl('templates/upload.html', {

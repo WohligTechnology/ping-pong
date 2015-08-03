@@ -2,18 +2,18 @@
     <ion-header-bar class="bar-dark bar-header" align-title="center">
         <h1 class="title">Create Attach</h1>
         <div class="buttons">
-            <button class="button button-clear" ng-click="closeModal()">Skip</button>
+            <button class="button button-clear" ng-click="closeCreate();">Skip</button>
         </div>
     </ion-header-bar>
     <ion-content>
-<!--       Description html-->
+        <!--       Description html-->
         <label class="item item-input item-floating-label" ng-class="allvalidation5[0].validation">
             <span class="input-label">Description</span>
             <textarea rows="4" placeholder="Description"></textarea>
         </label>
 
-<!-- 	 uploadedimages html-->
-       
+        <!-- 	 uploadedimages html-->
+
         <div class="productset">
             <div class="imageset">
                 <ion-scroll direction="x">
@@ -32,7 +32,7 @@
         </div>
 
 
-<!-- 	button and options html-->
+        <!-- 	button and options html-->
         <div class="item-stacked-label">
             <button class="button button-assertive button-small fullbutton button-full" ng-click="openUploadElements()"><i class="ion-android-upload upload"></i>
             </button>
