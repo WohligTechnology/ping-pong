@@ -1,6 +1,12 @@
 <ion-view view-title="Home">
     <ion-content delegate-handle="mainScroll">
         <ion-list class="avtar">
+            <div class="no-connect" ng-show="shownoappliance">
+                <h3>No attach yet...</h3>
+            </div>
+            <div class="no-connect" ng-show="showloading">
+                <h3>Loading...</h3>
+            </div>
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
                 <img class="littlebig" ng-src="{{feed.image}}">
                 <div class="contentright">

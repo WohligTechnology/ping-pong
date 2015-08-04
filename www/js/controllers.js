@@ -250,13 +250,21 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.feeds = {};
         $scope.isfavactive = false;
         $scope.favactive = "";
+        $scope.shownoappliance = false;
+        $scope.showloading = true;
 
         MyServices.getalluserpoll().success(function (data, status) {
             console.log(data);
-            $scope.feeds = data.queryresult;
-            _.each($scope.feeds,function(n){
-                n.isfav = "";
-            })
+            if (data.queryresult.length == 0) {
+                $scope.showloading = false;
+                $scope.shownoappliance = true;
+            } else {
+                $scope.showloading = false;
+                $scope.feeds = data.queryresult;
+                _.each($scope.feeds, function (n) {
+                    n.isfav = "";
+                })
+            }
         });
 
         $ionicPopover.fromTemplateUrl('templates/popover.html', {

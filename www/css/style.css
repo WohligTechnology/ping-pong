@@ -50,7 +50,7 @@
     padding-bottom: 0px;
     padding-left: 0;
     margin-bottom: 0px;
-    border-bottom-width: 1px;
+/*    border-bottom-width: 1px;*/
     border-bottom-style: solid;
     border-bottom-color: #ccd6dd;
 }
@@ -627,6 +627,13 @@ ion-list .more {
 
 .favactive {
     color: #804896;
+}
+
+.no-connect h3 {
+    text-align: center;
+    width: 100%;
+    color: #B9B9B9;
+    padding-top: 50%;
 }
 /*dhaval end*/
 /*Chintan Start*/
