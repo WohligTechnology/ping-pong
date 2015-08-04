@@ -624,6 +624,10 @@ ion-list .more {
     vertical-align: 20px;
     font-size: 14px !important;
 }
+
+.favactive {
+    color: #804896;
+}
 /*dhaval end*/
 /*Chintan Start*/
 

@@ -43,6 +43,7 @@ Temporary Items
 .apdisk
 
 platforms/
+platforms/ios
 plugins/
 resources/
 plugins/cordova-plugin-camera/
