@@ -67,7 +67,7 @@
                             <button class="button button-icon ion-chevron-down bottomiconsnofloat" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
                         </div>
                         <div class="col incenter">
-                            <button class="button button-icon ion-android-star bottomiconsnofloat"></button>
+                            <button class="button button-icon ion-android-star bottomiconsnofloat {{feed.isfav}}" ng-click="markasfav(feed);"></button>
                         </div>
                         <div class="col incenter">
                             <button class="button button-icon ion-android-share-alt bottomiconsnofloat"></button>

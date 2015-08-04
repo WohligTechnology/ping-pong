@@ -248,10 +248,15 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     .controller('DashCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
 
         $scope.feeds = {};
+        $scope.isfavactive = false;
+        $scope.favactive = "";
 
         MyServices.getalluserpoll().success(function (data, status) {
             console.log(data);
             $scope.feeds = data.queryresult;
+            _.each($scope.feeds,function(n){
+                n.isfav = "";
+            })
         });
 
         $ionicPopover.fromTemplateUrl('templates/popover.html', {
@@ -322,9 +327,19 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                 $ionicScrollDelegate.anchorScroll(true, 4000);
             }, 1000)
         };
+
         $scope.opendetail = function (id) {
             $location.url("/tab/dash/" + id);
         }
+
+        $scope.markasfav = function (feed) {
+            if (feed.isfav == "") {
+                feed.isfav = "favactive";
+            } else {
+                feed.isfav = "";
+            }
+        };
+
     })
 
 .controller('LoginCtrl', function ($scope, $location, $interval, MyServices) {
@@ -341,8 +356,8 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             console.log("stay here");
         };
     };
-	
-	MyServices.authenticate().success(authenticatesuccess);
+
+    MyServices.authenticate().success(authenticatesuccess);
 
     var checktwitter = function (data, status) {
         if (data != "false") {
@@ -360,7 +375,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     };
 
     $scope.twitterlogin = function () {
-	    console.log("in twitter");
+        console.log("in twitter");
 
         ref = window.open(adminhauth + 'login/Twitter', '_blank', 'location=no');
         stopinterval = $interval(callAtIntervaltwitter, 2000);
@@ -465,6 +480,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     //get user
     $scope.user = $.jStorage.get("user");
+    $scope.isfavactive = false;
 
     $scope.settings = {
         enableFriends: true
@@ -496,6 +512,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
         more: false,
         height: 0,
+        isfav: "",
         series: [{
             name: 'Jane',
             data: [1, 0, 4]
@@ -510,6 +527,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
         more: false,
         height: 0,
+        isfav: "",
         series: [{
             name: 'Jane',
             data: [1, 0, 4]
@@ -576,6 +594,12 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.oModal1.hide();
     }
 
-
+    $scope.markasfav = function (feed) {
+        if (feed.isfav == "") {
+            feed.isfav = "favactive";
+        } else {
+            feed.isfav = "";
+        }
+    };
 
 });
