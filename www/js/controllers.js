@@ -1,5 +1,5 @@
 var optid = 2;
-var ref = 0;
+//var ref = 0;
 angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.services'])
 
 .controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera, MyServices, $ionicLoading, $interval) {
@@ -341,6 +341,8 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             console.log("stay here");
         };
     };
+	
+	MyServices.authenticate().success(authenticatesuccess);
 
     var checktwitter = function (data, status) {
         if (data != "false") {
@@ -360,7 +362,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.twitterlogin = function () {
 	    console.log("in twitter");
 
-        ref = window.open(adminhauth + 'login/Twitter?returnurl=http://www.wohlig.com', '_blank', 'location=no');
+        ref = window.open(adminhauth + 'login/Twitter', '_blank', 'location=no');
         stopinterval = $interval(callAtIntervaltwitter, 2000);
         ref.addEventListener('exit', function (event) {
             MyServices.authenticate().success(authenticatesuccess);
