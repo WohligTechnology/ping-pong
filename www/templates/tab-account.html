@@ -1,5 +1,5 @@
 <ion-view hide-nav-bar="true">
-    <ion-content>
+    <ion-content delegate-handle="mainScroll">
 
         <div class="imageclass"></div>
 
@@ -64,24 +64,29 @@
                     </div>
                     <div class="row nopadding">
                         <div class="col">
-                            <button class="button button-icon ion-chevron-down bottomicons" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
+                            <button class="button button-icon ion-chevron-down bottomiconsnofloat" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
+                        </div>
+                        <div class="col incenter">
+                            <button class="button button-icon ion-android-star bottomiconsnofloat"></button>
+                        </div>
+                        <div class="col incenter">
+                            <button class="button button-icon ion-android-share-alt bottomiconsnofloat"></button>
+                        </div>
+                        <div class="col incenter">
+                            <button class="button button-icon ion-android-delete bottomiconsnofloat"></button>
                         </div>
                         <div class="col">
-                            <button class="button button-icon ion-android-star bottomicons"></button>
-                        </div>
-                        <div class="col">
-                            <button class="button button-icon ion-android-share-alt bottomicons"></button>
-                        </div>
-                        <div class="col" ng-click="openPopover();">
-                            <button class="button button-icon ion-android-more-vertical moredot"></button>
+
+                            <button class="button button-icon ion-android-more-vertical moredot" ng-click="openPopover();"></button>
                         </div>
                     </div>
                 </div>
+                <!--
+                <ion-option-button class="nobordersearch" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+-->
             </ion-item>
         </ion-list>
-
-
-
-
     </ion-content>
 </ion-view>
