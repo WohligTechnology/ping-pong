@@ -243,10 +243,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                 $location.url("/tab/dash");
             });
         };
-
-
-
-
     })
     .controller('DashCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
 

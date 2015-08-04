@@ -7,8 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform, $cordovaStatusbar) {
-    $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform, $cordovaStatusbar) {
+    $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -25,17 +25,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
     $ionicConfigProvider.tabs.position('bottom');
+    $ionicConfigProvider.views.maxCache(0);
     $stateProvider
 
     // setup an abstract state for the tabs directive
-    .state('tab', {
-        url: '/tab',
-        abstract: true,
-        templateUrl: 'templates/tabs.html'
-    })
+        .state('tab', {
+            url: '/tab',
+            abstract: true,
+            templateUrl: 'templates/tabs.html'
+        })
         .state('login', {
             url: '/login',
             templateUrl: 'templates/login.html',
@@ -99,28 +100,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 })
 
-.filter('time', function() {
-    return function(input) {
-	    var a = moment(input);
-	    var b = moment(new Date());
-//        return dif = b.diff(a, 'Months') + "s";
+.filter('time', function () {
+    return function (input) {
+        var a = moment(input);
+        var b = moment(new Date());
+        //        return dif = b.diff(a, 'Months') + "s";
         var dif = b.diff(a, 'months');
-	    if(dif > 0){
-		    return dif + "M";
-	    }else if(b.diff(a, 'days') > 0){
-		    return b.diff(a, 'days') + "d";
-	    }else if(b.diff(a, 'hours') > 0){
-		    return b.diff(a, 'hours') + "h";
-	    }else if(b.diff(a, 'minutes') > 0){
-		    return b.diff(a, 'minutes') + "min";
-	    }else{
-		    return b.diff(a, 'seconds') + "s";
-	    }
+        if (dif > 0) {
+            return dif + "M";
+        } else if (b.diff(a, 'days') > 0) {
+            return b.diff(a, 'days') + "d";
+        } else if (b.diff(a, 'hours') > 0) {
+            return b.diff(a, 'hours') + "h";
+        } else if (b.diff(a, 'minutes') > 0) {
+            return b.diff(a, 'minutes') + "min";
+        } else {
+            return b.diff(a, 'seconds') + "s";
+        }
     };
 })
 
 
-.directive('barhighchart', function() {
+.directive('barhighchart', function () {
     return {
         restrict: 'EA',
         transclude: true,
@@ -128,7 +129,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             obj: "="
         },
         templateUrl: 'templates/directive/barhighchart.html',
-        link: function($scope, element, attr) {
+        link: function ($scope, element, attr) {
             $element = $(element);
 
             //                $element.children('#container').highcharts({
