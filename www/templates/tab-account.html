@@ -47,7 +47,7 @@
 
         <ion-list class="avtar">
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
-                <img class="littlebig" ng-src="img/Personn.jpg">
+                <img class="littlebig" ng-src="{{feed.image}}">
                 <div class="contentright">
                     <div ng-click="opendetail(feed.id);">
                         <span class="namebold" ng-bind="feed.name"></span>

@@ -253,7 +253,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.shownoappliance = false;
         $scope.showloading = true;
 
-        MyServices.getalluserpoll().success(function (data, status) {
+        MyServices.getallpolls().success(function (data, status) {
             console.log(data);
             if (data.queryresult.length == 0) {
                 $scope.showloading = false;
@@ -263,6 +263,8 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                 $scope.feeds = data.queryresult;
                 _.each($scope.feeds, function (n) {
                     n.isfav = "";
+				 if(n.images)
+				 n.images = n.images.split(',');
                 })
             }
         });
@@ -365,7 +367,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         };
     };
 
-    MyServices.authenticate().success(authenticatesuccess);
+//    MyServices.authenticate().success(authenticatesuccess);
 
     var checktwitter = function (data, status) {
         if (data != "false") {
@@ -418,7 +420,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         ref = window.open(adminhauth + 'login/Facebook?returnurl=http://www.wohlig.com', '_blank', 'location=no');
         stopinterval = $interval(callAtIntervaltwitter, 2000);
         ref.addEventListener('exit', function (event) {
-            MyServices.authenticate().success(authenticatesuccess);
+            MyServices.authenticate().success(authenticatesuccessauthenticatesuccess);
             $interval.cancel(stopinterval);
         });
         //        $location.url("/tab/dash");
@@ -484,12 +486,16 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     };
 })
 
-.controller('AccountCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal) {
+.controller('AccountCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal ,MyServices) {
 
     //get user
     $scope.user = $.jStorage.get("user");
     $scope.isfavactive = false;
-
+MyServices.getalluserpoll().success(function(data, status){
+	console.log(data);
+	$scope.feeds = data.queryresult;
+});
+	
     $scope.settings = {
         enableFriends: true
     };
@@ -512,38 +518,38 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.popover.remove();
     });
 
-
-    $scope.feeds = [{
-        id: 1,
-        name: "Justin Taylor",
-        nameat: "@JustinGraphitas",
-        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-        more: false,
-        height: 0,
-        isfav: "",
-        series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
-    }, {
-        id: 2,
-        name: "Other",
-        nameat: "@JustinGraphitas",
-        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-        more: false,
-        height: 0,
-        isfav: "",
-        series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
-    }];
+	//
+	//    $scope.feeds = [{
+	//        id: 1,
+	//        name: "Justin Taylor",
+	//        nameat: "@JustinGraphitas",
+	//        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
+	//        more: false,
+	//        height: 0,
+	//        isfav: "",
+	//        series: [{
+	//            name: 'Jane',
+	//            data: [1, 0, 4]
+	//        }, {
+	//            name: 'John',
+	//            data: [5, 7, 3]
+	//        }]
+	//    }, {
+	//        id: 2,
+	//        name: "Other",
+	//        nameat: "@JustinGraphitas",
+	//        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
+	//        more: false,
+	//        height: 0,
+	//        isfav: "",
+	//        series: [{
+	//            name: 'Jane',
+	//            data: [1, 0, 4]
+	//        }, {
+	//            name: 'John',
+	//            data: [5, 7, 3]
+	//        }]
+	//    }];
     $scope.changemore = function (feed, index) {
         var indexno = index;
         var idtomove = "more";

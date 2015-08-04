@@ -16,7 +16,26 @@
                         <span class="item-note"><i class="ion-ios-paper-outline"> {{feed.timestamp | time}}</i></span>
                         <p class="tweetcontent">{{feed.content}}<a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                         </p>
-                        <img class="max80" ng-src="img/images.jpg">
+                        
+                        
+                        <div class="imageset">
+                <ion-scroll direction="x">
+                    <div class="row">
+
+                        <div class="col col-33" ng-repeat="op in feed.images">
+                            <a href="#/tab/home/categoriess/{{slider.link}}">
+                                <img src="img/{{op}}" class="full-image full-img">
+                                <!--                                <p class="royal productprice">{{op.text}}</p>-->
+                            </a>
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+                        
+                        
+                        
+                        
+<!--                        <img class="max80" ng-src="img/images.jpg">-->
                     </div>
                     <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
                         <div class="more-content">
