@@ -41,8 +41,15 @@ angular.module('starter.services', [])
                 url: adminurl + 'getalluserpoll',
                 method: "POST",
                 data: {
-                    'id': $.jStorage.get("user").id
+//                    'id': $.jStorage.get("user").id
+                    'id': 14
                 }
+            });
+        },
+        getallpolls: function() {
+		   return $http({
+                url: adminurl + 'getallpolls',
+                method: "POST"
             });
         },
         createAttach: function(poll) {
