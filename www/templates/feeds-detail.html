@@ -8,7 +8,7 @@
                     <span class="namebold" ng-bind="feed.name"></span>
                     <span class="namegrey" ng-bind="feed.nameat"></span>
                     <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
-                    <p class="tweetcontent">My blog post on "Designing for SEO" has just gone live @moz <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
+                    <p class="tweetcontent">{{feed.userpolldetail.content}}<a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                     </p>
                     <img class="max80" ng-src="{{feed.image}}">
                     <div class="row nopadding">
@@ -26,7 +26,7 @@
             </ion-item>
             <div class="row">
                 <div class="col col-75">
-                    <barhighchart obj='feed'></barhighchart>
+                    <barhighchart obj='feed.series'></barhighchart>
                 </div>
                 <div class="col levelgraph">
                     <div class="row spaceout">
@@ -51,6 +51,10 @@
                     </div>
                 </div>
             </div>
+            <div class="col col-75">
+                    <barhighchart obj='feeds.poll_options'></barhighchart>
+                </div>
+                
         </ion-list>
         <!--
         <nav mfb-menu position="br" effect="zoomin" label="hover here" active-icon="ion-edit" resting-icon="ion-plus-round" toggling-method="hover">

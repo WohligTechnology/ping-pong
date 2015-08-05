@@ -37,6 +37,12 @@ angular.module('starter.services', [])
             getInstagramImages: function () {
                 return $http.get(adminhauth + "getInstagramImages");
             },
+            logout: function () {
+                return $http.get(adminbase + "index.php/json/logout");
+            },
+            getsingleuserpoll: function (id) {
+                return $http.get(adminurl + "getsingleuserpoll?id="+id);
+            },
             getalluserpoll: function () {
                 return $http({
                     url: adminurl + 'getalluserpoll',
