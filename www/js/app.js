@@ -191,17 +191,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                     type: 'bar'
                 },
                 title: {
-                    text: 'Browser market shares. January, 2015 to May, 2015'
-                },
-                subtitle: {
-                    text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
+                    text: '<span style="color:#9b59b6;margin-left:20px;">Make Your Choice</span>'
                 },
                 xAxis: {
                     type: 'category'
                 },
                 yAxis: {
                     title: {
-                        text: 'Total percent market share'
+                        text: ''
                     }
 
                 },
@@ -210,7 +207,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 },
                 plotOptions: {
                     series: {
-//                        stacking: 'percent',
+                        //                        stacking: 'percent',
                         borderWidth: 0,
                         dataLabels: {
                             enabled: true,
@@ -225,7 +222,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 },
 
                 series: [{
-//                    name: "Brands",
+                    //                    name: "Brands",
                     colorByPoint: true,
                     data: [{
                         name: "Microsoft Internet Explorer",
@@ -252,7 +249,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                         y: 0.2,
                         drilldown: null
                     }]
-                }]
+                }],
+                credits: {
+                    enabled: false
+                },
             });
         }
     };
