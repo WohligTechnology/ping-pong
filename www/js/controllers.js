@@ -198,6 +198,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                     console.log(data);
                     if (data.value) {
                         MyServices.getFacebookImages().success(function (data) {
+					    console.log(data);
                             $ionicLoading.hide();
                             $scope.socialimages = [];
                             _.each(data, function (n) {
@@ -208,7 +209,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                             });
 
                             $scope.showimages = true;
-                            $scope.socialimagesrow = partitionarray($scope.socialimages, 3);
+//                            $scope.socialimagesrow = partitionarray($scope.socialimages, 3);
                         });
                     } else {
                         $ionicLoading.hide();
@@ -256,7 +257,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.showloading = true;
 
         if (!$.jStorage.get("user")) {
-            $location.url("/login");
+//            $location.url("/login");
         }
 
         MyServices.getallpolls().success(function (data, status) {
@@ -367,6 +368,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 .controller('LoginCtrl', function ($scope, $location, $interval, MyServices) {
 
     $.jStorage.flush();
+	
+	MyServices.logout().success(function(data, status){
+		
+	});
 
     var authenticatesuccess = function (data, status) {
         console.log(data);
