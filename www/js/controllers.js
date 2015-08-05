@@ -254,7 +254,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.showloading = true;
 
         MyServices.getallpolls().success(function (data, status) {
-            console.log(data);
             if (data.queryresult.length == 0) {
                 $scope.showloading = false;
                 $scope.shownoappliance = true;
@@ -263,10 +262,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                 $scope.feeds = data.queryresult;
                 _.each($scope.feeds, function (n) {
                     n.isfav = "";
-				 if(n.images)
-				 n.images = n.images.split(',');
+                    if (n.images)
+                        n.images = n.images.split(',');
                 })
             }
+            console.log(data);
         });
 
         $ionicPopover.fromTemplateUrl('templates/popover.html', {
@@ -343,11 +343,17 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }
 
         $scope.markasfav = function (feed) {
+            console.log(feed);
             if (feed.isfav == "") {
                 feed.isfav = "favactive";
             } else {
                 feed.isfav = "";
             }
+            MyServices.addtofavourites(feed.id).success(
+                function (data, status) {
+                    console.log(data);
+                }
+            )
         };
 
     })
@@ -367,7 +373,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         };
     };
 
-//    MyServices.authenticate().success(authenticatesuccess);
+    //    MyServices.authenticate().success(authenticatesuccess);
 
     var checktwitter = function (data, status) {
         if (data != "false") {
@@ -486,16 +492,16 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     };
 })
 
-.controller('AccountCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal ,MyServices) {
+.controller('AccountCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
 
     //get user
     $scope.user = $.jStorage.get("user");
     $scope.isfavactive = false;
-MyServices.getalluserpoll().success(function(data, status){
-	console.log(data);
-	$scope.feeds = data.queryresult;
-});
-	
+    MyServices.getalluserpoll().success(function (data, status) {
+        console.log(data);
+        $scope.feeds = data.queryresult;
+    });
+
     $scope.settings = {
         enableFriends: true
     };
@@ -518,38 +524,38 @@ MyServices.getalluserpoll().success(function(data, status){
         $scope.popover.remove();
     });
 
-	//
-	//    $scope.feeds = [{
-	//        id: 1,
-	//        name: "Justin Taylor",
-	//        nameat: "@JustinGraphitas",
-	//        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-	//        more: false,
-	//        height: 0,
-	//        isfav: "",
-	//        series: [{
-	//            name: 'Jane',
-	//            data: [1, 0, 4]
-	//        }, {
-	//            name: 'John',
-	//            data: [5, 7, 3]
-	//        }]
-	//    }, {
-	//        id: 2,
-	//        name: "Other",
-	//        nameat: "@JustinGraphitas",
-	//        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-	//        more: false,
-	//        height: 0,
-	//        isfav: "",
-	//        series: [{
-	//            name: 'Jane',
-	//            data: [1, 0, 4]
-	//        }, {
-	//            name: 'John',
-	//            data: [5, 7, 3]
-	//        }]
-	//    }];
+    //
+    //    $scope.feeds = [{
+    //        id: 1,
+    //        name: "Justin Taylor",
+    //        nameat: "@JustinGraphitas",
+    //        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
+    //        more: false,
+    //        height: 0,
+    //        isfav: "",
+    //        series: [{
+    //            name: 'Jane',
+    //            data: [1, 0, 4]
+    //        }, {
+    //            name: 'John',
+    //            data: [5, 7, 3]
+    //        }]
+    //    }, {
+    //        id: 2,
+    //        name: "Other",
+    //        nameat: "@JustinGraphitas",
+    //        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
+    //        more: false,
+    //        height: 0,
+    //        isfav: "",
+    //        series: [{
+    //            name: 'Jane',
+    //            data: [1, 0, 4]
+    //        }, {
+    //            name: 'John',
+    //            data: [5, 7, 3]
+    //        }]
+    //    }];
     $scope.changemore = function (feed, index) {
         var indexno = index;
         var idtomove = "more";

@@ -4,15 +4,15 @@ var adminurl = adminbase + "index.php/json/";
 var adminhauth = adminbase + "index.php/hauth/";
 
 angular.module('starter.services', [])
-    .factory('MyServices', function($http) {
+    .factory('MyServices', function ($http) {
         return {
-            all: function() {
+            all: function () {
                 return chats;
             },
-            remove: function(chat) {
+            remove: function (chat) {
                 chats.splice(chats.indexOf(chat), 1);
             },
-            get: function(chatId) {
+            get: function (chatId) {
                 for (var i = 0; i < chats.length; i++) {
                     if (chats[i].id === parseInt(chatId)) {
                         return chats[i];
@@ -20,7 +20,7 @@ angular.module('starter.services', [])
                 }
                 return null;
             },
-            checkLogin: function(type) {
+            checkLogin: function (type) {
                 //		   return $http.get(adminhauth + "checkLogin?type="+type);
                 return $http({
                     url: adminhauth + 'checkLogin',
@@ -30,46 +30,57 @@ angular.module('starter.services', [])
                     }
                 });
             },
-            getFacebookImages: function() {
+            getFacebookImages: function () {
 
                 return $http.get(adminhauth + "getFacebookImages");
             },
-            getInstagramImages: function() {
+            getInstagramImages: function () {
                 return $http.get(adminhauth + "getInstagramImages");
             },
-            getalluserpoll: function() {
+            getalluserpoll: function () {
                 return $http({
                     url: adminurl + 'getalluserpoll',
                     method: "POST",
                     data: {
-                                            'id': $.jStorage.get("user").id
-//                        'id': 14
+                        'id': $.jStorage.get("user").id
+                            //                        'id': 14
                     }
                 });
             },
-            getallpolls: function() {
+            getallpolls: function () {
                 return $http({
                     url: adminurl + 'getallpolls',
                     method: "POST"
                 });
             },
-            createAttach: function(poll) {
+            createAttach: function (poll) {
                 return $http({
                     url: adminurl + 'createuserpoll',
                     method: "POST",
                     data: poll
                 });
             },
-            authenticate: function() {
+            authenticate: function () {
                 return $http({
                     url: adminurl + 'authenticate',
                     method: "POST"
                 });
             },
-            checkLogid: function(logid) {
+            checkLogid: function (logid) {
                 return $http.get(adminhauth + "checkLogid", {
                     params: {
                         logid: logid
+                    }
+                });
+            },
+            addtofavourites: function (pollid) {
+                return $http({
+                    url: adminurl + 'createuserpollfavourites',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "pollid": pollid,
+                        "userid": $.jStorage.get("user").id
                     }
                 });
             }
