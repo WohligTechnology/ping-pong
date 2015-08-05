@@ -546,110 +546,96 @@ ion-list .more {
     margin-bottom: 3px;
 }
 }
-
 .bottomiconsnofloat {
     float: none;
     font-size: 17px;
-    color: #9aa9b3;
+    color: #9aa9b3 !important;
 }
-
+.bottomiconsnofloat:hover {
+    color: #9aa9b3 !important;
+}
 .incenter {
     text-align: center;
 }
-
 .nobordersearch {
     border: none;
     background-color: #9b59b6;
 }
-
 .item-input-wrapper {
     background-color: transparent;
     border: none;
 }
-
 .makeittransparent {
     background-color: transparent;
     padding-top: 0;
     border-bottom: none;
     padding-right: 0;
 }
-
 .searchwhite::-webkit-input-placeholder {
     color: #fff;
 }
-
 .searchwhite {
     color: #fff !important;
 }
-
 .searchwhitebig {
     color: #fff !important;
     font-size: larger;
 }
-
 .searchitem {
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 14px;
 }
-
 .topone {
     margin-top: 1px;
 }
-
 .editbtns {
     font-size: 14.5px !important;
 }
-
 .editprofimg {
     left: 8px !important;
     width: 35px !important;
     height: 35px !important;
     border-radius: 0 !important;
 }
-
 .lesspadleft {
     padding: 7px 0px 4px 7px;
 }
-
 .inmiddle {
     vertical-align: 11px;
     font-size: 14px !important;
     font-weight: 500 !important;
     padding-left: 10px;
 }
-
 .editform {
     font-size: 14px;
     font-weight: 500;
 }
-
 .editformviolet {
     font-size: 14px !important;
     color: #9b59b6 !important;
 }
-
 .ontop {
     vertical-align: 20px;
     font-size: 14px !important;
     font-weight: 500 !important;
     padding-left: 10px;
 }
-
 .ontoplight {
     vertical-align: 20px;
     font-size: 14px !important;
 }
-
 .favactive {
     color: gold;
 }
-
 .no-connect h3 {
     text-align: center;
     width: 100%;
     color: #B9B9B9;
     padding-top: 50%;
+}
+.colorgrey {
+    color: #9aa9b3;
 }
 /*dhaval end*/
 /*Chintan Start*/

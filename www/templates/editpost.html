@@ -1,0 +1,43 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark bar-header" align-title="center">
+        <h1 class="title">Edit Attach</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeEdit();">Skip</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <!--       Description html-->
+        <label class="item item-input item-floating-label" ng-class="allvalidation5[0].validation">
+            <span class="input-label">Description</span>
+            <textarea rows="4" placeholder="Description" ng-model="poll.content"></textarea>
+        </label>
+
+        <!-- 	 uploadedimages html-->
+
+        <div class="productset">
+            <div class="imageset">
+                <ion-scroll direction="x">
+                    <div class="row">
+
+                        <div class="col col-33" ng-repeat="op in cameraimage">
+                            <a href="#/tab/home/categoriess/{{slider.link}}">
+                                <i class="ion-close-circled image-close"></i>
+                                <img src="{{op.image}}" class="full-image full-img">
+                                <!--                                <p class="royal productprice">{{op.text}}</p>-->
+                            </a>
+                        </div>
+                    </div>
+                </ion-scroll>
+            </div>
+        </div>
+
+        <div class="item-stacked-label">
+            <button class="button button-assertive button-small fullbutton button-full" ng-click="openUploadElements();"><i class="ion-android-upload upload"></i>
+            </button>
+        </div>
+
+        <div class="padding-horizontal" ng-click="createAttach()">
+            <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
+            <button class="button button-block button-outline button-attach">Edit &#38; Attach</button>
+        </div>
+    </ion-content>
