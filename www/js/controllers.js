@@ -472,26 +472,56 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 })
 
 .controller('DashDetailCtrl', function($scope, $stateParams, MyServices, $ionicPopover) {
-    //    $scope.chat = MyServices.get($stateParams.chatId);
-	console.log($stateParams.chatId);
-	MyServices.getsingleuserpoll($stateParams.chatId).success(function(data, status){
-		console.log(data);
-		$scope.feeds = data;
-	});
-	
-    $scope.feed = {
-        id: 1,
-        name: "Justin Taylor",
-        nameat: "@JustinGraphitas",
-        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-        more: false,
-        height: 0,
-        series: [{
-            name: 'Jane',
-            data: [1, 7, 4]
-        }]
-    };
 
+
+    $scope.feeds = [];
+    $scope.per = 0;
+    $scope.count = 0;
+
+
+    MyServices.getsingleuserpoll($stateParams.chatId).success(function(data, status) {
+        _.forEach(data.poll_options, function(n, key) {
+            $scope.count = $scope.count + parseInt(n.pollcount.count);
+        });
+
+        _.forEach(data.poll_options, function(n, key) {
+            $scope.per = (parseInt(n.pollcount.count) / $scope.count) * 100;
+
+            $scope.feeds.push({
+                name: n.text,
+                y: $scope.per
+            });
+        });
+        $scope.feeds2 = $scope.feeds;
+        console.log($scope.feeds);
+    });
+
+
+
+    $scope.feed = [{
+        "name": "Microsoft Internet Explorer",
+        "y": 96.33,
+
+    }, {
+        "name": "Chrome",
+        "y": 24.03,
+
+    }, {
+        "name": "Firefox",
+        "y": 10.38,
+
+    }, {
+        "name": "Safari",
+        "y": 4.77,
+
+    }, {
+        "name": "Opera",
+        "y": 0.91,
+
+    }, {
+        "name": "Proprietary or Undetectable",
+        "y": 0.2,
+    }];
     $ionicPopover.fromTemplateUrl('templates/popover.html', {
         scope: $scope
     }).then(function(popover) {

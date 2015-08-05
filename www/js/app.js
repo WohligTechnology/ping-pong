@@ -7,8 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function ($ionicPlatform, $cordovaStatusbar) {
-    $ionicPlatform.ready(function () {
+.run(function($ionicPlatform, $cordovaStatusbar) {
+    $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -25,7 +25,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
     $httpProvider.defaults.withCredentials = true;
     $ionicConfigProvider.tabs.position('bottom');
@@ -33,11 +33,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     $stateProvider
 
     // setup an abstract state for the tabs directive
-        .state('tab', {
-            url: '/tab',
-            abstract: true,
-            templateUrl: 'templates/tabs.html'
-        })
+    .state('tab', {
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
+    })
         .state('login', {
             url: '/login',
             templateUrl: 'templates/login.html',
@@ -101,8 +101,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 })
 
-.filter('time', function () {
-    return function (input) {
+.filter('time', function() {
+    return function(input) {
         var a = moment(input);
         var b = moment(new Date());
         //        return dif = b.diff(a, 'Months') + "s";
@@ -122,7 +122,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 
-.directive('barhighchart', function () {
+.directive('barhighchart', function() {
     return {
         restrict: 'EA',
         transclude: true,
@@ -130,62 +130,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             obj: "="
         },
         templateUrl: 'templates/directive/barhighchart.html',
-        link: function ($scope, element, attr) {
-            $element = $(element);
-
-            //                        $element.children('#container').highcharts({
-            //                            chart: {
-            //                                type: 'bar'
-            //                            },
-            //                            title: {
-            //                                text: 'Historic World Population by Region'
-            //                            },
-            //                            subtitle: {
-            //                                text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
-            //                            },
-            //                            xAxis: {
-            //                                categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
-            //                                title: {
-            //                                    text: null
-            //                                }
-            //                            },
-            //                            yAxis: {
-            //                                min: 0,
-            //                                title: {
-            //                                    text: 'Population (millions)',
-            //                                    align: 'high'
-            //                                },
-            //                                labels: {
-            //                                    overflow: 'justify'
-            //                                }
-            //                            },
-            //                            tooltip: {
-            //                                valueSuffix: ' millions'
-            //                            },
-            //                            plotOptions: {
-            //                                bar: {
-            //                                    dataLabels: {
-            //                                        enabled: true
-            //                                    }
-            //                                }
-            //                            },
-            //                            legend: {
-            //                                layout: 'vertical',
-            //                                align: 'right',
-            //                                verticalAlign: 'top',
-            //                                x: -40,
-            //                                y: 80,
-            //                                floating: true,
-            //                                borderWidth: 1,
-            //                                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
-            //                                shadow: true
-            //                            },
-            //                            credits: {
-            //                                enabled: false
-            //                            },
-            //                            series:$scope.obj 
-            //                        });
-
+        link: function($scope, element, attr) {
+            console.log($scope.obj);
+		   
+                $element = $(element);
             $element.children('#container').highcharts({
                 chart: {
                     type: 'bar'
@@ -224,36 +172,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 series: [{
                     //                    name: "Brands",
                     colorByPoint: true,
-                    data: [{
-                        name: "Microsoft Internet Explorer",
-                        y: 96.33,
-                        drilldown: "Microsoft Internet Explorer"
-                    }, {
-                        name: "Chrome",
-                        y: 24.03,
-                        drilldown: "Chrome"
-                    }, {
-                        name: "Firefox",
-                        y: 10.38,
-                        drilldown: "Firefox"
-                    }, {
-                        name: "Safari",
-                        y: 4.77,
-                        drilldown: "Safari"
-                    }, {
-                        name: "Opera",
-                        y: 0.91,
-                        drilldown: "Opera"
-                    }, {
-                        name: "Proprietary or Undetectable",
-                        y: 0.2,
-                        drilldown: null
-                    }]
+                    data: $scope.obj
                 }],
                 credits: {
                     enabled: false
                 },
             });
+		   
+		   
+            
         }
     };
 });

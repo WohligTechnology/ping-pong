@@ -41,7 +41,9 @@
             </ion-item>
             <div class="row">
                 <div class="col col-75">
-                    <barhighchart obj='feed.series'></barhighchart>
+				 <div class="team lefty" ng-style="{'width':prediction.team1percent+'%'}" ng-if="prediction.team1percent != '-1'">{{prediction.team1percent}}%</div>
+                <div class="team righty" ng-style="{'width':100-prediction.team1percent+'%'}" ng-if="prediction.team1percent != '-1'">{{100-prediction.team1percent}}%</div>
+<!--                    <barhighchart obj='feeds' code="feeds"></barhighchart>-->
                 </div>
                 <div class="col levelgraph">
                     <div class="row spaceout">

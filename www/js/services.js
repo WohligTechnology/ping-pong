@@ -3,6 +3,8 @@ var adminbase = "http://wohlig.co.in/attachbackend/";
 var adminurl = adminbase + "index.php/json/";
 var adminhauth = adminbase + "index.php/hauth/";
 
+var foods = [];
+
 angular.module('starter.services', [])
     .factory('MyServices', function ($http) {
         return {
@@ -87,6 +89,18 @@ angular.module('starter.services', [])
                     data: {
                         "pollid": pollid,
                         "userid": $.jStorage.get("user").id
+                    }
+                });
+            },
+            vote: function (option,poll) {
+                return $http({
+                    url: adminurl + 'createuserpollresponse',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "option": option,
+					"poll":poll,
+                        "user": $.jStorage.get("user").id
                     }
                 });
             },
