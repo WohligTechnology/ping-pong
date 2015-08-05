@@ -43,16 +43,10 @@
                 <div class="col col-75">
                     <div>
                         <div class="row">Vote your Choice</div>
-                        <div class="row spaceout">
-                            <div class="col col-25">Yes</div>
+                        <div class="row spaceout" ng-repeat="fed in feeds">
+                            <div class="col col-25">{{fed.name}}</div>
                             <div class="col col-75">
-                                <div class="team lefty" ng-style="{'width':'10%'}" ng-if="30 != '-1'"></div>
-                            </div>
-                        </div>
-                        <div class="row spaceout">
-                            <div class="col col-25">No</div>
-                            <div class="col col-75">
-                                <div class="team lefty" ng-style="{'width':'40%'}" ng-if="30 != '-1'"></div>
+                                <div class="team lefty" ng-style="{'width':fed.y}" ng-if="30 != '-1'"></div>
                             </div>
                         </div>
                     </div>

@@ -478,10 +478,12 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.per = 0;
     $scope.count = 0;
 	$scope.feeddetail = {};
-
-
+$scope.reloadFeeds = function(){
     MyServices.getsingleuserpoll($stateParams.chatId).success(function(data, status) {
 	    console.log(data);
+	    $scope.feeds = [];
+	    $scope.count = 0;
+    $scope.per = 0;
 	    $scope.feeddetail = data;
         _.forEach(data.poll_options, function(n, key) {
             $scope.count = $scope.count + parseInt(n.pollcount.count);
@@ -492,18 +494,24 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
             $scope.feeds.push({
                 name: n.text,
-                y: $scope.per
+                y: $scope.per+"%"
             });
         });
         $scope.feeds2 = $scope.feeds;
         console.log($scope.feeds);
     });
+}
+
+
+$scope.reloadFeeds();
 
 
 	$scope.voteMe = function(but){
 		console.log(but);
 		MyServices.vote(but.optionid,$stateParams.chatId).success(function(data, status){
 			console.log(data);
+			
+$scope.reloadFeeds();
 		});
 	}
 	
