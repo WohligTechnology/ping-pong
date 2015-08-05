@@ -241,9 +241,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             MyServices.createAttach($scope.poll).success(function (data, status) {
                 console.log(data);
                 $scope.closeCreate();
-			  window.location.reload();
+                window.location.reload();
                 $location.url("/tab/dash");
-			 
+
             });
         };
     })
@@ -254,6 +254,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.favactive = "";
         $scope.shownoappliance = false;
         $scope.showloading = true;
+
+        if (!$.jStorage.get("user")) {
+            $location.url("/login");
+        }
 
         MyServices.getallpolls().success(function (data, status) {
             if (data.queryresult.length == 0) {

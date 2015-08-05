@@ -50,7 +50,8 @@
     padding-bottom: 0px;
     padding-left: 0;
     margin-bottom: 0px;
-/*    border-bottom-width: 1px;*/
+    /*    border-bottom-width: 1px;*/
+    
     border-bottom-style: solid;
     border-bottom-color: #ccd6dd;
 }
@@ -112,9 +113,17 @@
     color: #9aa9b3;
 }
 
+.bottomicons:hover {
+    color: #9aa9b3;
+}
+
 .bottomiconsright {
     float: right;
     font-size: 25px;
+    color: #9aa9b3;
+}
+
+.bottomiconsright:hover {
     color: #9aa9b3;
 }
 
@@ -421,6 +430,10 @@ p.tweetcontent {
     color: #9aa9b3;
 }
 
+.moredot:hover {
+    color: #9aa9b3;
+}
+
 .removepadding {
     padding-right: 10px;
     padding-bottom: 0;
@@ -626,7 +639,7 @@ ion-list .more {
 }
 
 .favactive {
-    color: #804896;
+    color: gold;
 }
 
 .no-connect h3 {
