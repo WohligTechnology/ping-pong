@@ -10,22 +10,22 @@
                     <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
                     <p class="tweetcontent">{{feed.userpolldetail.content}}<a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                     </p>
-                    
-                    <div class="imageset">
-                            <ion-scroll direction="x">
-                                <div class="row">
 
-                                    <div class="col col-33" ng-repeat="op in feeds.poll_images">
-                                        <a href="#/tab/home/categoriess/{{slider.link}}">
-                                            <img src="img/{{op.image}}" class="full-image full-img">
-                                            <!--                                <p class="royal productprice">{{op.text}}</p>-->
-                                        </a>
-                                    </div>
+                    <div class="imageset">
+                        <ion-scroll direction="x">
+                            <div class="row">
+
+                                <div class="col col-33" ng-repeat="op in feeds.poll_images">
+                                    <a href="#/tab/home/categoriess/{{slider.link}}">
+                                        <img src="img/{{op.image}}" class="full-image full-img">
+                                        <!--                                <p class="royal productprice">{{op.text}}</p>-->
+                                    </a>
                                 </div>
-                            </ion-scroll>
-                        </div>
-                    
-<!--                    <img class="max80" ng-src="{{feed.image}}">-->
+                            </div>
+                        </ion-scroll>
+                    </div>
+
+                    <!--                    <img class="max80" ng-src="{{feed.image}}">-->
                     <div class="row nopadding">
                         <div class="col">
                             <button class="button button-icon ion-android-star bottomicons"></button>
@@ -41,9 +41,12 @@
             </ion-item>
             <div class="row">
                 <div class="col col-75">
-				 <div class="team lefty" ng-style="{'width':prediction.team1percent+'%'}" ng-if="prediction.team1percent != '-1'">{{prediction.team1percent}}%</div>
-                <div class="team righty" ng-style="{'width':100-prediction.team1percent+'%'}" ng-if="prediction.team1percent != '-1'">{{100-prediction.team1percent}}%</div>
-<!--                    <barhighchart obj='feeds' code="feeds"></barhighchart>-->
+                   <div>
+                   	<div class="team lefty" ng-style="{'width':66+'%'}" ng-if="66 != '-1'">{{66}}%</div>
+                    <div class="team righty" ng-style="{'width':100-66+'%'}" ng-if="66 != '-1'"></div>
+                   </div>
+                    
+                    <!--                    <barhighchart obj='feeds' code="feeds"></barhighchart>-->
                 </div>
                 <div class="col levelgraph">
                     <div class="row spaceout">
@@ -68,12 +71,12 @@
                     </div>
                 </div>
             </div>
-<!--
+            <!--
             <div class="col col-75">
                     <barhighchart obj='feeds.poll_options'></barhighchart>
                 </div>
 -->
-                
+
         </ion-list>
         <!--
         <nav mfb-menu position="br" effect="zoomin" label="hover here" active-icon="ion-edit" resting-icon="ion-plus-round" toggling-method="hover">
