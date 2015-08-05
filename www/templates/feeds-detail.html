@@ -2,20 +2,20 @@
     <ion-content>
         <ion-list class="avtar">
             <ion-item class="item-remove-animate item-avatar item-icon-right removeborder" type="item-text-wrap">
-                <img class="littlebig" ng-src="img/Personn.jpg">
+                <img class="littlebig" ng-src="{{feeddetail.userpolldetail.image}}">
                 <div class="contentright">
 
-                    <span class="namebold" ng-bind="feed.name"></span>
+                    <span class="namebold" ng-bind="feeddetail.userpolldetail.name"></span>
                     <span class="namegrey" ng-bind="feed.nameat"></span>
-                    <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
-                    <p class="tweetcontent">{{feed.userpolldetail.content}}<a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
+                    <span class="item-note"><i class="ion-ios-paper-outline"> {{feeddetail.userpolldetail.timestamp | time}}</i></span>
+                    <p class="tweetcontent">{{feeddetail.userpolldetail.content}}<a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                     </p>
 
                     <div class="imageset">
                         <ion-scroll direction="x">
                             <div class="row">
 
-                                <div class="col col-33" ng-repeat="op in feeds.poll_images">
+                                <div class="col col-33" ng-repeat="op in feeddetail.poll_images">
                                     <a href="#/tab/home/categoriess/{{slider.link}}">
                                         <img src="img/{{op.image}}" class="full-image full-img">
                                         <!--                                <p class="royal productprice">{{op.text}}</p>-->
@@ -42,30 +42,15 @@
             <div class="row">
                 <div class="col col-75">
                    <div>
-                   	<div class="team lefty" ng-style="{'width':66+'%'}" ng-if="66 != '-1'">{{66}}%</div>
-                    <div class="team righty" ng-style="{'width':100-66+'%'}" ng-if="66 != '-1'"></div>
+                   	<div class="team lefty" ng-style="{'width':30+'%'}" ng-if="30 != '-1'">{{30}}%</div>
+                    <div class="team righty" ng-style="{'width':100-30+'%'}" ng-if="30 != '-1'"></div>	
                    </div>
                     
                     <!--                    <barhighchart obj='feeds' code="feeds"></barhighchart>-->
                 </div>
                 <div class="col levelgraph">
-                    <div class="row spaceout">
-                        <button class="button button-small button-assertive fullbutton">
-                            Vote
-                        </button>
-                    </div>
-                    <div class="row spaceout">
-                        <button class="button button-small button-assertive fullbutton">
-                            Vote
-                        </button>
-                    </div>
-                    <div class="row spaceout">
-                        <button class="button button-small button-assertive fullbutton">
-                            Vote
-                        </button>
-                    </div>
-                    <div class="row spaceout">
-                        <button class="button button-small button-assertive fullbutton">
+                    <div class="row spaceout" ng-repeat="but in feeddetail.poll_options">
+                        <button class="button button-small button-assertive fullbutton" ng-click="voteMe(but)">
                             Vote
                         </button>
                     </div>

@@ -477,9 +477,12 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.feeds = [];
     $scope.per = 0;
     $scope.count = 0;
+	$scope.feeddetail = {};
 
 
     MyServices.getsingleuserpoll($stateParams.chatId).success(function(data, status) {
+	    console.log(data);
+	    $scope.feeddetail = data;
         _.forEach(data.poll_options, function(n, key) {
             $scope.count = $scope.count + parseInt(n.pollcount.count);
         });
@@ -497,6 +500,13 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     });
 
 
+	$scope.voteMe = function(but){
+		console.log(but);
+		MyServices.vote(but.optionid,$stateParams.chatId).success(function(data, status){
+			console.log(data);
+		});
+	}
+	
 
     $scope.feed = [{
         "name": "Microsoft Internet Explorer",
