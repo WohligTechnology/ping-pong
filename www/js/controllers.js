@@ -241,7 +241,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             MyServices.createAttach($scope.poll).success(function (data, status) {
                 console.log(data);
                 $scope.closeCreate();
+			  window.location.reload();
                 $location.url("/tab/dash");
+			 
             });
         };
     })
