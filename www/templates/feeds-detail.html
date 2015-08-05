@@ -41,15 +41,25 @@
             </ion-item>
             <div class="row">
                 <div class="col col-75">
-                   <div>
-                   	<div class="team lefty" ng-style="{'width':66+'%'}" ng-if="66 != '-1'">{{66}}%</div>
-                    <div class="team righty" ng-style="{'width':100-66+'%'}" ng-if="66 != '-1'"></div>
-                   </div>
-                    
+                    <div>
+                        <div class="row">Vote your Choice</div>
+                        <div class="row spaceout">
+                            <div class="col col-25">Yes</div>
+                            <div class="col col-75">
+                                <div class="team lefty" ng-style="{'width':'10%'}" ng-if="30 != '-1'"></div>
+                            </div>
+                        </div>
+                        <div class="row spaceout">
+                            <div class="col col-25">No</div>
+                            <div class="col col-75">
+                                <div class="team lefty" ng-style="{'width':'40%'}" ng-if="30 != '-1'"></div>
+                            </div>
+                        </div>
+                    </div>
                     <!--                    <barhighchart obj='feeds' code="feeds"></barhighchart>-->
                 </div>
-                <div class="col levelgraph">
-                    <div class="row spaceout">
+                <div class="col">
+                    <div class="row spaceoutmore">
                         <button class="button button-small button-assertive fullbutton">
                             Vote
                         </button>

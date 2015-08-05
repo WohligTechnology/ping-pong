@@ -396,9 +396,9 @@ a {
     color: #9B59B6 !important;
 }
 
-
 .team {
-    position: absolute;
+    /*    position: absolute;*/
+    
     bottom: 0;
     width: 100%;
     height: 20px;
@@ -412,19 +412,23 @@ a {
     transition: all 300ms ease;
     border: 1px solid #1c7ccc
 }
+
 .lefty {
     left: 0;
-    background: #1c7ccc
+    background: #9b59b6
 }
+
 .righty {
     right: 0;
     background: #fff;
     color: #1c7ccc
 }
+
 .fixtures a.item-content {
     padding: 0;
     height: 100%
 }
+
 .team-set+.team-set {
     margin-top: 10px
 }
@@ -569,6 +573,11 @@ ion-list .more {
 
 .spaceout {
     margin-top: 10px !important;
+}
+
+.spaceoutmore {
+    margin-top: 30px;
+    !important;
 }
 
 .fullbutton {
