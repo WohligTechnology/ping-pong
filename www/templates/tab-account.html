@@ -40,12 +40,12 @@
         </div>
 
         <div class="button-bar btn-soc">
-            <a class="button button-small active">Post</a>
-            <a class="button button-small">Media</a>
-            <a class="button button-small">Favorites</a>
+            <a class="button button-small" ng-click="changetab(1);" ng-class="{'active': tabvalue == 1}">Post</a>
+            <a class="button button-small" ng-click="changetab(2);" ng-class="{'active': tabvalue == 2}">Media</a>
+            <a class="button button-small" ng-click="changetab(3);" ng-class="{'active': tabvalue == 3}">Favorites</a>
         </div>
 
-        <ion-list class="avtar">
+        <ion-list class="avtar" ng-if="tabvalue == 1">
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
                 <img class="littlebig" ng-src="{{feed.image}}">
                 <div class="contentright">
@@ -74,6 +74,84 @@
                         </div>
                         <div class="col incenter">
                             <button class="button button-icon ion-android-delete bottomiconsnofloat"></button>
+                        </div>
+                        <div class="col">
+
+                            <button class="button button-icon ion-android-more-vertical moredot" ng-click="openPopover();"></button>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <ion-option-button class="nobordersearch" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+-->
+            </ion-item>
+        </ion-list>
+        <ion-list class="avtar" ng-if="tabvalue == 2">
+            <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
+                <img class="littlebig" ng-src="{{feed.image}}">
+                <div class="contentright">
+                    <div ng-click="opendetail(feed.id);">
+                        <span class="namebold" ng-bind="feed.name"></span>
+                        <span class="namegrey" ng-bind="feed.nameat"></span>
+                        <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
+                        <p class="tweetcontent">My blog post on "Designing for SEO" has just gone live @moz <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
+                        </p>
+                    </div>
+                    <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
+                        <div class="more-content">
+                            <barhighchart obj='feed'></barhighchart>
+                        </div>
+                    </div>
+                    <div class="row nopadding">
+                        <div class="col">
+                            <button class="button button-icon ion-chevron-down bottomiconsnofloat" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
+                        </div>
+                        <div class="col incenter">
+                            <button class="button button-icon ion-android-star bottomiconsnofloat {{feed.isfav}}" ng-click="markasfav(feed);"></button>
+                        </div>
+                        <div class="col incenter">
+                            <button class="button button-icon ion-android-share-alt bottomiconsnofloat"></button>
+                        </div>
+                        <div class="col">
+
+                            <button class="button button-icon ion-android-more-vertical moredot" ng-click="openPopover();"></button>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <ion-option-button class="nobordersearch" ng-click="remove(chat)">
+                    Delete
+                </ion-option-button>
+-->
+            </ion-item>
+        </ion-list>
+        <ion-list class="avtar" ng-if="tabvalue == 3">
+            <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in favouritefeeds">
+                <img class="littlebig" ng-src="{{feed.image}}">
+                <div class="contentright">
+                    <div ng-click="opendetail(feed.id);">
+                        <span class="namebold" ng-bind="feed.name"></span>
+                        <span class="namegrey" ng-bind="feed.nameat"></span>
+                        <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
+                        <p class="tweetcontent">{{feed.pollcontent}} <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
+                        </p>
+                    </div>
+                    <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
+                        <div class="more-content">
+                            <barhighchart obj='feed'></barhighchart>
+                        </div>
+                    </div>
+                    <div class="row nopadding">
+                        <div class="col">
+                            <button class="button button-icon ion-chevron-down bottomiconsnofloat" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
+                        </div>
+                        <div class="col incenter">
+                            <button class="button button-icon ion-android-star bottomiconsnofloat {{feed.isfav}}" ng-click="markasfav(feed);"></button>
+                        </div>
+                        <div class="col incenter">
+                            <button class="button button-icon ion-android-share-alt bottomiconsnofloat"></button>
                         </div>
                         <div class="col">
 

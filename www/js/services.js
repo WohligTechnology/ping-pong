@@ -83,6 +83,16 @@ angular.module('starter.services', [])
                         "userid": $.jStorage.get("user").id
                     }
                 });
+            },
+            getuserfavourites: function (pollid) {
+                return $http({
+                    url: adminurl + 'getfavouriteuserpolls',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "userid": $.jStorage.get("user").id
+                    }
+                });
             }
         };
     });

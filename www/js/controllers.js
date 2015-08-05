@@ -472,7 +472,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 })
 
 .controller('DashDetailCtrl', function ($scope, $stateParams, MyServices, $ionicPopover) {
-    $scope.chat = MyServices.get($stateParams.chatId);
+//    $scope.chat = MyServices.get($stateParams.chatId);
     $scope.feed = {
         id: 1,
         name: "Justin Taylor",
@@ -508,6 +508,17 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     //get user
     $scope.user = $.jStorage.get("user");
     $scope.isfavactive = false;
+    $scope.favouritefeeds={};
+    $scope.tabvalue = 1;
+    $scope.changetab = function (tab) {
+        $scope.tabvalue = tab;
+    }
+    
+    MyServices.getuserfavourites().success(function(data,status){
+                console.log(data);
+                $scope.favouritefeeds=data.queryresult;                              
+            })
+
     MyServices.getalluserpoll().success(function (data, status) {
         console.log(data);
         $scope.feeds = data.queryresult;
