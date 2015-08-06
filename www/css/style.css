@@ -696,6 +696,12 @@ ion-list .more {
     background-color: #9659b6;
     border-color: #9659b6;
 }
+.mahesh {
+    background-color: #9B59B6;
+}
+.mahesh:before {
+    color: #fff !important;
+}
 /*dhaval end*/
 /*Chintan Start*/
 
