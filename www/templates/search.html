@@ -23,14 +23,8 @@
     </ion-header-bar>
     <ion-content>
         <ul class="list topone">
-            <li class="item searchitem">
-                Jagruti
-            </li>
-            <li class="item searchitem">
-                Dhaval
-            </li>
-            <li class="item searchitem">
-                Vignesh
+            <li class="item searchitem" ng-click="toUser(user.id)" ng-repeat="user in users">
+			  {{user.name}}
             </li>
         </ul>
     </ion-content>

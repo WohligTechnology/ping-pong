@@ -5,6 +5,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 .controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera, MyServices, $ionicLoading, $interval) {
         $scope.changestatus = 0;
         $scope.demo = "testing";
+	$scope.users = [];
         var options = {
             maximumImagesCount: 9,
             width: 800,
@@ -62,7 +63,16 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             $scope.oModal2.hide();
         }
 
+	   
+	   MyServices.getalluser().success(function(data, status){
+		   $scope.users = data;
+	   });
 
+	   $scope.toUser = function(user){
+		   $scope.closeSearch();
+		   $location.url("/tab/dash-userdetails/" + user);
+	   }
+	   
         //	open upload $ionicPopover element
 
         $ionicPopover.fromTemplateUrl('templates/upload.html', {
@@ -259,7 +269,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         if (!$.jStorage.get("user")) {
             $location.url("/login");
         }
-
+	
         MyServices.getallpolls().success(function (data, status) {
             if (data.queryresult.length == 0) {
                 $scope.showloading = false;

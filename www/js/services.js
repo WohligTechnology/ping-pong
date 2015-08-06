@@ -45,6 +45,9 @@ angular.module('starter.services', [])
             getsingleuserpoll: function (id) {
                 return $http.get(adminurl + "getsingleuserpoll?id="+id);
             },
+            getalluser: function () {
+                return $http.get(adminurl + "getalluser");
+            },
             getalluserpoll: function () {
                 return $http({
                     url: adminurl + 'getalluserpoll',
@@ -78,7 +81,10 @@ angular.module('starter.services', [])
             getallpolls: function () {
                 return $http({
                     url: adminurl + 'getallpolls',
-                    method: "POST"
+                    method: "POST",
+				 data: {
+					 id: $.jStorage.get("user").id
+				 }
                 });
             },
             createAttach: function (poll) {
@@ -147,11 +153,11 @@ angular.module('starter.services', [])
             },
             getuserfollowfavourites: function (user) {
                 return $http({
-                    url: adminurl + 'getfavouriteuserpolls',
+                    url: adminurl + 'getalluserpoll',
                     withCredentials: true,
                     method: "POST",
                     data: {
-                        "userid": user
+                        "id": user
                     }
                 });
             }
