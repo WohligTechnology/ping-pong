@@ -52,8 +52,8 @@
                     <div ng-click="opendetail(feed.id);">
                         <span class="namebold" ng-bind="feed.name"></span>
                         <span class="namegrey" ng-bind="feed.nameat"></span>
-                        <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
-                        <p class="tweetcontent">My blog post on "Designing for SEO" has just gone live @moz <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
+                        <span class="item-note"><i class="ion-ios-paper-outline"> {{feed.timestamp | time}}</i></span>
+                        <p class="tweetcontent">{{feed.content}}<a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                         </p>
                         <!--                        <img class="max80" ng-src="{{feed.image}}">-->
                     </div>

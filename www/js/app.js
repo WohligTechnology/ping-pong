@@ -152,7 +152,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         },
         templateUrl: 'templates/directive/barhighchart.html',
         link: function ($scope, element, attr) {
-            console.log($scope.obj);
+//            console.log($scope.obj);
 
             $element = $(element);
             $element.children('#container').highcharts({

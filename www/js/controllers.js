@@ -270,6 +270,8 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             $location.url("/login");
         }
 	
+	$scope.pollRefresh = function(){
+		$scope.feeds = {};
         MyServices.getallpolls().success(function (data, status) {
             if (data.queryresult.length == 0) {
                 $scope.showloading = false;
@@ -284,8 +286,12 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                 })
             }
             console.log(data);
+		   $scope.$broadcast('scroll.refreshComplete');
         });
+		
+	}
 
+	$scope.pollRefresh();
         $ionicPopover.fromTemplateUrl('templates/popover.html', {
             scope: $scope
         }).then(function (popover) {
@@ -744,6 +750,8 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.changetab = function (tab) {
         $scope.tabvalue = tab;
     }
+    
+    $scope.reloadFunction = function(){
 
     MyServices.userdetails($stateParams.userid).success(function (data, status) {
         console.log(data);
@@ -755,6 +763,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         console.log(data);
         $scope.feeds = data.queryresult;
     });
+	    $scope.$broadcast('scroll.refreshComplete');
+    }
+    
+     $scope.reloadFunction();
 
     $scope.followme = function () {
         if ($scope.follow == false) {
