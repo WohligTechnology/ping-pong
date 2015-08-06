@@ -2,7 +2,7 @@
     <ion-content>
         <ion-list class="avtar">
             <ion-item class="item-remove-animate item-avatar item-icon-right removeborder" type="item-text-wrap">
-                <img class="littlebig" ng-src="{{feeddetail.userpolldetail.image | profileimag}}">
+                <img class="littlebig" ng-src="{{feeddetail.userpolldetail.image | profileimag}}" ng-click="openuserdetail(feeddetail.user)">
                 <div class="contentright">
 
                     <span class="namebold" ng-bind="feeddetail.userpolldetail.name"></span>
