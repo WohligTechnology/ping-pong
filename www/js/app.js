@@ -122,6 +122,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 
+.filter('profileimag', function() {
+    return function(input) {
+        if (input == "" || !input) {
+            return "img/Coffee.jpg";
+        } else {
+            return input;
+        }
+    };
+})
+
 .directive('barhighchart', function() {
     return {
         restrict: 'EA',

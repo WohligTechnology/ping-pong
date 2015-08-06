@@ -2,7 +2,7 @@
     <ion-content>
         <ion-list class="avtar">
             <ion-item class="item-remove-animate item-avatar item-icon-right removeborder" type="item-text-wrap">
-                <img class="littlebig" ng-src="{{feeddetail.userpolldetail.image}}">
+                <img class="littlebig" ng-src="{{feeddetail.userpolldetail.image | profileimag}}">
                 <div class="contentright">
 
                     <span class="namebold" ng-bind="feeddetail.userpolldetail.name"></span>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </ion-item>
-            <div class="row">
+            <div class="row" ng-if="feeds != ''">
                 <div class="col col-75">
                     <div>
                         <div class="row">Vote your Choice</div>

@@ -8,7 +8,7 @@
                 <h3>Loading...</h3>
             </div>
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
-                <img class="littlebig" ng-src="{{feed.image}}">
+                <img class="littlebig" ng-src="{{feed.image | profileimag}}">
                 <div class="contentright">
                     <div ng-click="opendetail(feed.id);">
                         <span class="namebold" ng-bind="feed.name"></span>
