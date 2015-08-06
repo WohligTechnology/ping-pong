@@ -7,15 +7,17 @@
             <div class="col col-33">
                 <div class="prf-img">
                     <img class="proimage" src="{{user.image}}">
+<!--                    <img class="proimage" src="img/blue-album.jpg">-->
+<!--                    <p class="editimage">Edit</p>-->
                     <p class="prf-name">jagruti patil</p>
                     <p class="prf-username">@{{user.name}}</p>
                 </div>
             </div>
             <div class="col">
                 <div class="prf-func">
-                    <div class="gearup">
-                        <button class="button icon ion-person-add border-radius people"></button>
-                        <button class="button icon ion-person-stalker border-radius people mahesh"></button>
+                    <div class="gearup" ng-click="followme()">
+                        <button class="button icon ion-person-add border-radius people" ng-if="!follow"></button>
+                        <button class="button icon ion-person-stalker border-radius people mahesh" ng-if="follow"></button>
                     </div>
                 </div>
             </div>
@@ -58,7 +60,7 @@
                     </div>
                     <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
                         <div class="more-content">
-                            <barhighchart obj='feed'></barhighchart>
+<!--                            <barhighchart obj='feed'></barhighchart>-->
                         </div>
                     </div>
                     <div class="row nopadding">

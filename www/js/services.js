@@ -55,6 +55,26 @@ angular.module('starter.services', [])
                     }
                 });
             },
+            userfollow: function (userfollowed) {
+                return $http({
+                    url: adminurl + 'userfollow',
+                    method: "POST",
+                    data: {
+                        'user': $.jStorage.get("user").id,
+                        'userfollowed': userfollowed
+                    }
+                });
+            },
+            userunfollow: function (userfollowed) {
+                return $http({
+                    url: adminurl + 'userunfollow',
+                    method: "POST",
+                    data: {
+                        'user': $.jStorage.get("user").id,
+                        'userfollowed': userfollowed
+                    }
+                });
+            },
             getallpolls: function () {
                 return $http({
                     url: adminurl + 'getallpolls',
@@ -92,6 +112,17 @@ angular.module('starter.services', [])
                     }
                 });
             },
+            userdetails: function (pollid) {
+                return $http({
+                    url: adminurl + 'userdetails',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "followid": pollid,
+                        "userid": $.jStorage.get("user").id
+                    }
+                });
+            },
             vote: function (option,poll) {
                 return $http({
                     url: adminurl + 'createuserpollresponse',
@@ -104,13 +135,23 @@ angular.module('starter.services', [])
                     }
                 });
             },
-            getuserfavourites: function (pollid) {
+            getuserfavourites: function () {
                 return $http({
                     url: adminurl + 'getfavouriteuserpolls',
                     withCredentials: true,
                     method: "POST",
                     data: {
                         "userid": $.jStorage.get("user").id
+                    }
+                });
+            },
+            getuserfollowfavourites: function (user) {
+                return $http({
+                    url: adminurl + 'getfavouriteuserpolls',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "userid": user
                     }
                 });
             }

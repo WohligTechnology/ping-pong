@@ -718,4 +718,45 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 })
 
-.controller('UserDetailCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {})
+.controller('UserDetailCtrl', function ($scope, $ionicPopover, $stateParams, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
+	
+//	$scope.follow = false;
+	$scope.feeds = [];
+	$scope.user = [];
+	
+//	MyServices.
+	
+	
+    $scope.tabvalue = 1;
+    $scope.changetab = function (tab) {
+        $scope.tabvalue = tab;
+    }
+	
+    MyServices.userdetails($stateParams.userid).success(function(data, status){
+	    console.log(data);
+	    $scope.user = data;
+	    $scope.follow = data.isfollowed;
+    });
+	
+	MyServices.getuserfollowfavourites($stateParams.userid).success(function(data, status){
+		console.log(data);
+		$scope.feeds = data.queryresult;
+	});
+
+	$scope.followme = function(){
+		if($scope.follow == false){
+		MyServices.userfollow($stateParams.userid).success(function(data, status){
+			console.log(data);
+			$scope.follow = true;
+			
+		});
+		}else{
+			MyServices.userunfollow($stateParams.userid).success(function(data, status){
+			console.log(data);
+			$scope.follow = false;
+			
+		});
+		}
+	}
+	
+})
