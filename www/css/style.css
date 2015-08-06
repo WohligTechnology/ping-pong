@@ -596,6 +596,12 @@ ion-list .more {
 .bottomiconsnofloat:hover {
     color: #9aa9b3 !important;
 }
+.bottomicons.favactive:hover {
+    color: gold !important;
+}
+.bottomiconsnofloat.favactive:hover {
+    color: gold !important;
+}
 .incenter {
     text-align: center;
 }

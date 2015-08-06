@@ -40,9 +40,9 @@
         </div>
 
         <div class="button-bar btn-soc">
-            <a class="button button-small" ng-click="changetab(1);" ng-class="{'active': tabvalue == 1}">Post</a>
-            <a class="button button-small" ng-click="changetab(2);" ng-class="{'active': tabvalue == 2}">Media</a>
-            <a class="button button-small" ng-click="changetab(3);" ng-class="{'active': tabvalue == 3}">Favorites</a>
+            <a class="button button-light button-small" ng-click="changetab(1);" ng-class="{'active': tabvalue == 1}">Post</a>
+            <a class="button button-light button-small" ng-click="changetab(2);" ng-class="{'active': tabvalue == 2}">Media</a>
+            <a class="button button-light button-small" ng-click="changetab(3);" ng-class="{'active': tabvalue == 3}">Favorites</a>
         </div>
 
         <ion-list class="avtar" ng-if="tabvalue == 1">
@@ -72,9 +72,11 @@
                         <div class="col incenter">
                             <button class="button button-icon ion-android-delete bottomiconsnofloat colorgrey"></button>
                         </div>
+<!--
                         <div class="col incenter">
                             <button class="button button-icon ion-android-share-alt bottomiconsnofloat colorgrey"></button>
                         </div>
+-->
                         <div class="col">
 
                             <button class="button button-icon ion-android-more-vertical moredot" ng-click="openPopover();"></button>
@@ -114,7 +116,7 @@
                             <button class="button button-icon ion-chevron-down bottomiconsnofloat colorgrey" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
                         </div>
                         <div class="col incenter">
-                            <button class="button button-icon ion-android-star bottomiconsnofloat colorgrey {{feed.isfav}}" ng-click="markasfav(feed);"></button>
+                            <button class="button button-icon ion-android-star bottomiconsnofloat favactive"></button>
                         </div>
                         <div class="col incenter">
                             <button class="button button-icon ion-android-share-alt bottomiconsnofloat colorgrey"></button>
