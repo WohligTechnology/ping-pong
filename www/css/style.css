@@ -107,6 +107,10 @@
     padding-left: 90px;
 }
 
+.nobordertoggle {
+    border: none;
+}
+
 .bottomicons {
     float: left;
     font-size: 17px;
@@ -687,6 +691,10 @@ ion-list .more {
 }
 .godown {
     padding-top: 25px;
+}
+.toggle input:checked + .track {
+    background-color: #9659b6;
+    border-color: #9659b6;
 }
 /*dhaval end*/
 /*Chintan Start*/
