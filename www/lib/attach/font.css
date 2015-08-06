@@ -9,7 +9,7 @@
 	font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icom-"], [class*=" icom-"] {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -23,6 +23,6 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-AttachLogo:before {
+.icom-AttachLogo:before {
 	content: "\e600";
 }

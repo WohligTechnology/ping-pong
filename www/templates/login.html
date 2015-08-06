@@ -1,25 +1,15 @@
 <ion-view>
     <ion-content>
-        <div class="text-center">
-<i class="icon-AttachLogo home-logo positive"></i>
+       
+        <div class="padding-some text-center">
+            <i class="icom-AttachLogo home-logo positive"></i>
         </div>
-        <div class="row">
-            <div class="col nopadding">
-                <button class="button button-icon ion-social-instagram-outline button-block instaclor logfont" ng-click="instalogin();">
-                </button>
-            </div>
-            <div class="col nopadding">
-                <button class="button button-icon ion-social-twitter button-block twicolor logfont" ng-click="twitterlogin();">
-                </button>
-            </div>
-            <div class="col nopadding">
-                <button class="button button-icon ion-social-googleplus button-block googcolor logfont" ng-click="googlelogin();">
-                </button>
-            </div>
-            <div class="col nopadding">
-                <button class="button button-icon ion-social-facebook button-block fbcolor logfont" ng-click="fblogin();">
-                </button>
-            </div>
+        <div class="padding">
+            <button class="button ion-social-facebook button-block fbcolor icon-left" ng-click="fblogin();">Login with Facebook</button>
+            <button class="button ion-social-twitter button-block twicolor icon-left" ng-click="twitterlogin();">Login with Twitter</button>
+            <button class="button ion-social-googleplus button-block googcolor icon-left" ng-click="googlelogin();">Login with Google+</button>
+            <button class="button ion-social-instagram-outline button-block instaclor icon-left" ng-click="instalogin();">Login with Instagram</button>
         </div>
+
     </ion-content>
 </ion-view>
