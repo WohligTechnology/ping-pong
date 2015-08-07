@@ -273,6 +273,12 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.pollRefresh = function() {
             $scope.feeds = {};
             MyServices.getallpolls().success(function(data, status) {
+
+
+                
+
+
+
                 if (data.queryresult.length == 0) {
                     $scope.showloading = false;
                     $scope.shownoappliance = true;
@@ -280,6 +286,45 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                     $scope.showloading = false;
                     $scope.feeds = data.queryresult;
                     _.each($scope.feeds, function(n) {
+
+
+                         MyServices.getsingleuserpoll(n.id).success(function(data, status) {
+            console.log(data);
+            n.feeds = [];
+            $scope.count = 0;
+            $scope.per = 0;
+            $scope.feeddetail = data;
+            _.forEach(data.poll_options, function(m, key) {
+                $scope.count = $scope.count + parseInt(m.pollcount.count);
+            });
+
+            _.forEach(data.poll_options, function(l, key) {
+                $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
+                console.log($scope.per);
+                if (l.pollcount.count == 0) {
+                    n.feeds.push({
+                        name: l.text,
+                        y: 0 + "%"
+                    });
+                } else {
+                    n.feeds.push({
+                        name: l.text,
+                        y: $scope.per + "%"
+                    });
+                }
+            });
+            $scope.feeds2 = $scope.feeds;
+            console.log($scope.feeds);
+        });
+
+
+
+
+
+
+
+
+
                         if (n.favid != 0) {
                             n.isfav = "favactive";
                         } else {
@@ -601,6 +646,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.favouritefeeds = {};
     $scope.tabvalue = 1;
     $scope.loading = true;
+    $scope.loadingpost = true;
     $scope.changetab = function(tab) {
         $scope.tabvalue = tab;
     }
@@ -610,13 +656,20 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         console.log(data);
 	    if(data.queryresult==''){
 		    $scope.loading = false;
-	    }
+	    }else{
+            $scope.loading = NaN;
+        }
         $scope.favouritefeeds = data.queryresult;
     })
 
     MyServices.getalluserpoll().success(function(data, status) {
         console.log("my polls");
         console.log(data);
+        if(data.queryresult==''){
+            $scope.loadingpost = false;
+        }else{
+            $scope.loadingpost = NaN;
+        }
         $scope.feeds = data.queryresult;
     });
 
