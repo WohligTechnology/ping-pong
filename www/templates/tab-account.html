@@ -7,8 +7,8 @@
             <div class="col col-33">
                 <div class="prf-img">
                     <img class="proimage" src="{{user.image}}">
-                    <p class="prf-name">jagruti patil</p>
-                    <p class="prf-username">@{{user.name}}</p>
+                    <p class="prf-name">{{user.name}}</p>
+                    <!--                    <p class="prf-username">@{{user.name}}</p>-->
                 </div>
             </div>
             <div class="col">
@@ -46,6 +46,12 @@
         </div>
 
         <ion-list class="avtar" ng-if="tabvalue == 1">
+            <div class="no-connect-user">
+                <h3>No Post yet...</h3>
+            </div>
+            <div class="no-connect">
+                <h3>Loading...</h3>
+            </div>
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
                 <img class="littlebig" ng-src="{{feed.image}}">
                 <div class="contentright">
@@ -72,7 +78,7 @@
                         <div class="col incenter">
                             <button class="button button-icon ion-android-delete bottomiconsnofloat colorgrey"></button>
                         </div>
-<!--
+                        <!--
                         <div class="col incenter">
                             <button class="button button-icon ion-android-share-alt bottomiconsnofloat colorgrey"></button>
                         </div>
@@ -96,6 +102,13 @@
             </ion-item>
         </ion-list>
         <ion-list class="avtar" ng-if="tabvalue == 3">
+
+            <div class="no-connect-user" ng-show="loading=='false'">
+                <h3>No Favourites yet...</h3>
+            </div>
+            <div class="no-connect" ng-show="loading=='true'">
+                <h3>Loading...</h3>
+            </div>
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in favouritefeeds">
                 <img class="littlebig" ng-src="{{feed.image}}">
                 <div class="contentright">

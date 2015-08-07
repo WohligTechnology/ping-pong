@@ -1,5 +1,5 @@
-var adminbase = "http://wohlig.co.in/attachbackend/";
-//var adminbase = "http://localhost/attachbackend/";
+//var adminbase = "http://wohlig.co.in/attachbackend/";
+var adminbase = "http://localhost/attachbackend/";
 var adminurl = adminbase + "index.php/json/";
 var adminhauth = adminbase + "index.php/hauth/";
 
@@ -115,6 +115,16 @@ angular.module('starter.services', [])
                     data: {
                         "pollid": pollid,
                         "userid": $.jStorage.get("user").id
+                    }
+                });
+            },
+            deletefavourites: function (favid) {
+                return $http({
+                    url: adminurl + 'deletefavourite',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "id": favid,
                     }
                 });
             },
