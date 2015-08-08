@@ -1,0 +1,20 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-dark bar-header" align-title="center">
+        <h1 class="title">Comment</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeComment();">Skip</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <!--       Description html-->
+        <label class="item item-input item-floating-label" ng-class="allvalidation[0].validation">
+            <span class="input-label">Comment</span>
+            <textarea rows="5" placeholder="Yout Comment Here..." ng-model="comment.content"></textarea>
+        </label>
+
+        <div class="padding-horizontal" ng-click="createComment()">
+            <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
+            <button class="button button-block button-outline button-attach">Create Comment</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

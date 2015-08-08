@@ -49,6 +49,12 @@
         </div>
 
         <ion-list class="avtar" ng-if="tabvalue == 1">
+            <div class="no-connect-user" ng-show="loadingpost==false">
+                <h3>No Post yet...</h3>
+            </div>
+            <div class="no-connect" ng-show="loadingpost==true">
+                <h3>Loading...</h3>
+            </div>
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
                 <img class="littlebig" ng-src="{{feed.image}}">
                 <div class="contentright">
@@ -99,6 +105,12 @@
             </ion-item>
         </ion-list>
         <ion-list class="avtar" ng-if="tabvalue == 3">
+            <div class="no-connect-user" ng-show="loading==false">
+                <h3>No Post yet...</h3>
+            </div>
+            <div class="no-connect" ng-show="loading==true">
+                <h3>Loading...</h3>
+            </div>
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in favouritefeeds">
                 <img class="littlebig" ng-src="{{feed.image}}">
                 <div class="contentright">

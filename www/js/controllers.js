@@ -65,7 +65,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 
     MyServices.getalluser().success(function(data, status) {
-        $scope.users = data;
+        console.log("all users");
+        console.log(data);
+        $scope.users = data.queryresult;
     });
 
     $scope.toUser = function(user) {
@@ -274,11 +276,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             $scope.feeds = {};
             MyServices.getallpolls().success(function(data, status) {
 
-
-                
-
-
-
                 if (data.queryresult.length == 0) {
                     $scope.showloading = false;
                     $scope.shownoappliance = true;
@@ -288,41 +285,31 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                     _.each($scope.feeds, function(n) {
 
 
-                         MyServices.getsingleuserpoll(n.id).success(function(data, status) {
-            console.log(data);
-            n.feeds = [];
-            $scope.count = 0;
-            $scope.per = 0;
-            $scope.feeddetail = data;
-            _.forEach(data.poll_options, function(m, key) {
-                $scope.count = $scope.count + parseInt(m.pollcount.count);
-            });
+                        MyServices.getsingleuserpoll(n.id).success(function(data, status) {
+                            n.feeds = [];
+                            $scope.count = 0;
+                            $scope.per = 0;
+                            $scope.feeddetail = data;
+                            _.forEach(data.poll_options, function(m, key) {
+                                $scope.count = $scope.count + parseInt(m.pollcount.count);
+                            });
 
-            _.forEach(data.poll_options, function(l, key) {
-                $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
-                console.log($scope.per);
-                if (l.pollcount.count == 0) {
-                    n.feeds.push({
-                        name: l.text,
-                        y: 0 + "%"
-                    });
-                } else {
-                    n.feeds.push({
-                        name: l.text,
-                        y: $scope.per + "%"
-                    });
-                }
-            });
-            $scope.feeds2 = $scope.feeds;
-            console.log($scope.feeds);
-        });
-
-
-
-
-
-
-
+                            _.forEach(data.poll_options, function(l, key) {
+                                $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
+                                if (l.pollcount.count == 0) {
+                                    n.feeds.push({
+                                        name: l.text,
+                                        y: 0 + "%"
+                                    });
+                                } else {
+                                    n.feeds.push({
+                                        name: l.text,
+                                        y: $scope.per + "%"
+                                    });
+                                }
+                            });
+                            $scope.feeds2 = $scope.feeds;
+                        });
 
 
                         if (n.favid != 0) {
@@ -361,35 +348,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         });
 
 
-        //        $scope.feeds = [{
-        //            id: 1,
-        //            name: "Justin Taylor",
-        //            nameat: "@JustinGraphitas",
-        //            image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-        //            more: false,
-        //            height: 0,
-        //            series: [{
-        //                name: 'Jane',
-        //                data: [1, 0, 4]
-        //            }, {
-        //                name: 'John',
-        //                data: [5, 7, 3]
-        //            }]
-        //        }, {
-        //            id: 2,
-        //            name: "Other",
-        //            nameat: "@JustinGraphitas",
-        //            image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-        //            more: false,
-        //            height: 0,
-        //            series: [{
-        //                name: 'Jane',
-        //                data: [1, 0, 4]
-        //            }, {
-        //                name: 'John',
-        //                data: [5, 7, 3]
-        //            }]
-        //        }];
         $scope.changemore = function(feed, index) {
             var indexno = index;
             var idtomove = "more";
@@ -420,7 +378,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }
 
         $scope.markasfav = function(feed) {
-            console.log(feed);
             if (feed.isfav == "") {
                 feed.isfav = "favactive";
                 MyServices.addtofavourites(feed.id).success(
@@ -547,8 +504,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 .controller('DashDetailCtrl', function($scope, $stateParams, MyServices, $ionicPopover) {
 
-
+    $scope.comment = {};
+    $scope.comments = [];
     $scope.feeds = [];
+    $scope.loading = true;
     $scope.per = 0;
     $scope.count = 0;
     $scope.feeddetail = {};
@@ -581,6 +540,18 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             $scope.feeds2 = $scope.feeds;
             console.log($scope.feeds);
         });
+
+        MyServices.getalluserpollcomment($stateParams.chatId).success(function(data, status) {
+            console.log("comments");
+            console.log(data);
+            if (data.queryresult == '') {
+                $scope.loading = false;
+            } else {
+                $scope.loading = NaN;
+                $scope.comments = data.queryresult;
+            }
+
+        });
     }
 
 
@@ -599,6 +570,29 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         });
     }
 
+
+    //create comment
+    $scope.allvalidation = [];
+    $scope.createComment = function() {
+        $scope.comment.userpoll = $stateParams.chatId;
+        $scope.allvalidation = [{
+            field: $scope.comment.content,
+            validation: ""
+        }];
+
+        var check = formvalidation($scope.allvalidation);
+
+        if (check) {
+
+            MyServices.createuserpollcomment($scope.comment).success(function(data, status) {
+                console.log(data);
+                if (data) {
+                    $scope.comment.hide();
+                    $scope.reloadFeeds();
+                };
+            });
+        }
+    }
 
     $scope.feed = [{
         "name": "Microsoft Internet Explorer",
@@ -636,6 +630,20 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.closePopover = function() {
         $scope.popover.hide();
     };
+
+
+    $ionicPopover.fromTemplateUrl('templates/comment.html', {
+        scope: $scope
+    }).then(function(comment) {
+        $scope.comment = comment;
+    });
+
+    $scope.openComment = function($event) {
+        $scope.comment.show($event);
+    };
+    $scope.closeComment = function() {
+        $scope.comment.hide();
+    };
 })
 
 .controller('AccountCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
@@ -650,17 +658,17 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.changetab = function(tab) {
         $scope.tabvalue = tab;
     }
-    
-    MyServices.getprofiledetails().success(function(data, status){
-	    $scope.user = data;
+
+    MyServices.getprofiledetails().success(function(data, status) {
+        $scope.user = data;
     });
 
     MyServices.getuserfavourites().success(function(data, status) {
         console.log("favorites");
         console.log(data);
-	    if(data.queryresult==''){
-		    $scope.loading = false;
-	    }else{
+        if (data.queryresult == '') {
+            $scope.loading = false;
+        } else {
             $scope.loading = NaN;
         }
         $scope.favouritefeeds = data.queryresult;
@@ -669,9 +677,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     MyServices.getalluserpoll().success(function(data, status) {
         console.log("my polls");
         console.log(data);
-        if(data.queryresult==''){
+        if (data.queryresult == '') {
             $scope.loadingpost = false;
-        }else{
+        } else {
             $scope.loadingpost = NaN;
         }
         $scope.feeds = data.queryresult;
@@ -821,6 +829,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     //	$scope.follow = false;
     $scope.feeds = [];
     $scope.user = [];
+    $scope.loading = true;
 
     //	MyServices.
 
@@ -835,6 +844,13 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         MyServices.userdetails($stateParams.userid).success(function(data, status) {
             console.log(data);
             $scope.user = data;
+
+            if (data.queryresult == '') {
+                $scope.loading = false;
+            } else {
+                $scope.loading = NaN;
+            }
+
             $scope.follow = data.isfollowed;
         });
 

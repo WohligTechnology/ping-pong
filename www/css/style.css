@@ -201,6 +201,13 @@
 /*vignesh*/
 /*jagruti css*/
 
+
+.ng-invalid.ng-dirty {
+    /*   border-bottom: 1px solid red !important;*/
+    
+    border-bottom: 2px solid red !important;
+}
+
 .imageclass {
     background: url('../img/images.jpg')no-repeat;
     background-size: cover;

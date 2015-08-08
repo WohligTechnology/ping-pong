@@ -1,5 +1,6 @@
 <ion-view view-title="Detail">
     <ion-content>
+    <!-- <ion-refresher pulling-text = "Refresh Polls" on-refresh = "reloadFeeds()"> -->
         <ion-list class="avtar">
             <ion-item class="item-remove-animate item-avatar item-icon-right removeborder" type="item-text-wrap">
                 <img class="littlebig" ng-src="{{feeddetail.userpolldetail.image | profileimag}}" ng-click="openuserdetail(feeddetail.user)">
@@ -32,6 +33,10 @@
                         </div>
                         <div class="col">
                             <button class="button button-icon ion-android-share-alt bottomicons"></button>
+                        </div>
+
+                        <div class="col" ng-click="openComment()">
+                            <button class="button button-icon ion-social-twitch bottomicons"></button>
                         </div>
                         <div class="col" ng-click="openPopover();">
                             <button class="button button-icon ion-android-more-vertical moredot"></button>
@@ -68,6 +73,36 @@
 -->
 
         </ion-list>
+
+        <div class="item item-divider"> {{comments.length}} Comments</div>
+
+        <div class="no-connect-user" ng-show="loading==false">
+                <h3>No Post yet...</h3>
+            </div>
+            <div class="no-connect" ng-show="loading==true">
+                <h3>Loading...</h3>
+            </div>
+
+        <ion-list class="avtar">
+            <ion-item class="item-remove-animate item-avatar item-icon-right removeborder" type="item-text-wrap" ng-repeat="comment in comments">
+                <img class="littlebig" ng-src="{{comment.image | profileimag}}" ng-click="openuserdetail(feeddetail.user)">
+                <div class="contentright">
+
+                    <span class="namebold" ng-bind="comment.name"></span>
+                    <span class="item-note"><i class="ion-ios-paper-outline"> {{comment.timestamp | time}}</i></span>
+                    <p class="tweetcontent">{{comment.content}}
+                    </p>
+                    <div class="row nopadding">
+                        <div class="col">
+                            <button class="button button-icon ion-reply bottomicons"></button>
+                        </div>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+
+
         <!--
         <nav mfb-menu position="br" effect="zoomin" label="hover here" active-icon="ion-edit" resting-icon="ion-plus-round" toggling-method="hover">
             <button mfb-button icon="paper-airplane" label="menu item"></button>

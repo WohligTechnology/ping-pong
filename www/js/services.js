@@ -61,6 +61,26 @@ angular.module('starter.services', [])
                     }
                 });
             },
+            createuserpollcomment: function (comment) {
+                return $http({
+                    url: adminurl + 'createuserpollcomment',
+                    method: "POST",
+                    data: {
+                        'user': $.jStorage.get("user").id,
+                        'userpoll': comment.userpoll,
+                        'content': comment.content
+                    }
+                });
+            },
+            getalluserpollcomment: function (pollid) {
+                return $http({
+                    url: adminurl + 'getalluserpollcomment',
+                    method: "POST",
+                    data: {
+                        'id': pollid
+                    }
+                });
+            },
             userfollow: function (userfollowed) {
                 return $http({
                     url: adminurl + 'userfollow',

@@ -23,7 +23,8 @@
     </ion-header-bar>
     <ion-content>
         <ul class="list topone">
-            <li class="item searchitem" ng-click="toUser(user.id)" ng-repeat="user in users">
+            <li class="item searchitem item-avatar item-icon-right" ng-click="toUser(user.id)" ng-repeat="user in users">
+                <img src="{{user.image | profileimag}}">
 			  {{user.name}}
             </li>
         </ul>
