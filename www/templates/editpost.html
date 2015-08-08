@@ -1,6 +1,6 @@
 <ion-modal-view>
     <ion-header-bar class="bar-dark bar-header" align-title="center">
-        <h1 class="title">Edit Attach</h1>
+        <h1 class="title">Edit Attach{{demo}}</h1>
         <div class="buttons">
             <button class="button button-clear" ng-click="closeEdit();">Skip</button>
         </div>
@@ -9,7 +9,7 @@
         <!--       Description html-->
         <label class="item item-input item-floating-label" ng-class="allvalidation5[0].validation">
             <span class="input-label">Description</span>
-            <textarea rows="4" placeholder="Description" ng-model="poll.content"></textarea>
+            <textarea rows="4" placeholder="Description" ng-model="editFeed.content"></textarea>
         </label>
 
         <!-- 	 uploadedimages html-->
@@ -38,13 +38,13 @@
         <div class="item item-toggle nobordertoggle">
             Enable Voting?
             <label class="toggle">
-                <input type="checkbox">
+                <input type="checkbox" ng-model="editFeed.shouldhaveoption">
                 <div class="track">
                     <div class="handle"></div>
                 </div>
             </label>
         </div>
-        <div class="padding-horizontal" ng-click="createAttach()">
+        <div class="padding-horizontal" ng-click="editAttach(editFeed)">
             <!--            <button class="button button-balanced button-block button-outline">Save &#38; Add More</button>-->
             <button class="button button-block button-outline button-attach">Edit &#38; Attach</button>
         </div>

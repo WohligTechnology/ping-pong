@@ -61,19 +61,26 @@
                         <span class="item-note"><i class="ion-ios-paper-outline"> {{feed.timestamp | time}}</i></span>
                         <p class="tweetcontent">{{feed.content}}<a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                         </p>
-                        <!--                        <img class="max80" ng-src="{{feed.image}}">-->
                     </div>
-                    <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
+                   <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
                         <div class="more-content">
-                            <barhighchart obj='feed'></barhighchart>
+                            <div class="row">Vote your Choice</div>
+                            <div class="row spaceout" ng-repeat="fed in feed.feeds">
+                                <div class="col col-25">{{fed.name}}</div>
+                                <div class="col col-75">
+                                    <div class="team lefty" ng-style="{'width':fed.y}" ng-if="30 != '-1'"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                   
+                   
                     <div class="row nopadding">
                         <div class="col">
-                            <button class="button button-icon ion-chevron-down bottomiconsnofloat colorgrey" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
+                            <button class="button button-icon ion-chevron-down bottomiconsnofloat colorgrey" ng-class="{'rotate':feed.more}" ng-click="changemorepost(feed,$index);"></button>
                         </div>
                         <div class="col incenter">
-                            <button class="button button-icon ion-edit bottomiconsnofloat colorgrey" ng-click="openEdit();"></button>
+                            <button class="button button-icon ion-edit bottomiconsnofloat colorgrey" ng-click="openEdit(feed);"></button>
                         </div>
                         <div class="col incenter">
                             <button class="button button-icon ion-android-delete bottomiconsnofloat colorgrey"></button>
@@ -119,11 +126,19 @@
                         <p class="tweetcontent">{{feed.pollcontent}} <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                         </p>
                     </div>
-                    <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
+				 
+                   	<div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
                         <div class="more-content">
-                            <barhighchart obj='feed'></barhighchart>
+                            <div class="row">Vote your Choice</div>
+                            <div class="row spaceout" ng-repeat="fed in feed.feed">
+                                <div class="col col-25">{{fed.name}}</div>
+                                <div class="col col-75">
+                                    <div class="team lefty" ng-style="{'width':fed.y}" ng-if="30 != '-1'"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                   
                     <div class="row nopadding">
                         <div class="col">
                             <button class="button button-icon ion-chevron-down bottomiconsnofloat colorgrey" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>

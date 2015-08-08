@@ -126,6 +126,13 @@ angular.module('starter.services', [])
                     data: poll
                 });
             },
+            editPoll: function (poll) {
+                return $http({
+                    url: adminurl + 'edituserpoll',
+                    method: "POST",
+                    data: poll
+                });
+            },
             authenticate: function () {
                 return $http({
                     url: adminurl + 'authenticate',

@@ -245,14 +245,16 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     $scope.poll = {};
     $scope.createAttach = function() {
-        console.log($scope.poll);
         $scope.poll.id = $.jStorage.get("user").id;
         $scope.poll.images = $scope.cameraimage;
-
+        if ($scope.poll.status == false) {
+            $scope.poll.status = 0;
+        } else {
+            $scope.poll.status = 1;
+        }
         $scope.options.pop();
         $scope.poll.options = $scope.options;
         MyServices.createAttach($scope.poll).success(function(data, status) {
-            console.log(data);
             $scope.closeCreate();
             window.location.reload();
             $location.url("/tab/dash");
@@ -376,10 +378,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.openuserdetail = function(uid) {
             if (uid == $.jStorage.get("user").id) {
                 $location.url("/tab/account");
-            }else{
+            } else {
                 $location.url("/tab/dash-userdetails/" + uid);
             }
-            
+
         }
 
         $scope.markasfav = function(feed) {
@@ -654,14 +656,33 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 .controller('AccountCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
 
     //get user
-    $scope.user = [];;
+    $scope.user = [];
+    $scope.demo = "testing";
     $scope.isfavactive = false;
     $scope.favouritefeeds = {};
     $scope.tabvalue = 1;
     $scope.loading = true;
     $scope.loadingpost = true;
+    $scope.editFeed = [];
     $scope.changetab = function(tab) {
         $scope.tabvalue = tab;
+    }
+
+    $scope.editAttach = function(editFeed) {
+        console.log(editFeed);
+        editFeed.iduserid = $.jStorage.get("user").id;
+        editFeed.pollid = editFeed.id;
+        //        editFeed.images = $scope.cameraimage;
+        if (editFeed.shouldhaveoption == false) {
+            editFeed.status = 0;
+        } else {
+            editFeed.status = 1;
+        }
+        MyServices.editPoll(editFeed).success(function(data, status) {
+            $scope.comment.hide();
+            window.location.reload();
+
+        });
     }
 
     MyServices.getprofiledetails().success(function(data, status) {
@@ -669,8 +690,8 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     });
 
     MyServices.getuserfavourites().success(function(data, status) {
-        console.log("favorites");
-        console.log(data);
+        //        console.log("favorites");
+        //        console.log(data);
         if (data.queryresult == '') {
             $scope.loading = false;
         } else {
@@ -680,14 +701,54 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     })
 
     MyServices.getalluserpoll().success(function(data, status) {
-        console.log("my polls");
-        console.log(data);
+
+        _.each(data.queryresult, function(n) {
+
+
+            MyServices.getsingleuserpoll(n.id).success(function(data, status) {
+                n.feeds = [];
+                $scope.count = 0;
+                $scope.per = 0;
+                $scope.feeddetail = data;
+                _.forEach(data.poll_options, function(m, key) {
+                    $scope.count = $scope.count + parseInt(m.pollcount.count);
+                });
+
+                _.forEach(data.poll_options, function(l, key) {
+                    $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
+                    if (l.pollcount.count == 0) {
+                        n.feeds.push({
+                            name: l.text,
+                            y: 0 + "%"
+                        });
+                    } else {
+                        n.feeds.push({
+                            name: l.text,
+                            y: $scope.per + "%"
+                        });
+                    }
+                });
+                $scope.feeds2 = $scope.feeds;
+            });
+
+
+            if (n.favid != 0) {
+                n.isfav = "favactive";
+            } else {
+                n.isfav = "";
+            }
+            if (n.images != null) {
+                n.images = n.images.split(',');
+            }
+        })
+
         if (data.queryresult == '') {
             $scope.loadingpost = false;
         } else {
             $scope.loadingpost = NaN;
         }
         $scope.feeds = data.queryresult;
+	    console.log($scope.feeds);
     });
 
     $scope.settings = {
@@ -713,60 +774,35 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     });
 
     //	open create attach modal
-    $ionicModal.fromTemplateUrl('templates/editpost.html', {
-        id: '3',
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.oModal3 = modal;
+    $ionicPopover.fromTemplateUrl('templates/editpost.html', {
+        scope: $scope
+    }).then(function(comment) {
+        $scope.comment = comment;
     });
 
-    $scope.openEdit = function() {
-        $scope.oModal3.show();
+    $scope.openEdit = function(feed) {
+
+        $scope.comment.show();
+        console.log(feed);
+        $scope.editFeed = feed;
+        if (feed.shouldhaveoption == 1) {
+            $scope.editFeed.shouldhaveoption = true;
+        } else {
+            $scope.editFeed.shouldhaveoption = false;
+        }
+        $.jStorage.set("feed", $scope.editFeed);
     }
 
     $scope.closeEdit = function() {
-        $scope.oModal3.hide();
+        $scope.comment.hide();
     }
 
-    //
-    //    $scope.feeds = [{
-    //        id: 1,
-    //        name: "Justin Taylor",
-    //        nameat: "@JustinGraphitas",
-    //        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-    //        more: false,
-    //        height: 0,
-    //        isfav: "",
-    //        series: [{
-    //            name: 'Jane',
-    //            data: [1, 0, 4]
-    //        }, {
-    //            name: 'John',
-    //            data: [5, 7, 3]
-    //        }]
-    //    }, {
-    //        id: 2,
-    //        name: "Other",
-    //        nameat: "@JustinGraphitas",
-    //        image: "img/Spring-Lamb.-Image-shot-2-011.jpg",
-    //        more: false,
-    //        height: 0,
-    //        isfav: "",
-    //        series: [{
-    //            name: 'Jane',
-    //            data: [1, 0, 4]
-    //        }, {
-    //            name: 'John',
-    //            data: [5, 7, 3]
-    //        }]
-    //    }];
-    $scope.changemore = function(feed, index) {
+    $scope.changemorepost = function(feed, index) {
         var indexno = index;
         var idtomove = "more";
         feed.more = !feed.more;
         if (feed.more) {
-            var height = $("ion-item").eq(indexno).children(".contentright").children(".more").children(".more-content").height();
+            var height = $("ion-item").eq(indexno).children('.item-content').children(".contentright").children(".more").children(".more-content").height();
             feed.height = height;
             console.log(height);
         } else {
@@ -863,25 +899,25 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
         MyServices.getotheruserpoll($stateParams.userid).success(function(data, status) {
             console.log(data);
-             if (data.queryresult == '') {
+            if (data.queryresult == '') {
                 $scope.loadingpost = false;
             } else {
                 $scope.loadingpost = NaN;
                 $scope.feeds = data.queryresult;
             }
-            
+
         });
 
 
         MyServices.getotheruserfavourites($stateParams.userid).success(function(data, status) {
             console.log(data);
-             if (data.queryresult == '') {
+            if (data.queryresult == '') {
                 $scope.loading = false;
             } else {
                 $scope.loading = NaN;
                 $scope.favouritefeeds = data.queryresult;
             }
-            
+
         });
 
         $scope.$broadcast('scroll.refreshComplete');
