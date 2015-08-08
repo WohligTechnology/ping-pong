@@ -48,6 +48,9 @@ angular.module('starter.services', [])
             getalluser: function () {
                 return $http.get(adminurl + "getalluser");
             },
+            getprofiledetails: function () {
+                return $http.get(adminurl + "getprofiledetails?id="+$.jStorage.get("user").id);
+            },
             getalluserpoll: function () {
                 return $http({
                     url: adminurl + 'getalluserpoll',

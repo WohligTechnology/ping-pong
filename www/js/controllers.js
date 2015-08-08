@@ -641,7 +641,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 .controller('AccountCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
 
     //get user
-    $scope.user = $.jStorage.get("user");
+    $scope.user = [];;
     $scope.isfavactive = false;
     $scope.favouritefeeds = {};
     $scope.tabvalue = 1;
@@ -650,6 +650,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.changetab = function(tab) {
         $scope.tabvalue = tab;
     }
+    
+    MyServices.getprofiledetails().success(function(data, status){
+	    $scope.user = data;
+    });
 
     MyServices.getuserfavourites().success(function(data, status) {
         console.log("favorites");
