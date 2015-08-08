@@ -32,10 +32,10 @@
         </div>
         <div class="row">
             <div class="col geardown pullright">
-                <span>8</span><i>Following</i>
+                <span>{{user.following.following}}</span><i>Following</i>
             </div>
             <div class="col geardown pullright">
-                <span>14</span><i>Followers</i>
+                <span>{{user.followed.followed}}</span><i>Followers</i>
             </div>
             <div class="col geardown pullright">
                 <span>231</span><i>Shares</i>
@@ -75,12 +75,12 @@
                         <div class="col">
                             <button class="button button-icon ion-chevron-down bottomiconsnofloat colorgrey" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
                         </div>
-                        <div class="col incenter">
+                        <!-- <div class="col incenter">
                             <button class="button button-icon ion-edit bottomiconsnofloat colorgrey" ng-click="openEdit();"></button>
                         </div>
                         <div class="col incenter">
                             <button class="button button-icon ion-android-delete bottomiconsnofloat colorgrey"></button>
-                        </div>
+                        </div> -->
 <!--
                         <div class="col incenter">
                             <button class="button button-icon ion-android-share-alt bottomiconsnofloat colorgrey"></button>

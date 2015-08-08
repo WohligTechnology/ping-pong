@@ -61,6 +61,15 @@ angular.module('starter.services', [])
                     }
                 });
             },
+            getotheruserpoll: function (id) {
+                return $http({
+                    url: adminurl + 'getalluserpoll',
+                    method: "POST",
+                    data: {
+                        'id': id
+                    }
+                });
+            },
             createuserpollcomment: function (comment) {
                 return $http({
                     url: adminurl + 'createuserpollcomment',
@@ -184,9 +193,9 @@ angular.module('starter.services', [])
                     }
                 });
             },
-            getuserfollowfavourites: function (user) {
+            getotheruserfavourites: function (user) {
                 return $http({
-                    url: adminurl + 'getalluserpoll',
+                    url: adminurl + 'getfavouriteuserpolls',
                     withCredentials: true,
                     method: "POST",
                     data: {

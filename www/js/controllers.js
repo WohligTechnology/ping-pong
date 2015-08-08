@@ -374,7 +374,12 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }
 
         $scope.openuserdetail = function(uid) {
-            $location.url("/tab/dash-userdetails/" + uid);
+            if (uid == $.jStorage.get("user").id) {
+                $location.url("/tab/account");
+            }else{
+                $location.url("/tab/dash-userdetails/" + uid);
+            }
+            
         }
 
         $scope.markasfav = function(feed) {
@@ -828,8 +833,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     //	$scope.follow = false;
     $scope.feeds = [];
+    $scope.favouritefeeds = [];
     $scope.user = [];
     $scope.loading = true;
+    $scope.loadingpost = true;
 
     //	MyServices.
 
@@ -854,10 +861,29 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             $scope.follow = data.isfollowed;
         });
 
-        MyServices.getuserfollowfavourites($stateParams.userid).success(function(data, status) {
+        MyServices.getotheruserpoll($stateParams.userid).success(function(data, status) {
             console.log(data);
-            $scope.feeds = data.queryresult;
+             if (data.queryresult == '') {
+                $scope.loadingpost = false;
+            } else {
+                $scope.loadingpost = NaN;
+                $scope.feeds = data.queryresult;
+            }
+            
         });
+
+
+        MyServices.getotheruserfavourites($stateParams.userid).success(function(data, status) {
+            console.log(data);
+             if (data.queryresult == '') {
+                $scope.loading = false;
+            } else {
+                $scope.loading = NaN;
+                $scope.favouritefeeds = data.queryresult;
+            }
+            
+        });
+
         $scope.$broadcast('scroll.refreshComplete');
     }
 
