@@ -647,9 +647,13 @@ ion-modal-view.animate-if.social-modal {
 .home-logo {
     font-size: 80px;
     text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+    display: block;
+    padding-bottom: 15%;
 }
 .padding-some {
-    padding-top: 35%;
+    position: absolute;
+    bottom: 248px;
+    width: 100%;
 }
 .login-bg {
     background-image: url('../img/login-back.jpg');
