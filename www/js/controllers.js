@@ -244,6 +244,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 
     $scope.poll = {};
+    $scope.poll.status = true;
     $scope.createAttach = function () {
         $scope.poll.id = $.jStorage.get("user").id;
         $scope.poll.images = $scope.cameraimage;
@@ -675,6 +676,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.loading = true;
     $scope.loadingpost = true;
     $scope.editFeed = [];
+    $scope.editProf = {};
     $scope.changetab = function (tab) {
         $scope.tabvalue = tab;
     }
@@ -697,6 +699,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     MyServices.getprofiledetails().success(function (data, status) {
         $scope.user = data;
+        $scope.editProf = data;
     });
 
     MyServices.getuserfavourites().success(function (data, status) {
@@ -836,6 +839,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     $scope.closeEditProfile = function () {
         $scope.oModal1.hide();
+    }
+
+    $scope.saveProfile = function (profile) {
+        console.log(profile);
+        $scope.closeEditProfile();
     }
 
     $scope.markasfav = function (feed) {
