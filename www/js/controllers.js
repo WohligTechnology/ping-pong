@@ -6,6 +6,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.changestatus = 0;
     $scope.demo = "testing";
     $scope.users = [];
+    $scope.pageno = 1;
+    $scope.keepscrolling = true;
+    $scope.search = {};
+    $scope.search.text = '';
     var options = {
         maximumImagesCount: 9,
         width: 800,
@@ -64,11 +68,44 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     }
 
 
-    MyServices.getalluser().success(function(data, status) {
-        console.log("all users");
-        console.log(data);
-        $scope.users = data.queryresult;
-    });
+
+    $scope.loadUser = function(pageno, search) {
+        console.log("calling tring tring");
+        if ($scope.search.text != "") {
+            MyServices.getalluser(pageno, search).success(function(data, status) {
+
+                if (data.queryresult.length == 0) {
+                    $scope.keepscrolling = false;
+                } else {
+				 $scope.keepscrolling = true;
+                    _.each(data.queryresult, function(n) {
+                        $scope.users.push(n);
+                    });
+
+                }
+            });
+        }else{
+		   $scope.keepscrolling = false;
+	   }
+	    $scope.$broadcast('scroll.infiniteScrollComplete');
+    }
+
+    $scope.onSearchChange = function(search) {
+        console.log(search);
+        console.log($scope.pageno);
+        $scope.users = [];
+        $scope.pageno = 1;
+        $scope.loadUser(1, search.text);
+
+    }
+
+
+
+    $scope.loadMoreUsers = function() {
+        console.log("in load more");
+        $scope.loadUser(++$scope.pageno, $scope.search.text);
+
+    }
 
     $scope.toUser = function(user) {
         $scope.closeSearch();
@@ -280,10 +317,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     }
 
     $scope.pollRefresh = function(page) {
-	    console.log(page);
-	    if(page == 1){
-		    $scope.feeds = [];
-	    }
+        if (page == 1) {
+            $scope.feeds = [];
+        }
         MyServices.getallpolls(page).success(function(data, status) {
 
             if (data.queryresult.length == 0 && $scope.feeds.length == 0) {
@@ -309,7 +345,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 
             }
-            console.log(data);
             $scope.$broadcast('scroll.infiniteScrollComplete');
             $scope.$broadcast('scroll.refreshComplete');
         });

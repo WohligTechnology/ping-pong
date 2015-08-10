@@ -12,7 +12,7 @@
             <label class="item-input-wrapper">
 
                 <i class="icon ion-ios-search-strong placeholder-icon searchwhitebig"></i>
-                <input class="searchwhite" type="search" placeholder="Search">
+                <input class="searchwhite" type="search" ng-change="onSearchChange(search)" ng-model="search.text" placeholder="Search">
 
 
             </label>
@@ -28,4 +28,8 @@
 			  {{user.name}}
             </li>
         </ul>
+        
+        <ion-infinite-scroll on-infinite="loadMoreUsers()" ng-if="keepscrolling" distance="25%">
+        </ion-infinite-scroll>
     </ion-content>
+</ion-modal-view>

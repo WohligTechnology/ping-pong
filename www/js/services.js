@@ -46,8 +46,8 @@ angular.module('starter.services', [])
             getsingleuserpoll: function (id) {
                 return $http.get(adminurl + "getsingleuserpoll?id=" + id);
             },
-            getalluser: function () {
-                return $http.get(adminurl + "getalluser");
+            getalluser: function (pageno,search) {
+                return $http.get(adminurl + "getalluser?pageno=" + pageno + "&search=" + search);
             },
             getprofiledetails: function () {
                 return $http.get(adminurl + "getprofiledetails?id=" + $.jStorage.get("user").id);
