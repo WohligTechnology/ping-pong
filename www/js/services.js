@@ -204,6 +204,19 @@ angular.module('starter.services', [])
                         "userid": user
                     }
                 });
+            },
+            editprofile: function (profile) {
+                return $http({
+                    url: adminurl + 'editprofile',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "id": $.jStorage.get("user").id,
+                        "name": profile.name,
+                        "location": profile.address,
+                        "website": profile.website
+                    }
+                });
             }
         };
     });

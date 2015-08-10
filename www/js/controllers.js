@@ -843,7 +843,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     $scope.saveProfile = function (profile) {
         console.log(profile);
-        $scope.closeEditProfile();
+        MyServices.editprofile(profile, function (data, status) {
+            console.log(data);
+            $scope.closeEditProfile();
+        })
     }
 
     $scope.markasfav = function (feed) {
