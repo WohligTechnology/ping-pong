@@ -1,6 +1,6 @@
 <ion-view view-title="Detail">
     <ion-content>
-    <!-- <ion-refresher pulling-text = "Refresh Polls" on-refresh = "reloadFeeds()"> -->
+        <!-- <ion-refresher pulling-text = "Refresh Polls" on-refresh = "reloadFeeds()"> -->
         <ion-list class="avtar">
             <ion-item class="item-remove-animate item-avatar item-icon-right removeborder" type="item-text-wrap">
                 <img class="littlebig" ng-src="{{feeddetail.userpolldetail.image | profileimag}}" ng-click="openuserdetail(feeddetail.user)">
@@ -58,7 +58,7 @@
                     <!--                    <barhighchart obj='feeds' code="feeds"></barhighchart>-->
                 </div>
 
-                <div class="col godown">
+                <div class="col godown" ng-if="feeddetail.userpolldetail.shouldhaveoption=='1'">
                     <div class="row spaceout" ng-repeat="but in feeddetail.poll_options">
                         <button class="button button-small button-assertive fullbutton" ng-click="voteMe(but)">
                             Vote
@@ -77,11 +77,11 @@
         <div class="item item-divider"> {{comments.length}} Comments</div>
 
         <div class="no-connect-user" ng-show="loading==false">
-                <h3>No Post yet...</h3>
-            </div>
-            <div class="no-connect" ng-show="loading==true">
-                <h3>Loading...</h3>
-            </div>
+            <h3>No Post yet...</h3>
+        </div>
+        <div class="no-connect" ng-show="loading==true">
+            <h3>Loading...</h3>
+        </div>
 
         <ion-list class="avtar">
             <ion-item class="item-remove-animate item-avatar item-icon-right removeborder" type="item-text-wrap" ng-repeat="comment in comments">
