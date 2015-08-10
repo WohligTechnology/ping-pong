@@ -2,7 +2,7 @@ var optid = 2;
 //var ref = 0;
 angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.services'])
 
-.controller('AppCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera, MyServices, $ionicLoading, $interval) {
+.controller('AppCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, $cordovaImagePicker, $cordovaFileTransfer, $cordovaCamera, MyServices, $ionicLoading, $interval) {
     $scope.changestatus = 0;
     $scope.demo = "testing";
     $scope.users = [];
@@ -24,22 +24,22 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         id: '3',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal3 = modal;
     });
 
-    $scope.openCreate = function () {
+    $scope.openCreate = function() {
         $scope.oModal3.show();
     }
 
-    $scope.closeCreate = function () {
+    $scope.closeCreate = function() {
         $scope.oModal3.hide();
     }
     $ionicModal.fromTemplateUrl('templates/upload.html', {
         id: '2',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal2 = modal;
     });
 
@@ -47,30 +47,30 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         id: '4',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal4 = modal;
     });
 
-    $scope.openSearch = function () {
+    $scope.openSearch = function() {
         $scope.oModal4.show();
     }
 
-    $scope.closeSearch = function () {
+    $scope.closeSearch = function() {
         $scope.oModal4.hide();
     }
 
-    $scope.closeuploadElements = function () {
+    $scope.closeuploadElements = function() {
         $scope.oModal2.hide();
     }
 
 
-    MyServices.getalluser().success(function (data, status) {
+    MyServices.getalluser().success(function(data, status) {
         console.log("all users");
         console.log(data);
         $scope.users = data.queryresult;
     });
 
-    $scope.toUser = function (user) {
+    $scope.toUser = function(user) {
         $scope.closeSearch();
         $location.url("/tab/dash-userdetails/" + user);
     }
@@ -79,7 +79,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     $ionicPopover.fromTemplateUrl('templates/upload.html', {
         scope: $scope,
-    }).then(function (popover1) {
+    }).then(function(popover1) {
         $scope.popover1 = popover1;
     });
 
@@ -98,7 +98,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         text: "",
         status: false
     };
-    $scope.onChangeAdd = function (index) {
+    $scope.onChangeAdd = function(index) {
         console.log("index is");
         console.log(index);
         if ($scope.options.length - 1 == index) {
@@ -113,17 +113,17 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         console.log($scope.options);
     }
 
-    $scope.openUploadElements = function () {
+    $scope.openUploadElements = function() {
         $scope.oModal2.show();
     }
 
 
     //	pick image from gallery
-    $scope.picFromGallery = function () {
+    $scope.picFromGallery = function() {
         console.log("picture");
-        $cordovaImagePicker.getPictures(options).then(function (resultImage) {
+        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
-            _.forEach(resultImage, function (n, key) {
+            _.forEach(resultImage, function(n, key) {
                 $scope.cameraimage.push({
                     status: false,
                     image: n
@@ -131,7 +131,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             });
 
             console.log($scope.cameraimage);
-        }, function (err) {
+        }, function(err) {
             // An error occured. Show a message to the user
         });
 
@@ -139,31 +139,31 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     //	camera image
 
-    $scope.clickPhoto = function () {
+    $scope.clickPhoto = function() {
 
         $cordovaCamera.getPicture({
             quality: 80,
             sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
-        }).then(function (imageData) {
+        }).then(function(imageData) {
             $scope.cameraimage.push({
                 status: false,
                 image: imageData
             });
             console.log($scope.cameraimage);
             $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
-                .then(function (result) {
+                .then(function(result) {
                     console.log(result);
                     var data = JSON.parse(result.response);
                     callback(data);
-                }, function (err) {
+                }, function(err) {
                     console.log(err);
-                }, function (progress) {
+                }, function(progress) {
                     console.log("progress");
                 });
 
             console.log(imageData);
-        }, function (err) {
+        }, function(err) {
             // error
         });
 
@@ -174,7 +174,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     var stopinterval = 0;
 
-    var checkfb = function (data, status) {
+    var checkfb = function(data, status) {
         console.log(data);
         if (data.value == null) {
             console.log("Do nothing");
@@ -192,13 +192,13 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }
     }
 
-    var callAtIntervalfb = function () {
+    var callAtIntervalfb = function() {
         MyServices.checkLogid($scope.facebooklogid).success(checkfb);
     };
 
 
 
-    $scope.facebookPhoto = function () {
+    $scope.facebookPhoto = function() {
         console.log("Data");
         $scope.toPushSocial = [];
         $ionicLoading.show({
@@ -206,14 +206,14 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         });
 
         MyServices.checkLogin("Facebook").success(
-            function (data, status) {
+            function(data, status) {
                 console.log(data);
                 if (data.value) {
-                    MyServices.getFacebookImages().success(function (data) {
+                    MyServices.getFacebookImages().success(function(data) {
                         console.log(data);
                         $ionicLoading.hide();
                         $scope.socialimages = [];
-                        _.each(data, function (n) {
+                        _.each(data, function(n) {
                             $scope.socialimages.push({
                                 url: n,
                                 status: false
@@ -234,10 +234,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     };
 
 
-    $scope.facebookLogin = function (provider) {
+    $scope.facebookLogin = function(provider) {
         ref = window.open(adminhauth + 'login/' + provider + '?logid=' + $scope.facebooklogid, '_blank', 'location=no');
         stopinterval = $interval(callAtIntervalfb, 1000);
-        ref.addEventListener('exit', function (event) {
+        ref.addEventListener('exit', function(event) {
             $interval.cancel(stopinterval);
         });
     };
@@ -245,7 +245,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     $scope.poll = {};
     $scope.poll.status = true;
-    $scope.createAttach = function () {
+    $scope.createAttach = function() {
         $scope.poll.id = $.jStorage.get("user").id;
         $scope.poll.images = $scope.cameraimage;
         if ($scope.poll.status == false) {
@@ -255,7 +255,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }
         $scope.options.pop();
         $scope.poll.options = $scope.options;
-        MyServices.createAttach($scope.poll).success(function (data, status) {
+        MyServices.createAttach($scope.poll).success(function(data, status) {
             $scope.closeCreate();
             window.location.reload();
             $location.url("/tab/dash");
@@ -264,9 +264,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     };
 })
 
-.controller('DashCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
+.controller('DashCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
 
-    $scope.feeds = {};
+    $scope.feeds = [];
     $scope.isfavactive = false;
     $scope.favactive = "";
     $scope.shownoappliance = false;
@@ -279,48 +279,23 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $location.url("/login");
     }
 
-    $scope.pollRefresh = function (page) {
-        $scope.feeds = {};
-        MyServices.getallpolls(page).success(function (data, status) {
+    $scope.pollRefresh = function(page) {
+	    console.log(page);
+	    if(page == 1){
+		    $scope.feeds = [];
+	    }
+        MyServices.getallpolls(page).success(function(data, status) {
 
-            if (data.queryresult.length == 0) {
+            if (data.queryresult.length == 0 && $scope.feeds.length == 0) {
                 $scope.showloading = false;
                 $scope.shownoappliance = true;
                 $scope.keepscrolling = false;
+            } else if (data.queryresult.length == 0) {
+                $scope.keepscrolling = false;
             } else {
                 $scope.showloading = false;
-                $scope.keepscrolling = false;
-                $scope.feeds = data.queryresult;
-                _.each($scope.feeds, function (n) {
-
-
-                    //                        MyServices.getsingleuserpoll(n.id).success(function(data, status) {
-                    //                            n.feeds = [];
-                    //                            $scope.count = 0;
-                    //                            $scope.per = 0;
-                    //                            $scope.feeddetail = data;
-                    //                            _.forEach(data.poll_options, function(m, key) {
-                    //                                $scope.count = $scope.count + parseInt(m.pollcount.count);
-                    //                            });
-                    //
-                    //                            _.forEach(data.poll_options, function(l, key) {
-                    //                                $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
-                    //                                if (l.pollcount.count == 0) {
-                    //                                    n.feeds.push({
-                    //                                        name: l.text,
-                    //                                        y: 0 + "%"
-                    //                                    });
-                    //                                } else {
-                    //                                    n.feeds.push({
-                    //                                        name: l.text,
-                    //                                        y: $scope.per + "%"
-                    //                                    });
-                    //                                }
-                    //                            });
-                    //                            $scope.feeds2 = $scope.feeds;
-                    //                        });
-
-
+                $scope.keepscrolling = true;
+                _.each(data.queryresult, function(n) {
                     if (n.favid != 0) {
                         n.isfav = "favactive";
                     } else {
@@ -329,7 +304,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                     if (n.images != null) {
                         n.images = n.images.split(',');
                     }
+                    $scope.feeds.push(n);
                 })
+
+
             }
             console.log(data);
             $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -341,24 +319,24 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.pollRefresh($scope.pageno);
     $ionicPopover.fromTemplateUrl('templates/popover.html', {
         scope: $scope
-    }).then(function (popover) {
+    }).then(function(popover) {
         $scope.popover = popover;
     });
 
-    $scope.openPopover = function ($event) {
+    $scope.openPopover = function($event) {
         $scope.popover.show($event);
     };
-    $scope.closePopover = function () {
+    $scope.closePopover = function() {
         $scope.popover.hide();
     };
 
     //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function () {
+    $scope.$on('$destroy', function() {
         $scope.popover.remove();
     });
 
 
-    $scope.changemore = function (feed, index) {
+    $scope.changemore = function(feed, index) {
         var indexno = index;
         var idtomove = "more";
         feed.more = !feed.more;
@@ -371,7 +349,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             feed.height = 0;
         }
 
-        $timeout(function () {
+        $timeout(function() {
             $ionicScrollDelegate.resize();
             $location.hash(idtomove + index);
             console.log($location.hash());
@@ -379,11 +357,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }, 1000)
     };
 
-    $scope.opendetail = function (id) {
+    $scope.opendetail = function(id) {
         $location.url("/tab/dash/" + id);
     }
 
-    $scope.openuserdetail = function (uid) {
+    $scope.openuserdetail = function(uid) {
         if (uid == $.jStorage.get("user").id) {
             $location.url("/tab/account");
         } else {
@@ -392,38 +370,39 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     }
 
-    $scope.markasfav = function (feed) {
+    $scope.markasfav = function(feed) {
         if (feed.isfav == "") {
             feed.isfav = "favactive";
             MyServices.addtofavourites(feed.id).success(
-                function (data, status) {
+                function(data, status) {
                     console.log(data);
                 });
         } else {
             feed.isfav = "";
             MyServices.deletefavourites(feed.favid).success(
-                function (data, status) {
+                function(data, status) {
                     console.log(data);
                 });
         }
 
     };
 
-    $scopeloadMorePolls = function () {
+    $scope.loadMorePolls = function() {
+        console.log("loadmore");
         $scope.pollRefresh(++$scope.pageno);
     }
 
 })
 
-.controller('LoginCtrl', function ($scope, $location, $interval, MyServices) {
+.controller('LoginCtrl', function($scope, $location, $interval, MyServices) {
 
     $.jStorage.flush();
 
-    MyServices.logout().success(function (data, status) {
+    MyServices.logout().success(function(data, status) {
 
     });
 
-    var authenticatesuccess = function (data, status) {
+    var authenticatesuccess = function(data, status) {
         console.log(data);
         if (data != "false") {
             $.jStorage.set("user", data);
@@ -436,7 +415,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     //    MyServices.authenticate().success(authenticatesuccess);
 
-    var checktwitter = function (data, status) {
+    var checktwitter = function(data, status) {
         if (data != "false") {
             console.log("Facebook Login");
             $interval.cancel(stopinterval);
@@ -447,46 +426,46 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }
     };
 
-    var callAtIntervaltwitter = function () {
+    var callAtIntervaltwitter = function() {
         MyServices.authenticate().success(checktwitter);
     };
 
-    $scope.twitterlogin = function () {
+    $scope.twitterlogin = function() {
         console.log("in twitter");
 
         ref = window.open(adminhauth + 'login/Twitter', '_blank', 'location=no');
         stopinterval = $interval(callAtIntervaltwitter, 2000);
-        ref.addEventListener('exit', function (event) {
+        ref.addEventListener('exit', function(event) {
             MyServices.authenticate().success(authenticatesuccess);
             $interval.cancel(stopinterval);
         });
         //        $location.url("/tab/dash");
     }
-    $scope.instalogin = function () {
+    $scope.instalogin = function() {
 
         ref = window.open(adminhauth + 'login/Instagram?returnurl=http://www.wohlig.com', '_blank', 'location=no');
         stopinterval = $interval(callAtIntervaltwitter, 2000);
-        ref.addEventListener('exit', function (event) {
+        ref.addEventListener('exit', function(event) {
             MyServices.authenticate().success(authenticatesuccess);
             $interval.cancel(stopinterval);
         });
         //        $location.url("/tab/dash");
     }
-    $scope.googlelogin = function () {
+    $scope.googlelogin = function() {
 
         ref = window.open(adminhauth + 'login/Google?returnurl=http://www.wohlig.com', '_blank', 'location=no');
         stopinterval = $interval(callAtIntervaltwitter, 2000);
-        ref.addEventListener('exit', function (event) {
+        ref.addEventListener('exit', function(event) {
             MyServices.authenticate().success(authenticatesuccess);
             $interval.cancel(stopinterval);
         });
         //        $location.url("/tab/dash");
     }
-    $scope.fblogin = function () {
+    $scope.fblogin = function() {
 
         ref = window.open(adminhauth + 'login/Facebook?returnurl=http://www.wohlig.com', '_blank', 'location=no');
         stopinterval = $interval(callAtIntervaltwitter, 2000);
-        ref.addEventListener('exit', function (event) {
+        ref.addEventListener('exit', function(event) {
             MyServices.authenticate().success(authenticatesuccessauthenticatesuccess);
             $interval.cancel(stopinterval);
         });
@@ -494,7 +473,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     }
 })
 
-.controller('ChatsCtrl', function ($scope) {
+.controller('ChatsCtrl', function($scope) {
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
     // To listen for when this page is active (for example, to refresh data),
@@ -504,7 +483,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     //});
 
     //    $scope.chats = Chats.all();
-    $scope.remove = function (chat) {
+    $scope.remove = function(chat) {
         Chats.remove(chat);
     };
 
@@ -517,11 +496,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     }];
 })
 
-.controller('ChatDetailCtrl', function ($scope, $stateParams, MyServices) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, MyServices) {
     $scope.chat = MyServices.get($stateParams.chatId);
 })
 
-.controller('DashDetailCtrl', function ($scope, $stateParams, MyServices, $ionicPopover) {
+.controller('DashDetailCtrl', function($scope, $stateParams, MyServices, $ionicPopover) {
 
     $scope.comment = {};
     $scope.comments = [];
@@ -530,18 +509,18 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.per = 0;
     $scope.count = 0;
     $scope.feeddetail = {};
-    $scope.reloadFeeds = function () {
-        MyServices.getsingleuserpoll($stateParams.chatId).success(function (data, status) {
+    $scope.reloadFeeds = function() {
+        MyServices.getsingleuserpoll($stateParams.chatId).success(function(data, status) {
             console.log(data);
             $scope.feeds = [];
             $scope.count = 0;
             $scope.per = 0;
             $scope.feeddetail = data;
-            _.forEach(data.poll_options, function (n, key) {
+            _.forEach(data.poll_options, function(n, key) {
                 $scope.count = $scope.count + parseInt(n.pollcount.count);
             });
 
-            _.forEach(data.poll_options, function (n, key) {
+            _.forEach(data.poll_options, function(n, key) {
                 $scope.per = (parseInt(n.pollcount.count) / $scope.count) * 100;
                 console.log($scope.per);
                 if (n.pollcount.count == 0) {
@@ -560,7 +539,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             console.log($scope.feeds);
         });
 
-        MyServices.getalluserpollcomment($stateParams.chatId).success(function (data, status) {
+        MyServices.getalluserpollcomment($stateParams.chatId).success(function(data, status) {
             console.log("comments");
             console.log(data);
             if (data.queryresult == '') {
@@ -576,13 +555,13 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     $scope.reloadFeeds();
 
-    $scope.openuserdetail = function (uid) {
+    $scope.openuserdetail = function(uid) {
         $location.url("/tab/dash-userdetails/" + uid);
     }
 
-    $scope.voteMe = function (but) {
+    $scope.voteMe = function(but) {
         console.log(but);
-        MyServices.vote(but.optionid, $stateParams.chatId).success(function (data, status) {
+        MyServices.vote(but.optionid, $stateParams.chatId).success(function(data, status) {
             console.log(data);
 
             $scope.reloadFeeds();
@@ -592,7 +571,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     //create comment
     $scope.allvalidation = [];
-    $scope.createComment = function () {
+    $scope.createComment = function() {
         $scope.comment.userpoll = $stateParams.chatId;
         $scope.allvalidation = [{
             field: $scope.comment.content,
@@ -603,7 +582,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
         if (check) {
 
-            MyServices.createuserpollcomment($scope.comment).success(function (data, status) {
+            MyServices.createuserpollcomment($scope.comment).success(function(data, status) {
                 console.log(data);
                 if (data) {
                     $scope.comment.hide();
@@ -639,33 +618,33 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     }];
     $ionicPopover.fromTemplateUrl('templates/popover.html', {
         scope: $scope
-    }).then(function (popover) {
+    }).then(function(popover) {
         $scope.popover = popover;
     });
 
-    $scope.openPopover = function ($event) {
+    $scope.openPopover = function($event) {
         $scope.popover.show($event);
     };
-    $scope.closePopover = function () {
+    $scope.closePopover = function() {
         $scope.popover.hide();
     };
 
 
     $ionicPopover.fromTemplateUrl('templates/comment.html', {
         scope: $scope
-    }).then(function (comment) {
+    }).then(function(comment) {
         $scope.comment = comment;
     });
 
-    $scope.openComment = function ($event) {
+    $scope.openComment = function($event) {
         $scope.comment.show($event);
     };
-    $scope.closeComment = function () {
+    $scope.closeComment = function() {
         $scope.comment.hide();
     };
 })
 
-.controller('AccountCtrl', function ($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
+.controller('AccountCtrl', function($scope, $ionicPopover, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
 
     //get user
     $scope.user = [];
@@ -677,11 +656,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.loadingpost = true;
     $scope.editFeed = [];
     $scope.editProf = {};
-    $scope.changetab = function (tab) {
+    $scope.changetab = function(tab) {
         $scope.tabvalue = tab;
     }
 
-    $scope.editAttach = function (editFeed) {
+    $scope.editAttach = function(editFeed) {
         editFeed.iduserid = $.jStorage.get("user").id;
         editFeed.pollid = editFeed.id;
         //        editFeed.images = $scope.cameraimage;
@@ -690,19 +669,19 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         } else {
             editFeed.status = 1;
         }
-        MyServices.editPoll(editFeed).success(function (data, status) {
+        MyServices.editPoll(editFeed).success(function(data, status) {
             $scope.comment.hide();
             window.location.reload();
 
         });
     }
 
-    MyServices.getprofiledetails().success(function (data, status) {
+    MyServices.getprofiledetails().success(function(data, status) {
         $scope.user = data;
         $scope.editProf = data;
     });
 
-    MyServices.getuserfavourites().success(function (data, status) {
+    MyServices.getuserfavourites().success(function(data, status) {
         console.log("fav fav fav");
         console.log(data);
         if (data.queryresult == '') {
@@ -713,9 +692,9 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.favouritefeeds = data.queryresult;
     })
 
-    MyServices.getalluserpoll().success(function (data, status) {
+    MyServices.getalluserpoll().success(function(data, status) {
 
-        _.each(data.queryresult, function (n) {
+        _.each(data.queryresult, function(n) {
 
             if (n.favid != 0) {
                 n.isfav = "favactive";
@@ -742,30 +721,30 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     $ionicPopover.fromTemplateUrl('templates/popover.html', {
         scope: $scope
-    }).then(function (popover) {
+    }).then(function(popover) {
         $scope.popover = popover;
     });
 
-    $scope.openPopover = function ($event) {
+    $scope.openPopover = function($event) {
         $scope.popover.show($event);
     };
-    $scope.closePopover = function () {
+    $scope.closePopover = function() {
         $scope.popover.hide();
     };
 
     //Cleanup the popover when we're done with it!
-    $scope.$on('$destroy', function () {
+    $scope.$on('$destroy', function() {
         $scope.popover.remove();
     });
 
     //	open create attach modal
     $ionicPopover.fromTemplateUrl('templates/editpost.html', {
         scope: $scope
-    }).then(function (comment) {
+    }).then(function(comment) {
         $scope.comment = comment;
     });
 
-    $scope.openEdit = function (feed) {
+    $scope.openEdit = function(feed) {
 
         $scope.comment.show();
         console.log(feed);
@@ -778,11 +757,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $.jStorage.set("feed", $scope.editFeed);
     }
 
-    $scope.closeEdit = function () {
+    $scope.closeEdit = function() {
         $scope.comment.hide();
     }
 
-    $scope.changemorepost = function (feed, index) {
+    $scope.changemorepost = function(feed, index) {
         var indexno = index;
         var idtomove = "more";
         feed.more = !feed.more;
@@ -796,7 +775,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             feed.height = 0;
         }
 
-        $timeout(function () {
+        $timeout(function() {
             $ionicScrollDelegate.resize();
             $location.hash(idtomove + index);
             console.log($location.hash());
@@ -804,7 +783,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }, 1000)
     };
 
-    $scope.opendetail = function (id) {
+    $scope.opendetail = function(id) {
         $location.url("/tab/dash/" + id);
     }
 
@@ -812,15 +791,15 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         id: '2',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal2 = modal;
     });
 
-    $scope.openUploadElements = function () {
+    $scope.openUploadElements = function() {
         $scope.oModal2.show();
     }
 
-    $scope.closeuploadElements = function () {
+    $scope.closeuploadElements = function() {
         $scope.oModal2.hide();
     }
 
@@ -829,27 +808,27 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         id: '3',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function (modal) {
+    }).then(function(modal) {
         $scope.oModal1 = modal;
     });
 
-    $scope.openEditProfile = function () {
+    $scope.openEditProfile = function() {
         $scope.oModal1.show();
     }
 
-    $scope.closeEditProfile = function () {
+    $scope.closeEditProfile = function() {
         $scope.oModal1.hide();
     }
 
-    $scope.saveProfile = function (profile) {
+    $scope.saveProfile = function(profile) {
         console.log(profile);
-        MyServices.editprofile(profile, function (data, status) {
+        MyServices.editprofile(profile, function(data, status) {
             console.log(data);
             $scope.closeEditProfile();
         })
     }
 
-    $scope.markasfav = function (feed) {
+    $scope.markasfav = function(feed) {
         if (feed.isfav == "") {
             feed.isfav = "favactive";
         } else {
@@ -859,7 +838,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 })
 
-.controller('UserDetailCtrl', function ($scope, $ionicPopover, $stateParams, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
+.controller('UserDetailCtrl', function($scope, $ionicPopover, $stateParams, $timeout, $ionicScrollDelegate, $location, $ionicModal, MyServices) {
 
     //	$scope.follow = false;
     $scope.feeds = [];
@@ -872,13 +851,13 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 
     $scope.tabvalue = 1;
-    $scope.changetab = function (tab) {
+    $scope.changetab = function(tab) {
         $scope.tabvalue = tab;
     }
 
-    $scope.reloadFunction = function () {
+    $scope.reloadFunction = function() {
 
-        MyServices.userdetails($stateParams.userid).success(function (data, status) {
+        MyServices.userdetails($stateParams.userid).success(function(data, status) {
             $scope.user = data;
 
             if (data.queryresult == '') {
@@ -890,7 +869,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             $scope.follow = data.isfollowed;
         });
 
-        MyServices.getotheruserpoll($stateParams.userid).success(function (data, status) {
+        MyServices.getotheruserpoll($stateParams.userid).success(function(data, status) {
             if (data.queryresult == '') {
                 $scope.loadingpost = false;
             } else {
@@ -901,7 +880,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         });
 
 
-        MyServices.getotheruserfavourites($stateParams.userid).success(function (data, status) {
+        MyServices.getotheruserfavourites($stateParams.userid).success(function(data, status) {
             console.log("fav fav fav");
             console.log(data);
             if (data.queryresult == '') {
@@ -918,7 +897,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
     $scope.reloadFunction();
 
-    $scope.changemore = function (feed, index) {
+    $scope.changemore = function(feed, index) {
         var indexno = index;
         var idtomove = "more";
         feed.more = !feed.more;
@@ -931,7 +910,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             feed.height = 0;
         }
 
-        $timeout(function () {
+        $timeout(function() {
             $ionicScrollDelegate.resize();
             $location.hash(idtomove + index);
             console.log($location.hash());
@@ -939,15 +918,15 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         }, 1000)
     };
 
-    $scope.followme = function () {
+    $scope.followme = function() {
         if ($scope.follow == false) {
-            MyServices.userfollow($stateParams.userid).success(function (data, status) {
+            MyServices.userfollow($stateParams.userid).success(function(data, status) {
                 console.log(data);
                 $scope.follow = true;
 
             });
         } else {
-            MyServices.userunfollow($stateParams.userid).success(function (data, status) {
+            MyServices.userunfollow($stateParams.userid).success(function(data, status) {
                 console.log(data);
                 $scope.follow = false;
 
