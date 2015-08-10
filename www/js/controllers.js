@@ -672,7 +672,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     }
 
     $scope.editAttach = function(editFeed) {
-        console.log(editFeed);
         editFeed.iduserid = $.jStorage.get("user").id;
         editFeed.pollid = editFeed.id;
         //        editFeed.images = $scope.cameraimage;
@@ -693,8 +692,8 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     });
 
     MyServices.getuserfavourites().success(function(data, status) {
-                console.log("favorites");
-                console.log(data);
+	    console.log("fav fav fav");
+	    console.log(data);
         if (data.queryresult == '') {
             $scope.loading = false;
         } else {
@@ -706,34 +705,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     MyServices.getalluserpoll().success(function(data, status) {
 
         _.each(data.queryresult, function(n) {
-
-
-            MyServices.getsingleuserpoll(n.id).success(function(data, status) {
-                n.feeds = [];
-                $scope.count = 0;
-                $scope.per = 0;
-                $scope.feeddetail = data;
-                _.forEach(data.poll_options, function(m, key) {
-                    $scope.count = $scope.count + parseInt(m.pollcount.count);
-                });
-
-                _.forEach(data.poll_options, function(l, key) {
-                    $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
-                    if (l.pollcount.count == 0) {
-                        n.feeds.push({
-                            name: l.text,
-                            y: 0 + "%"
-                        });
-                    } else {
-                        n.feeds.push({
-                            name: l.text,
-                            y: $scope.per + "%"
-                        });
-                    }
-                });
-                $scope.feeds2 = $scope.feeds;
-            });
-
 
             if (n.favid != 0) {
                 n.isfav = "favactive";
@@ -806,6 +777,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         feed.more = !feed.more;
         if (feed.more) {
             var height = $("ion-item").eq(indexno).children('.item-content').children(".contentright").children(".more").children(".more-content").height();
+//            var height = $("ion-item").eq(indexno).children(".contentright").children(".more").children(".more-content").height();
             feed.height = height;
             console.log(height);
         } else {
@@ -888,7 +860,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     $scope.reloadFunction = function() {
 
         MyServices.userdetails($stateParams.userid).success(function(data, status) {
-            console.log(data);
             $scope.user = data;
 
             if (data.queryresult == '') {
@@ -901,7 +872,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         });
 
         MyServices.getotheruserpoll($stateParams.userid).success(function(data, status) {
-            console.log(data);
             if (data.queryresult == '') {
                 $scope.loadingpost = false;
             } else {
@@ -913,6 +883,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
 
 
         MyServices.getotheruserfavourites($stateParams.userid).success(function(data, status) {
+            console.log("fav fav fav");
             console.log(data);
             if (data.queryresult == '') {
                 $scope.loading = false;
@@ -927,6 +898,27 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     }
 
     $scope.reloadFunction();
+	
+	$scope.changemore = function(feed, index) {
+            var indexno = index;
+            var idtomove = "more";
+            feed.more = !feed.more;
+            if (feed.more) {
+                var height = $("ion-item").eq(indexno).children('.item-content').children(".contentright").children(".more").children(".more-content").height();
+                feed.height = height;
+                console.log(height);
+            } else {
+                idtomove = "item"
+                feed.height = 0;
+            }
+
+            $timeout(function() {
+                $ionicScrollDelegate.resize();
+                $location.hash(idtomove + index);
+                console.log($location.hash());
+                $ionicScrollDelegate.anchorScroll(true, 4000);
+            }, 1000)
+        };
 
     $scope.followme = function() {
         if ($scope.follow == false) {

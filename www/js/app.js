@@ -174,7 +174,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 ])
 
 
-.directive('whoiam', function($http) {
+.directive('poll', function($http) {
     return {
         restrict: 'A',
         scope: {
@@ -184,6 +184,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
         controller: function($scope) {
             $http.get(adminurl + "getsingleuserpoll?id=" + $scope.data).success(function(data) {
+			  console.log(data);
                 $scope.feeds = [];
                 $scope.count = 0;
                 $scope.per = 0;

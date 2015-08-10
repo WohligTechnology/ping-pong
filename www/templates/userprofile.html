@@ -66,11 +66,9 @@
                         </p>
                         <!--                        <img class="max80" ng-src="{{feed.image}}">-->
                     </div>
-                    <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
-                        <div class="more-content">
-<!--                            <barhighchart obj='feed'></barhighchart>-->
-                        </div>
-                    </div>
+                    
+                    <div poll data="feed.id" class="more" id="more{{$index}}" ng-style="{'height':feed.height}"></div>
+                    
                     <div class="row nopadding">
                         <div class="col">
                             <button class="button button-icon ion-chevron-down bottomiconsnofloat colorgrey" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
@@ -112,7 +110,7 @@
                 <h3>Loading...</h3>
             </div>
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in favouritefeeds">
-                <img class="littlebig" ng-src="{{feed.image}}">
+                <img class="littlebig" ng-src="{{feed.userimage}}">
                 <div class="contentright">
                     <div ng-click="opendetail(feed.id);">
                         <span class="namebold" ng-bind="feed.name"></span>
@@ -121,11 +119,9 @@
                         <p class="tweetcontent">{{feed.pollcontent}} <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                         </p>
                     </div>
-                    <div class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
-                        <div class="more-content">
-                            <barhighchart obj='feed'></barhighchart>
-                        </div>
-                    </div>
+                    
+                    <div poll data="feed.userpoll" class="more" id="more{{$index}}" ng-style="{'height':feed.height}"></div>
+                    
                     <div class="row nopadding">
                         <div class="col">
                             <button class="button button-icon ion-chevron-down bottomiconsnofloat colorgrey" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
