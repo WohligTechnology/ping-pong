@@ -1,5 +1,6 @@
 //var adminbase = "http://wohlig.co.in/attachbackend/";
-var adminbase = "http://localhost/attachbackend/";
+//var adminbase = "http://localhost/attachbackend/";
+var adminbase = "http://192.168.2.11/attachbackend/";
 var adminurl = adminbase + "index.php/json/";
 var adminhauth = adminbase + "index.php/hauth/";
 
