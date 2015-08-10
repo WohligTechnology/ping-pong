@@ -40,7 +40,7 @@
 
                         <!--                        <img class="max80" ng-src="img/Google-Doodle.gif">-->
                     </div>
-                    <div whoiam data="feed.id" class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
+                    <div poll data="feed.id" class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
 <!--
                         <div class="more-content">
                             <div class="row">Vote your Choice</div>
@@ -75,7 +75,7 @@
                 </div>
             </ion-item>
         </ion-list>
-        <ion-infinite-scroll on-infinite="loadMore()" ng-if="loadshow" distance="1%" icon="ion-loading-c">
+        <ion-infinite-scroll on-infinite="loadMorePolls()" ng-if="keepscrolling" distance="25%">
         </ion-infinite-scroll>
     </ion-content>
 </ion-view>

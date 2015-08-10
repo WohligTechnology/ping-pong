@@ -43,13 +43,13 @@ angular.module('starter.services', [])
                 return $http.get(adminbase + "index.php/json/logout");
             },
             getsingleuserpoll: function (id) {
-                return $http.get(adminurl + "getsingleuserpoll?id="+id);
+                return $http.get(adminurl + "getsingleuserpoll?id=" + id);
             },
             getalluser: function () {
                 return $http.get(adminurl + "getalluser");
             },
             getprofiledetails: function () {
-                return $http.get(adminurl + "getprofiledetails?id="+$.jStorage.get("user").id);
+                return $http.get(adminurl + "getprofiledetails?id=" + $.jStorage.get("user").id);
             },
             getalluserpoll: function () {
                 return $http({
@@ -110,14 +110,8 @@ angular.module('starter.services', [])
                     }
                 });
             },
-            getallpolls: function () {
-                return $http({
-                    url: adminurl + 'getallpolls',
-                    method: "POST",
-				 data: {
-					 id: $.jStorage.get("user").id
-				 }
-                });
+            getallpolls: function (pageno) {
+                return $http.get(adminurl + "getallpolls?id=" + $.jStorage.get("user").id + "&pageno=" + pageno);
             },
             createAttach: function (poll) {
                 return $http({
@@ -178,14 +172,14 @@ angular.module('starter.services', [])
                     }
                 });
             },
-            vote: function (option,poll) {
+            vote: function (option, poll) {
                 return $http({
                     url: adminurl + 'createuserpollresponse',
                     withCredentials: true,
                     method: "POST",
                     data: {
                         "option": option,
-					"poll":poll,
+                        "poll": poll,
                         "user": $.jStorage.get("user").id
                     }
                 });
@@ -206,7 +200,7 @@ angular.module('starter.services', [])
                     withCredentials: true,
                     method: "POST",
                     data: {
-                        "id": user
+                        "userid": user
                     }
                 });
             }
