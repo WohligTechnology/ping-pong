@@ -269,7 +269,10 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.favactive = "";
         $scope.shownoappliance = false;
         $scope.showloading = true;
+        $scope.pageno = 1;
 
+//		polls(1);
+	
         if (!$.jStorage.get("user")) {
             $location.url("/login");
         }
@@ -287,31 +290,31 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                     _.each($scope.feeds, function(n) {
 
 
-                        MyServices.getsingleuserpoll(n.id).success(function(data, status) {
-                            n.feeds = [];
-                            $scope.count = 0;
-                            $scope.per = 0;
-                            $scope.feeddetail = data;
-                            _.forEach(data.poll_options, function(m, key) {
-                                $scope.count = $scope.count + parseInt(m.pollcount.count);
-                            });
-
-                            _.forEach(data.poll_options, function(l, key) {
-                                $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
-                                if (l.pollcount.count == 0) {
-                                    n.feeds.push({
-                                        name: l.text,
-                                        y: 0 + "%"
-                                    });
-                                } else {
-                                    n.feeds.push({
-                                        name: l.text,
-                                        y: $scope.per + "%"
-                                    });
-                                }
-                            });
-                            $scope.feeds2 = $scope.feeds;
-                        });
+//                        MyServices.getsingleuserpoll(n.id).success(function(data, status) {
+//                            n.feeds = [];
+//                            $scope.count = 0;
+//                            $scope.per = 0;
+//                            $scope.feeddetail = data;
+//                            _.forEach(data.poll_options, function(m, key) {
+//                                $scope.count = $scope.count + parseInt(m.pollcount.count);
+//                            });
+//
+//                            _.forEach(data.poll_options, function(l, key) {
+//                                $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
+//                                if (l.pollcount.count == 0) {
+//                                    n.feeds.push({
+//                                        name: l.text,
+//                                        y: 0 + "%"
+//                                    });
+//                                } else {
+//                                    n.feeds.push({
+//                                        name: l.text,
+//                                        y: $scope.per + "%"
+//                                    });
+//                                }
+//                            });
+//                            $scope.feeds2 = $scope.feeds;
+//                        });
 
 
                         if (n.favid != 0) {
@@ -690,8 +693,8 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     });
 
     MyServices.getuserfavourites().success(function(data, status) {
-        //        console.log("favorites");
-        //        console.log(data);
+                console.log("favorites");
+                console.log(data);
         if (data.queryresult == '') {
             $scope.loading = false;
         } else {

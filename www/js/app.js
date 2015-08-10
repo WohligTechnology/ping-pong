@@ -7,8 +7,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function ($ionicPlatform, $cordovaStatusbar) {
-    $ionicPlatform.ready(function () {
+.run(function($ionicPlatform, $cordovaStatusbar) {
+    $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -25,7 +25,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
 
     $httpProvider.defaults.withCredentials = true;
     $ionicConfigProvider.tabs.position('bottom');
@@ -33,11 +33,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     $stateProvider
 
     // setup an abstract state for the tabs directive
-        .state('tab', {
-            url: '/tab',
-            abstract: true,
-            templateUrl: 'templates/tabs.html'
-        })
+    .state('tab', {
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
+    })
         .state('login', {
             url: '/login',
             templateUrl: 'templates/login.html',
@@ -76,7 +76,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     })
 
-    
+
     .state('tab.chats', {
         url: '/chats',
         views: {
@@ -110,10 +110,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/dash');
 
+
+
+
+
 })
 
-.filter('time', function () {
-    return function (input) {
+.filter('time', function() {
+    return function(input) {
         var a = moment(input);
         var b = moment(new Date());
         //        return dif = b.diff(a, 'Months') + "s";
@@ -133,8 +137,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 
-.filter('profileimag', function () {
-    return function (input) {
+.filter('profileimag', function() {
+    return function(input) {
         if (input == "" || !input) {
             return "img/Coffee.jpg";
         } else {
@@ -143,7 +147,99 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     };
 })
 
-.directive('barhighchart', function () {
+
+.directive('myTag', ['$http',
+    function($http) {
+        return {
+            restrict: 'E',
+            transclude: true,
+            replace: true,
+            scope: {
+                data: "="
+            },
+            controller: function($scope) {
+                console.info("enter directive controller");
+                //        $scope.gallery = [];
+                //
+                //    console.log($scope.src);
+                //
+                //        $http({method: 'GET', url:$scope.src}).then(function (result) {
+                //                           console.log(result);                              
+                //                        }, function (result) {
+                //                            alert("Error: No data returned");
+                //                        });
+            }
+        }
+    }
+])
+
+
+.directive('whoiam', function($http) {
+    return {
+        restrict: 'A',
+        scope: {
+            data: "=",
+        },
+        template: '<div class="more-content"><div class="row">Vote your Choice</div><div class="row spaceout" ng-repeat="fed in feeds"><div class="col col-33 smallfont">{{fed.name}}</div><div class="col col-67"><div class="team lefty" ng-style="{width:fed.y}"></div></div></div></div>',
+
+        controller: function($scope) {
+            $http.get(adminurl + "getsingleuserpoll?id=" + $scope.data).success(function(data) {
+                $scope.feeds = [];
+                $scope.count = 0;
+                $scope.per = 0;
+                _.forEach(data.poll_options, function(m, key) {
+                    $scope.count = $scope.count + parseInt(m.pollcount.count);
+                });
+
+                _.forEach(data.poll_options, function(l, key) {
+                    $scope.per = (parseInt(l.pollcount.count) / $scope.count) * 100;
+                    if (l.pollcount.count == 0) {
+                        $scope.feeds.push({
+                            name: l.text,
+                            y: 0 + "%"
+                        });
+                    } else {
+                        $scope.feeds.push({
+                            name: l.text,
+                            y: $scope.per + "%"
+                        });
+                    }
+                });
+            });
+
+        }
+
+        //        link: function(scope, element, attrs) {
+        //            console.log(scope.data);
+        //            $http.get(adminurl + "getsingleuserpoll?id=" + scope.id).success(function(data) {
+        //                //                var feeds = [];
+        //                var count = 0;
+        //                var per = 0;
+        //                _.forEach(data.poll_options, function(m, key) {
+        //                    count = count + parseInt(m.pollcount.count);
+        //                });
+        //
+        //                _.forEach(data.poll_options, function(l, key) {
+        //                    per = (parseInt(l.pollcount.count) / count) * 100;
+        //                    if (l.pollcount.count == 0) {
+        //                        feeds.push({
+        //                            name: l.text,
+        //                            y: 0 + "%"
+        //                        });
+        //                    } else {
+        //                        feeds.push({
+        //                            name: l.text,
+        //                            y: per + "%"
+        //                        });
+        //                    }
+        //                });
+        //            });
+        //            console.log(feeds);
+        //        }
+    };
+})
+
+.directive('barhighchart', function() {
     return {
         restrict: 'EA',
         transclude: true,
@@ -151,8 +247,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             obj: "="
         },
         templateUrl: 'templates/directive/barhighchart.html',
-        link: function ($scope, element, attr) {
-//            console.log($scope.obj);
+        link: function($scope, element, attr) {
+            //            console.log($scope.obj);
 
             $element = $(element);
             $element.children('#container').highcharts({
@@ -207,7 +303,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 });
 
 
-var formvalidation = function (allvalidation) {
+var formvalidation = function(allvalidation) {
     var isvalid2 = true;
     var error = '';
     for (var i = 0; i < allvalidation.length; i++) {
