@@ -1,0 +1,65 @@
+{
+  "name": "ion-sound",
+  "version": "3.0.6",
+  "description": "JavaScript plugin for playing sounds and music in web",
+  "homepage": "http://ionden.com/a/plugins/ion.sound/en.html",
+  "author": {
+    "name": "Denis Ineshin",
+    "email": "ionden.tech@gmail.com",
+    "url": "IonDen"
+  },
+  "keywords": [
+    "sound",
+    "sounds",
+    "web",
+    "audio",
+    "api",
+    "WebAudioAPI",
+    "html5",
+    "events",
+    "alert",
+    "effect",
+    "mp3",
+    "ogg",
+    "aac",
+    "ui"
+  ],
+  "main": "./js/ion.sound.js",
+  "directories": {
+    "lib": "js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IonDen/ion.sound.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IonDen/ion.sound/issues"
+  },
+  "license": "MIT",
+  "spm": {
+    "main": "js/ion.sound.js"
+  },
+  "gitHead": "83e88557714abd7f4b4a7d24a56a8985383b65e4",
+  "_id": "ion-sound@3.0.6",
+  "scripts": {},
+  "_shasum": "e9988ab140aa9a6e76ee3a899d185c0bb4ec235c",
+  "_from": "ion-sound@*",
+  "_npmVersion": "2.11.0",
+  "_nodeVersion": "0.10.25",
+  "_npmUser": {
+    "name": "ionden",
+    "email": "denis.ineshin@gmail.com"
+  },
+  "dist": {
+    "shasum": "e9988ab140aa9a6e76ee3a899d185c0bb4ec235c",
+    "tarball": "http://registry.npmjs.org/ion-sound/-/ion-sound-3.0.6.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "ionden",
+      "email": "denis.ineshin@gmail.com"
+    }
+  ],
+  "_resolved": "https://registry.npmjs.org/ion-sound/-/ion-sound-3.0.6.tgz",
+  "readme": "ERROR: No README data found!"
+}

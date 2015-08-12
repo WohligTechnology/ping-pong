@@ -1,5 +1,5 @@
-//var adminbase = "http://wohlig.co.in/attachbackend/";
-//var adminbase = "http://localhost/attachbackend/";
+var adminbase = "http://wohlig.co.in/attachbackend/";
+var adminbase = "http://localhost/attachbackend/";
 var adminbase = "http://192.168.2.11/attachbackend/";
 var adminurl = adminbase + "index.php/json/";
 var adminhauth = adminbase + "index.php/hauth/";
@@ -46,30 +46,17 @@ angular.module('starter.services', [])
             getsingleuserpoll: function (id) {
                 return $http.get(adminurl + "getsingleuserpoll?id=" + id);
             },
-            getalluser: function (pageno,search) {
+            getalluser: function (pageno, search) {
                 return $http.get(adminurl + "getalluser?pageno=" + pageno + "&search=" + search);
             },
             getprofiledetails: function () {
                 return $http.get(adminurl + "getprofiledetails?id=" + $.jStorage.get("user").id);
             },
-            getalluserpoll: function () {
-                return $http({
-                    url: adminurl + 'getalluserpoll',
-                    method: "POST",
-                    data: {
-                        'id': $.jStorage.get("user").id
-                            //                        'id': 14
-                    }
-                });
+            getalluserpoll: function (page) {
+                return $http.get(adminurl + "getalluserpoll?id=" + $.jStorage.get("user").id + "&pageno=" + page);
             },
-            getotheruserpoll: function (id) {
-                return $http({
-                    url: adminurl + 'getalluserpoll',
-                    method: "POST",
-                    data: {
-                        'id': id
-                    }
-                });
+            getotheruserpoll: function (id,page) {
+                return $http.get(adminurl + "getalluserpoll?id=" + id + "&pageno=" + page);
             },
             createuserpollcomment: function (comment) {
                 return $http({
@@ -185,25 +172,11 @@ angular.module('starter.services', [])
                     }
                 });
             },
-            getuserfavourites: function () {
-                return $http({
-                    url: adminurl + 'getfavouriteuserpolls',
-                    withCredentials: true,
-                    method: "POST",
-                    data: {
-                        "userid": $.jStorage.get("user").id
-                    }
-                });
+            getuserfavourites: function (page) {
+                return $http.get(adminurl + "getfavouriteuserpolls?userid=" + $.jStorage.get("user").id + "&pageno=" + page);
             },
-            getotheruserfavourites: function (user) {
-                return $http({
-                    url: adminurl + 'getfavouriteuserpolls',
-                    withCredentials: true,
-                    method: "POST",
-                    data: {
-                        "userid": user
-                    }
-                });
+            getotheruserfavourites: function (user,page) {
+                return $http.get(adminurl + "getfavouriteuserpolls?userid=" + user + "&pageno=" + page);
             },
             editprofile: function (profile) {
                 return $http({
@@ -215,6 +188,16 @@ angular.module('starter.services', [])
                         "name": profile.name,
                         "location": profile.address,
                         "website": profile.website
+                    }
+                });
+            },
+            deleteuserpoll: function (pollid) {
+                return $http({
+                    url: adminurl + 'deleteuserpoll',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "pollid": pollid
                     }
                 });
             }

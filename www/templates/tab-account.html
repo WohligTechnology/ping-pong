@@ -58,7 +58,7 @@
                     <div ng-click="opendetail(feed.id);">
                         <span class="namebold" ng-bind="feed.name"></span>
                         <span class="namegrey" ng-bind="feed.nameat"></span>
-                        <span class="item-note"><i class="ion-ios-paper-outline"> {{feed.timestamp | time}}</i></span>
+                        <span class="item-note"><i class="ion-android-time"> {{feed.timestamp | time}}</i></span>
                         <p class="tweetcontent">{{feed.content}}<a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                         </p>
                     </div>
@@ -73,7 +73,7 @@
                             <button class="button button-icon ion-edit bottomiconsnofloat colorgrey" ng-click="openEdit(feed);"></button>
                         </div>
                         <div class="col incenter">
-                            <button class="button button-icon ion-android-delete bottomiconsnofloat colorgrey"></button>
+                            <button class="button button-icon ion-android-delete bottomiconsnofloat colorgrey" ng-click="deletePost(feed.id);"></button>
                         </div>
                         <!--
                         <div class="col incenter">
@@ -81,7 +81,6 @@
                         </div>
 -->
                         <div class="col">
-
                             <button class="button button-icon ion-android-more-vertical moredot" ng-click="openPopover();"></button>
                         </div>
                     </div>
@@ -93,6 +92,8 @@
 -->
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll on-infinite="loadMorePolls()" ng-if="keepscrollingpolls && tabvalue==1" distance="25%">
+        </ion-infinite-scroll>
         <ion-list class="avtar" ng-if="tabvalue == 2">
             <ion-item>
                 Coming Soon
@@ -112,7 +113,7 @@
                     <div ng-click="opendetail(feed.id);">
                         <span class="namebold" ng-bind="feed.name"></span>
                         <span class="namegrey" ng-bind="feed.nameat"></span>
-                        <span class="item-note"><i class="ion-ios-paper-outline"> 3m</i></span>
+                        <span class="item-note"><i class="ion-android-time"> {{feed.pollcreatedtime | time}}</i></span>
                         <p class="tweetcontent">{{feed.pollcontent}} <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>
                         </p>
                     </div>
@@ -142,5 +143,7 @@
 -->
             </ion-item>
         </ion-list>
+        <ion-infinite-scroll on-infinite="loadMoreFavourites()" ng-if="keepscrolling && tabvalue==3" distance="25%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>
