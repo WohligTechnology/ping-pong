@@ -420,7 +420,7 @@ a {
     -moz-transition: all 300ms ease;
     -o-transition: all 300ms ease;
     transition: all 300ms ease;
-    border: 1px solid #1c7ccc
+    border: 1px solid #9B59B6
 }
 
 .lefty {
@@ -729,6 +729,10 @@ ion-list .more {
     white-space: pre-wrap;
     font-size: 15px;
     padding-top: 3px;
+}
+.lighterfont {
+    font-size: 14px;
+    font-weight: lighter;
 }
 /*dhaval end*/
 /*Chintan Start*/

@@ -3,7 +3,7 @@
         <ion-list>
             <div class="list" ng-click="openUploadElements();">
                 <a class="item item-icon-left lesspadleft" ng-repeat="follow in followers">
-                    <img class="editprofimg" src="img/images.jpg">
+                    <img class="editprofimg" ng-src="{{follow.image}}">
                     <span class="ontop">{{follow.name}}</span>
                     <span class="ontoplight">started following you</span>
                 </a>

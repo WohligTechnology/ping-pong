@@ -332,6 +332,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             $scope.feeds = [];
         }
         MyServices.getallpolls(page).success(function (data, status) {
+            console.log(data.queryresult);
             if (page == 1) {
                 ion.sound.play("water_droplet_3");
             }
@@ -353,6 +354,17 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                     if (n.images != null) {
                         n.images = n.images.split(',');
                     }
+                    if (n.share != null) {
+                        console.log(n.share);
+                        n.video = n.name;
+                        MyServices.getprofiledetailsshare(n.share).success(function (data, status) {
+                            console.log(data);
+                            n.user = data.id;
+                            n.name = data.name;
+                            n.image = data.image;
+                        })
+                    }
+
                     $scope.feeds.push(n);
                 })
 
@@ -448,6 +460,15 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.pollRefresh(++$scope.pageno);
     }
 
+    $scope.sharepoll = function (shareid, pollid) {
+        console.log(shareid + "   " + pollid);
+        MyServices.shareuserpoll(shareid, pollid).success(
+            function (data, status) {
+                console.log(data);
+                $scope.pollRefresh(1);
+            });
+    }
+
 })
 
 .controller('LoginCtrl', function ($scope, $location, $interval, MyServices) {
@@ -529,7 +550,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     }
 })
 
-.controller('ChatsCtrl', function ($scope) {
+.controller('ChatsCtrl', function ($scope, MyServices) {
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
     // To listen for when this page is active (for example, to refresh data),
@@ -539,24 +560,32 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     //});
 
     //    $scope.chats = Chats.all();
+
+    $scope.followers = {};
+
     $scope.remove = function (chat) {
         Chats.remove(chat);
     };
 
-    $scope.followers = [{
-        name: "Sohan"
-    }, {
-        name: "Mahesh"
-    }, {
-        name: "Vignesh"
-    }];
+    //    $scope.followers = [{
+    //        name: "Sohan"
+    //    }, {
+    //        name: "Mahesh"
+    //    }, {
+    //        name: "Vignesh"
+    //    }];
+
+    MyServices.userfollowing().success(function (data, status) {
+        console.log(data);
+        $scope.followers = data;
+    })
 })
 
 .controller('ChatDetailCtrl', function ($scope, $stateParams, MyServices) {
     $scope.chat = MyServices.get($stateParams.chatId);
 })
 
-.controller('DashDetailCtrl', function ($scope, $stateParams, MyServices, $ionicPopover) {
+.controller('DashDetailCtrl', function ($scope, $stateParams, MyServices, $ionicPopover, $location) {
 
     $scope.comment = {};
     $scope.comments = [];
@@ -571,6 +600,16 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
             $scope.feeds = [];
             $scope.count = 0;
             $scope.per = 0;
+            if (data.userpolldetail.share != null) {
+                data.userpolldetail.video = data.userpolldetail.name;
+                MyServices.getprofiledetailsshare(data.userpolldetail.share).success(function (data2, status) {
+                    console.log(data2);
+                    data.userpolldetail.id = data2.id;
+                    data.userpolldetail.name = data2.name;
+                    data.userpolldetail.image = data2.image;
+                })
+            }
+
             $scope.feeddetail = data;
             _.forEach(data.poll_options, function (n, key) {
                 $scope.count = $scope.count + parseInt(n.pollcount.count);
@@ -747,6 +786,11 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
         $scope.editProf = data;
     });
 
+    MyServices.sharecount().success(function (data, status) {
+        console.log("sharecount=" + data.sharecount);
+        $scope.sharecount = data.sharecount;
+    })
+
     $scope.getfavs = function (page) {
         console.log(page);
         MyServices.getuserfavourites(page).success(function (data, status) {
@@ -792,6 +836,16 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                 if (n.images != null) {
                     n.images = n.images.split(',');
                 }
+                if (n.share != null) {
+                    console.log(n.share);
+                    n.video = n.name;
+                    MyServices.getprofiledetailsshare(n.share).success(function (data, status) {
+                        console.log(data);
+                        n.user = data.id;
+                        n.name = data.name;
+                        n.image = data.image;
+                    })
+                }
                 $scope.feeds.push(n);
             })
 
@@ -804,7 +858,6 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
                 $scope.loadingpost = NaN;
                 $scope.keepscrollingpolls = true;
             }
-
             console.log($scope.feeds);
         });
     }
@@ -919,7 +972,7 @@ angular.module('starter.controllers', ['ngAnimate', 'ngCordova', 'starter.servic
     };
 
     $scope.opendetail = function (id) {
-        $location.url("/tab/dash/" + id);
+        $location.url("/tab/account/" + id);
     }
 
     $ionicModal.fromTemplateUrl('templates/upload.html', {

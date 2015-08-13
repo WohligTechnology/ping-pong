@@ -1,6 +1,6 @@
 var adminbase = "http://wohlig.co.in/attachbackend/";
 var adminbase = "http://localhost/attachbackend/";
-var adminbase = "http://192.168.2.11/attachbackend/";
+var adminbase = "http://192.168.2.9/attachbackend/";
 var adminurl = adminbase + "index.php/json/";
 var adminhauth = adminbase + "index.php/hauth/";
 
@@ -55,7 +55,7 @@ angular.module('starter.services', [])
             getalluserpoll: function (page) {
                 return $http.get(adminurl + "getalluserpoll?id=" + $.jStorage.get("user").id + "&pageno=" + page);
             },
-            getotheruserpoll: function (id,page) {
+            getotheruserpoll: function (id, page) {
                 return $http.get(adminurl + "getalluserpoll?id=" + id + "&pageno=" + page);
             },
             createuserpollcomment: function (comment) {
@@ -141,7 +141,7 @@ angular.module('starter.services', [])
             },
             deletefavourites: function (favid) {
                 return $http({
-                    url: adminurl + 'deletefavourite',
+                    url: adminurl + 'deleteuserpollfavourites',
                     withCredentials: true,
                     method: "POST",
                     data: {
@@ -175,7 +175,7 @@ angular.module('starter.services', [])
             getuserfavourites: function (page) {
                 return $http.get(adminurl + "getfavouriteuserpolls?userid=" + $.jStorage.get("user").id + "&pageno=" + page);
             },
-            getotheruserfavourites: function (user,page) {
+            getotheruserfavourites: function (user, page) {
                 return $http.get(adminurl + "getfavouriteuserpolls?userid=" + user + "&pageno=" + page);
             },
             editprofile: function (profile) {
@@ -200,6 +200,27 @@ angular.module('starter.services', [])
                         "pollid": pollid
                     }
                 });
+            },
+            shareuserpoll: function (shareid, pollid) {
+                return $http({
+                    url: adminurl + 'shareuserpoll',
+                    withCredentials: true,
+                    method: "POST",
+                    data: {
+                        "share": shareid,
+                        "userid": $.jStorage.get("user").id,
+                        "pollid": pollid
+                    }
+                });
+            },
+            userfollowing: function () {
+                return $http.get(adminurl + "userfollowing?id=" + $.jStorage.get("user").id);
+            },
+            getprofiledetailsshare: function (id) {
+                return $http.get(adminurl + "getprofiledetails?id=" + id);
+            },
+            sharecount: function () {
+                return $http.get(adminurl + "sharecount?id=" + $.jStorage.get("user").id);
             }
         };
     });

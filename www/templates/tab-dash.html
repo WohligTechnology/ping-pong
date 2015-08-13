@@ -1,8 +1,8 @@
 <ion-view view-title="Home">
     <ion-content delegate-handle="mainScroll">
-       <ion-refresher pulling-text = "Refresh Polls" on-refresh = "pollRefresh(1)">
-	    	
-	    </ion-refresher>
+        <ion-refresher pulling-text="Refresh Polls" on-refresh="pollRefresh(1)">
+
+        </ion-refresher>
         <ion-list class="avtar">
             <div class="no-connect" ng-show="shownoappliance">
                 <h3>No attach yet...</h3>
@@ -11,14 +11,16 @@
                 <h3>Loading...</h3>
             </div>
             <ion-item id="item{{$index}}" class="item-remove-animate item-avatar item-icon-right removepadding" type="item-text-wrap" ng-repeat="feed in feeds">
+
                 <img class="littlebig" ng-src="{{feed.image | profileimag}}" ng-click="openuserdetail(feed.user)">
                 <div class="contentright">
                     <div ng-click="opendetail(feed.id);">
+                        <p class="lighterfont" ng-if="feed.share!=null">{{feed.video}} shared</p>
                         <span class="namebold" ng-bind="feed.name"></span>
                         <span class="namegrey" ng-bind="feed.nameat"></span>
                         <span class="item-note"><i class="ion-android-time"> {{feed.timestamp | time}}</i></span>
                         <p class="tweetcontent">{{feed.content}}
-<!--                        <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>-->
+                            <!--                        <a class="removeline" href="graphit.as/mozblog">graphit.as/mozblog</a>-->
                         </p>
 
 
@@ -42,7 +44,7 @@
                         <!--                        <img class="max80" ng-src="img/Google-Doodle.gif">-->
                     </div>
                     <div poll data="feed.id" class="more" id="more{{$index}}" ng-style="{'height':feed.height}">
-<!--
+                        <!--
                         <div class="more-content">
                             <div class="row">Vote your Choice</div>
                             <div class="row spaceout" ng-repeat="fed in feed.feeds">
@@ -60,14 +62,16 @@
 -->
                     </div>
                     <div class="row nopadding">
+                        <!--
                         <div class="col">
                             <button class="button button-icon ion-chevron-down bottomicons" ng-class="{'rotate':feed.more}" ng-click="changemore(feed,$index);"></button>
                         </div>
+-->
                         <div class="col">
                             <button class="button button-icon ion-ios-star bottomicons {{feed.isfav}}" ng-click="markasfav(feed);"></button>
                         </div>
                         <div class="col">
-                            <button class="button button-icon ion-android-share-alt bottomicons"></button>
+                            <button class="button button-icon ion-android-share-alt bottomicons" ng-click="sharepoll(feed.user,feed.id);"></button>
                         </div>
                         <div class="col" ng-click="openPopover();">
                             <button class="button button-icon ion-android-more-vertical moredot"></button>
